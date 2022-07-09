@@ -26,7 +26,7 @@ export default {
 
 .wiki-item-title {
   color: #000;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 

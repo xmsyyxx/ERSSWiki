@@ -38,6 +38,7 @@ export default {
   layout: "WikiContents",
   async asyncData({ $content, params }) {
     const WikiData = await $content("wiki", params.item).fetch();
+    console.log(WikiData);
     const { title } = WikiData;
     const metaTitle = title + " [耳斯百科]";
     return {
@@ -93,20 +94,20 @@ export default {
 </style>
 
 <style>
-.nuxt-content h1 {
+.nuxt-content h2 {
   font-weight: 700;
 }
 
-.nuxt-content > h1 > a ::before {
+.nuxt-content > h2 > a ::before {
   content: "# ";
 }
 
 .nuxt-content p {
-  font-weight: 200;
+  font-weight: 400;
   font-size: 1.1rem;
   color: #333;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .nuxt-content img {
@@ -120,5 +121,33 @@ export default {
   background-color: #f5f5f5;
   border: 0;
   transform: translateX(-1rem);
+}
+
+.footnote-ref {
+  font-weight: 500;
+}
+
+.footnote-ref::before {
+  content: "[";
+}
+
+.footnote-ref::after {
+  content: "]";
+}
+
+.footnotes > hr {
+  display: none;
+}
+
+.footnotes > ol {
+  padding-left: 1rem;
+}
+
+.footnotes > ol > li::marker {
+  font-weight: 700;
+}
+
+.footnote-backref::before {
+  content: " ";
 }
 </style>

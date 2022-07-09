@@ -18,7 +18,7 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/64x64.png" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap",
       },
     ],
   },
@@ -26,10 +26,10 @@ export default {
   target: "static",
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["ant-design-vue/dist/antd.css"],
+  css: ["./assets/css/global.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/antd-ui"],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -45,17 +45,34 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    publicPath: "https://s-sh-1943-wiki.oss.dogecdn.com/public",
     // analyze: true,
     babelrc: true,
     extractCSS: true,
     optimization: {
+      runtimeChunk: {
+        name: (entrypoint) => `runtime-${entrypoint.name}`,
+      },
       splitChunks: {
+        automaticNameDelimiter: "-",
+        chunks: "all",
+        maxInitialRequests: Infinity,
+        minSize: 50000,
+        maxSize: 50000,
+        minChunks: 1,
         cacheGroups: {
           styles: {
             name: "styles",
             test: /\.(css|vue)$/,
             chunks: "all",
             enforce: true,
+          },
+          vendor: {
+            name: "vendor",
+            minChunks: 2,
+            test: /[\\/]node_modules[\\/]|[\\/]gamedata[\\/]|[\\/]renderer[\\/]/,
+            filename: "[contenthash:8].chunk.js",
+            priority: -50,
           },
         },
       },
@@ -80,7 +97,7 @@ export default {
     breaks: true,
     use: [
       "markdown-it-div",
-      "markdown-it-highlightjs",
+      // "markdown-it-highlightjs",
       "markdown-it-mark",
       "markdown-it-deflist",
     ],

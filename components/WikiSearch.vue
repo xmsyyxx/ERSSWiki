@@ -3,14 +3,12 @@
     <div class="wiki-icon-search" @click="onClickSearchIcon">
       <IconSearch />
     </div>
-    <div v-if="isStartSearch" class="wiki-search-container">
-      <input
-        v-model="searchQuery"
-        class="wiki-search-input"
-        type="search"
-        autocomplete="off"
-      />
-    </div>
+    <!-- <div v-if="isStartSearch" class="wiki-search-container">
+      <IconSearch class="wiki-search-input-icon" />
+      <div class="wiki-search-input">
+        <input v-model="searchQuery" type="search" autocomplete="off" />
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -30,7 +28,7 @@ export default {
   },
   methods: {
     onClickSearchIcon() {
-      //   this.isStartSearch = true;
+      // this.isStartSearch = true;
     },
   },
 };
@@ -45,12 +43,36 @@ export default {
 }
 
 .wiki-search-container {
+  display: block;
   position: absolute;
-  left: 1rem;
-  right: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 
 .wiki-search-input {
-  width: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.wiki-search-input > input {
+  width: 100% !important;
+  box-sizing: border-box;
+  border: 0;
+  height: 2rem;
+  font-size: 1rem;
+  color: #333;
+  border-radius: 10px;
+  outline: 0;
+}
+
+.wiki-search-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 1.5rem;
 }
 </style>

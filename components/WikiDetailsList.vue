@@ -32,6 +32,7 @@ export default {
 <style scoped>
 .wiki-details {
   font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .wiki-details ul {
