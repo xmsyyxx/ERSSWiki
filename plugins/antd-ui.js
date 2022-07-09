@@ -1,4 +1,4 @@
-import Vue from "vue";
-import { Icon } from "ant-design-vue";
+// import Vue from "vue";
+// import { Icon } from "ant-design-vue";
 
-Vue.use(Icon);
+// Vue.use(Icon);

@@ -1,4 +1,5 @@
 const path = require("path");
+const wikiData = require("./content/wiki.json");
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -13,7 +14,13 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/64x64.png" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/64x64.png" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap",
+      },
+    ],
   },
 
   target: "server",
@@ -30,12 +37,11 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    "@nuxtjs/google-fonts",
     "@nuxtjs/eslint-module",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content"],
+  modules: ["@nuxt/content", "@nuxtjs/markdownit"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -65,26 +71,19 @@ export default {
 
   generate: {
     fallback: "404.html",
-    routes: ["/wiki/厦门市音乐学校", "/wiki/跑面"],
+    routes: wikiData,
   },
 
-  content: {
-    markdown: {
-      // https://github.com/remarkjs/remark-external-links#options
-      remarkExternalLinks: {
-        target: "_blank",
-        rel: "nofollow",
-      },
-    },
-  },
-
-  googleFonts: {
-    display: "swap",
-    useStylesheet: true,
-    families: {
-      Poppins: {
-        wght: [400, 700],
-      },
-    },
+  markdownit: {
+    preset: "default",
+    linkify: true,
+    breaks: true,
+    use: [
+      "markdown-it-div",
+      "markdown-it-highlightjs",
+      "markdown-it-mark",
+      "markdown-it-deflist",
+    ],
+    runtime: true, // Support `$md()`
   },
 };

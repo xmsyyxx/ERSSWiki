@@ -38,6 +38,13 @@ export default {
 </style>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
 ::-webkit-scrollbar {
   width: 12px !important;
   height: 12px !important;

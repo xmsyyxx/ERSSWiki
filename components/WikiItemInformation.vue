@@ -31,7 +31,7 @@ export default {
 }
 
 .wiki-item-description {
-  color: #888;
+  color: #666;
   font-size: 0.8rem;
   font-weight: 400;
 }

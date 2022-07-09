@@ -1,6 +1,6 @@
 <template>
-  <div class="wiki-base-introductions" v-if="this.data">
-    <p class="wiki-introduction-text" v-for="text of introductions" :key="text">
+  <div v-if="data" class="wiki-base-introductions">
+    <p v-for="text of introductions" :key="text" class="wiki-introduction-text">
       {{ text }}
     </p>
   </div>
@@ -14,7 +14,12 @@ export default {
   },
   computed: {
     introductions() {
-      return this.data && this.data.split("\n");
+      return (
+        this.data &&
+        this.data.split("\n").filter((content) => {
+          return content && content.trim();
+        })
+      );
     },
   },
 };

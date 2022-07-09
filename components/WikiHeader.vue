@@ -2,7 +2,7 @@
   <div class="wiki-header">
     <div class="wiki-header-nav">
       <NuxtLink to="/" class="wiki-icon-home">
-        <a-icon type="home" />
+        <IconHome />
       </NuxtLink>
       <div class="wiki-logo-text">耳斯百科 &middot; 手机版</div>
       <WikiSearch />
@@ -11,12 +11,14 @@
 </template>
 
 <script>
+import IconHome from "./icons/IconHome.vue";
 import WikiSearch from "./WikiSearch.vue";
 
 export default {
   name: "WikiHeader",
   components: {
     WikiSearch,
+    IconHome,
   },
 };
 </script>

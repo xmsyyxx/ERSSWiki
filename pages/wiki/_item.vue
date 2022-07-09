@@ -1,8 +1,9 @@
 <template>
   <div class="wiki-item">
     <WikiItemInformation :title="title" :description="description" />
-    <WikiBaseIntroductions :data="introduction" />
-    <WikiDetailsList :data="info" />
+    <WikiPicture v-if="img" :src="img" :name="title" />
+    <WikiBaseIntroductions v-if="introduction" :data="introduction" />
+    <WikiDetailsList v-if="info" :data="info" />
     <div class="wiki-space-fill"></div>
     <article class="wiki-article">
       <nuxt-content :document="WikiData" tag="div" />
@@ -14,6 +15,7 @@
 import WikiDetailsList from "../../components/WikiDetailsList";
 import WikiBaseIntroductions from "../../components/WikiBaseIntroductions";
 import WikiItemInformation from "../../components/WikiItemInformation";
+import WikiPicture from "../../components/WikiPicture.vue";
 
 export default {
   name: "WikiItem",
@@ -21,11 +23,12 @@ export default {
     WikiDetailsList,
     WikiBaseIntroductions,
     WikiItemInformation,
+    WikiPicture,
   },
   layout: "WikiContents",
   async asyncData({ $content, params }) {
     const WikiData = await $content("wiki", params.item).fetch();
-    const { title, description, slug, updatedAt, introduction, info } =
+    const { title, description, slug, updatedAt, introduction, info, img } =
       WikiData;
     const metaTitle = title + " [耳斯百科]";
     return {
@@ -37,6 +40,7 @@ export default {
       metaTitle,
       introduction,
       info,
+      img,
     };
   },
   head() {
@@ -83,12 +87,6 @@ export default {
 </style>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
 .nuxt-content h1 {
   font-weight: 700;
 }

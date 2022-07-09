@@ -1,7 +1,7 @@
 <template>
   <div class="wiki-search">
     <div class="wiki-icon-search" @click="onClickSearchIcon">
-      <a-icon type="search" />
+      <IconSearch />
     </div>
     <div v-if="isStartSearch" class="wiki-search-container">
       <input
@@ -15,8 +15,13 @@
 </template>
 
 <script>
+import IconSearch from "./icons/IconSearch.vue";
+
 export default {
   name: "WikiSearch",
+  components: {
+    IconSearch,
+  },
   data() {
     return {
       isStartSearch: false,
