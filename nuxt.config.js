@@ -23,7 +23,7 @@ export default {
     ],
   },
 
-  target: "server",
+  target: "static",
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["ant-design-vue/dist/antd.css"],

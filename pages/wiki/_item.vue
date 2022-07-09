@@ -1,9 +1,19 @@
 <template>
   <div class="wiki-item">
-    <WikiItemInformation :title="title" :description="description" />
-    <WikiPicture v-if="img" :src="img" :name="title" />
-    <WikiBaseIntroductions v-if="introduction" :data="introduction" />
-    <WikiDetailsList v-if="info" :data="info" />
+    <WikiItemInformation
+      :title="WikiData.title"
+      :description="WikiData.description"
+    />
+    <WikiPicture
+      v-if="WikiData.img"
+      :src="WikiData.img"
+      :name="WikiData.title"
+    />
+    <WikiBaseIntroductions
+      v-if="WikiData.introduction"
+      :data="WikiData.introduction"
+    />
+    <WikiDetailsList v-if="WikiData.info" :data="WikiData.info" />
     <div class="wiki-space-fill"></div>
     <article class="wiki-article">
       <nuxt-content :document="WikiData" tag="div" />
@@ -28,32 +38,28 @@ export default {
   layout: "WikiContents",
   async asyncData({ $content, params }) {
     const WikiData = await $content("wiki", params.item).fetch();
-    const { title, description, slug, updatedAt, introduction, info, img } =
-      WikiData;
+    const { title } = WikiData;
     const metaTitle = title + " [耳斯百科]";
     return {
       WikiData,
-      title,
-      description,
-      slug,
-      updatedAt,
       metaTitle,
-      introduction,
-      info,
-      img,
     };
   },
   head() {
     return {
       title: this.metaTitle,
       meta: [
-        { hid: "description", name: "description", content: this.description },
+        {
+          hid: "description",
+          name: "description",
+          content: this.WikiData.description,
+        },
         // Open Graph
         { hid: "og:title", property: "og:title", content: this.metaTitle },
         {
           hid: "og:description",
           property: "og:description",
-          content: this.description,
+          content: this.WikiData.description,
         },
         // Twitter Card
         {
@@ -64,7 +70,7 @@ export default {
         {
           hid: "twitter:description",
           name: "twitter:description",
-          content: this.description,
+          content: this.WikiData.description,
         },
       ],
     };
@@ -89,6 +95,10 @@ export default {
 <style>
 .nuxt-content h1 {
   font-weight: 700;
+}
+
+.nuxt-content > h1 > a ::before {
+  content: "# ";
 }
 
 .nuxt-content p {
