@@ -5,7 +5,7 @@ export default {
   head: {
     title: "耳斯百科",
     htmlAttrs: {
-      lang: "en",
+      lang: "zh",
     },
     meta: [
       { charset: "utf-8" },
@@ -13,10 +13,10 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/64x64.png" }],
   },
 
-  target: "static",
+  target: "server",
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["ant-design-vue/dist/antd.css"],
@@ -30,6 +30,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
+    "@nuxtjs/google-fonts",
     "@nuxtjs/eslint-module",
   ],
 
@@ -57,8 +58,14 @@ export default {
       config.resolve.alias["@ant-design/icons/lib/dist$"] = path.resolve(
         __dirname,
         "./plugins/antd-icon.js"
-      );
+      ); // 引入需要的
+      config.resolve.alias["@"] = path.resolve(__dirname, "../plugins");
     },
+  },
+
+  generate: {
+    fallback: "404.html",
+    routes: ["/wiki/厦门市音乐学校", "/wiki/跑面"],
   },
 
   content: {
@@ -67,6 +74,16 @@ export default {
       remarkExternalLinks: {
         target: "_blank",
         rel: "nofollow",
+      },
+    },
+  },
+
+  googleFonts: {
+    display: "swap",
+    useStylesheet: true,
+    families: {
+      Poppins: {
+        wght: [400, 700],
       },
     },
   },

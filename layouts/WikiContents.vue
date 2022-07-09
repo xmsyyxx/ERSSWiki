@@ -11,7 +11,7 @@
 
 <script>
 import WikiFooter from "../components/WikiFooter";
-import WikiHeader from "~/components/WikiHeader";
+import WikiHeader from "../components/WikiHeader";
 
 export default {
   name: "WikiContents",
