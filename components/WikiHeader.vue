@@ -37,6 +37,7 @@ export default {
   user-select: none;
   border-bottom: 1px solid #e6e6e6;
   z-index: 1000;
+  width: 100vw;
 }
 
 .wiki-header-nav {

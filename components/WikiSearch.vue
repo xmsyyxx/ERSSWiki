@@ -3,12 +3,34 @@
     <div class="wiki-icon-search" @click="onClickSearchIcon">
       <IconSearch />
     </div>
-    <!-- <div v-if="isStartSearch" class="wiki-search-container">
-      <IconSearch class="wiki-search-input-icon" />
+    <div v-if="isStartSearch" class="wiki-search-container">
       <div class="wiki-search-input">
-        <input v-model="searchQuery" type="search" autocomplete="off" />
+        <input
+          v-model="searchQuery"
+          type="search"
+          autocomplete="off"
+          placeholder="搜索"
+        />
+        <ul v-if="articles.length" class="wiki-search-list">
+          <li
+            v-for="article of articles"
+            :key="article.title"
+            class="wiki-search-item"
+          >
+            <NuxtLink :to="'/wiki/' + article.title">
+              <span @click="isStartSearch = false">{{ article.title }}</span>
+            </NuxtLink>
+            <div class="wiki-search-go-icon">↩</div>
+          </li>
+        </ul>
+        <ul v-if="!articles.length && searchQuery" class="wiki-search-list">
+          <li class="wiki-search-item-no-resoult">无结果</li>
+        </ul>
+        <div @click="isStartSearch = false" class="wiki-search-return">
+          返回
+        </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -24,11 +46,49 @@ export default {
     return {
       isStartSearch: false,
       searchQuery: "",
+      articles: [],
     };
+  },
+  hooks: {
+    "content:file:beforeInsert": (document) => {
+      if (document.extension === ".md") {
+        Object.entries(document).forEach(([key, value]) => {
+          const _key = `case_insensitive__${key}`; // prefix is arbitrary
+          if (!document[_key] && typeof value === "string") {
+            document[_key] = value.toLocaleLowerCase();
+          }
+        });
+      }
+    },
+  },
+  watch: {
+    async searchQuery(query) {
+      if (!query) {
+        this.articles = [];
+        return;
+      }
+      let search = await this.$content("wiki")
+        .only(["title"])
+        .sortBy("case_insensitive__title", "asc")
+        .fetch();
+      search = search.filter((content) => {
+        if (
+          content.title
+            .toString()
+            .toLocaleLowerCase()
+            .includes(query.toLocaleLowerCase())
+        ) {
+          return content;
+        }
+        return null;
+      });
+      this.articles = search;
+      console.log(search);
+    },
   },
   methods: {
     onClickSearchIcon() {
-      // this.isStartSearch = true;
+      this.isStartSearch = true;
     },
   },
 };
@@ -49,24 +109,34 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f5f5f5;
+  background-color: #fff;
   min-height: 100vh;
 }
 
 .wiki-search-input {
   margin-left: 1rem;
   margin-right: 1rem;
+  height: 2.5rem;
+  background: #fff;
+  border-radius: 2rem;
+  margin-top: 1rem;
 }
 
 .wiki-search-input > input {
   width: 100% !important;
   box-sizing: border-box;
-  border: 0;
-  height: 2rem;
-  font-size: 1rem;
+  height: 2.2rem;
+  font-size: 0.5rem;
   color: #333;
-  border-radius: 10px;
   outline: 0;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  padding-top: 0;
+  transform: translateY(-0.5rem);
+  border-radius: 2rem;
+  border: 1px solid #ccc;
 }
 
 .wiki-search-input-icon {
@@ -74,5 +144,40 @@ export default {
   left: 1rem;
   top: 1rem;
   font-size: 1.5rem;
+}
+
+.wiki-search-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.wiki-search-item {
+  position: relative;
+  display: flex;
+  font-size: 1rem;
+  border-bottom: 1px solid #ededed;
+}
+
+.wiki-search-item a {
+  color: #333;
+}
+
+.wiki-search-go-icon {
+  position: absolute;
+  color: #333;
+  right: 0;
+}
+
+.wiki-search-item-no-resoult {
+  position: relative;
+  font-size: 1rem;
+  border-bottom: 1px solid #ededed;
+}
+
+.wiki-search-return {
+  color: #000;
+  font-size: 1rem;
 }
 </style>

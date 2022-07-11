@@ -56,7 +56,7 @@ export default {
           content: this.WikiData.description,
         },
         // Open Graph
-        { hid: "og:title", property: "og:title", content: this.metaTitle },
+        { hid: "og:title", property: "og:title", content: this.WikiData.title },
         {
           hid: "og:description",
           property: "og:description",
@@ -66,7 +66,7 @@ export default {
         {
           hid: "twitter:title",
           name: "twitter:title",
-          content: this.metaTitle,
+          content: this.WikiData.title,
         },
         {
           hid: "twitter:description",

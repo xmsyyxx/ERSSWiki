@@ -1,5 +1,15 @@
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+
+
 /*!
- * Vue.js v2.7.3
+  * vue-router v3.5.4
+  * (c) 2022 Evan You
+  * @license MIT
+  */
+
+
+/*!
+ * Vue.js v2.7.4
  * (c) 2014-2022 Evan You
  * Released under the MIT License.
  */
@@ -16,12 +26,3 @@
  * (c) 2018-present egoist <0x142857@gmail.com>
  * Released under the MIT License.
  */
-
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-
-
-/*!
-  * vue-router v3.5.4
-  * (c) 2022 Evan You
-  * @license MIT
-  */
