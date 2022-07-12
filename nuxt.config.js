@@ -1,16 +1,5 @@
 const path = require("path");
 
-const createSitemapRoutes = async () => {
-  let routes = [];
-  const { $content } = require("@nuxt/content");
-  if (posts === null || posts.length === 0)
-    posts = await $content("wiki").fetch();
-  for (const post of posts) {
-    routes.push(`wiki/${post.slug}`);
-  }
-  return routes;
-};
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -51,7 +40,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "@nuxtjs/sitemap", "@nuxtjs/markdownit"],
+  modules: ["@nuxt/content", "@nuxtjs/markdownit"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -116,11 +105,5 @@ export default {
       "markdown-it-deflist",
     ],
     runtime: true, // Support `$md()`
-  },
-
-  sitemap: {
-    hostname: "https://baike.xmsyyxx.com/",
-    gzip: true,
-    routes: createSitemapRoutes,
   },
 };
