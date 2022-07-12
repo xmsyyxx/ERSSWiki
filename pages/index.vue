@@ -38,7 +38,7 @@ export default {
       .only(["title", "slug"])
       .sortBy("case_insensitive__title", "asc")
       .fetch();
-    console.log(WikiData);
+    // console.log(WikiData);
     return {
       WikiData,
     };

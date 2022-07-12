@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxt/content": "^1.15.1",
     "@nuxtjs/markdownit": "^2.0.0",
+    "@nuxtjs/sitemap": "^2.4.0",
     "ant-design-vue": "^1.7.8",
     "core-js": "^3.19.3",
     "markdown-it-deflist": "^2.1.0",

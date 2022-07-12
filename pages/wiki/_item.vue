@@ -1,24 +1,25 @@
 <template>
-  <div class="wiki-item">
+  <article class="wiki-item">
     <WikiItemInformation
       :title="WikiData.title"
       :description="WikiData.description"
     />
+    <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
     <WikiPicture
       v-if="WikiData.img"
       :src="WikiData.img"
-      :name="WikiData.title"
+      :alt="WikiData.title"
     />
     <WikiBaseIntroductions
       v-if="WikiData.introduction"
       :data="WikiData.introduction"
     />
     <WikiDetailsList v-if="WikiData.info" :data="WikiData.info" />
-    <div class="wiki-space-fill"></div>
-    <article class="wiki-article">
+    <section class="wiki-space-fill"></section>
+    <section class="wiki-article">
       <nuxt-content :document="WikiData" tag="div" />
-    </article>
-  </div>
+    </section>
+  </article>
 </template>
 
 <script>
@@ -26,6 +27,7 @@ import WikiDetailsList from "../../components/WikiDetailsList";
 import WikiBaseIntroductions from "../../components/WikiBaseIntroductions";
 import WikiItemInformation from "../../components/WikiItemInformation";
 import WikiPicture from "../../components/WikiPicture.vue";
+import WikiTags from "../../components/WikiTags.vue";
 
 export default {
   name: "WikiItem",
@@ -34,11 +36,12 @@ export default {
     WikiBaseIntroductions,
     WikiItemInformation,
     WikiPicture,
+    WikiTags,
   },
   layout: "WikiContents",
   async asyncData({ $content, params }) {
     const WikiData = await $content("wiki", params.item).fetch();
-    console.log(WikiData);
+    // console.log(WikiData);
     const { title } = WikiData;
     const metaTitle = title + " [耳斯百科]";
     return {
@@ -81,8 +84,9 @@ export default {
 
 <style scoped>
 .wiki-article {
+  display: flex;
+  flex-direction: column;
   margin: 1rem;
-  margin-bottom: 2rem;
 }
 
 .wiki-space-fill {
@@ -149,5 +153,9 @@ export default {
 
 .footnote-backref::before {
   content: " ";
+}
+
+.footnote-backref {
+  display: none;
 }
 </style>

@@ -1,16 +1,19 @@
 <template>
-  <div v-if="data" class="wiki-base-introductions">
+  <section v-if="data" class="wiki-base-introductions">
     <p v-for="text of introductions" :key="text" class="wiki-introduction-text">
       {{ text }}
     </p>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   name: "WikiBaseIntroductions",
   props: {
-    data: String,
+    data: {
+      type: String,
+      default: "",
+    },
   },
   computed: {
     introductions() {
@@ -27,6 +30,8 @@ export default {
 
 <style scoped>
 .wiki-base-introductions {
+  display: flex;
+  flex-direction: column;
   margin: 1rem;
   font-weight: 200;
   font-size: 1rem;

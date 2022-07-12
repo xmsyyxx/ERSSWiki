@@ -1,6 +1,6 @@
 <template>
-  <div class="wiki-details-list" v-if="this.data">
-    <div v-if="infoKeys" class="wiki-details">
+  <section v-if="data" class="wiki-details">
+    <div v-if="infoKeys" class="wiki-detail-list">
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-detail-item">
           <div class="wiki-detail-title">{{ key }}</div>
@@ -8,14 +8,17 @@
         </li>
       </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   name: "WikiDetailsList",
   props: {
-    data: Object,
+    data: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   computed: {
     infoKeys() {
@@ -31,11 +34,19 @@ export default {
 
 <style scoped>
 .wiki-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: -2rem;
+}
+
+.wiki-detail-list {
   font-size: 1.1rem;
   font-weight: 500;
 }
 
-.wiki-details ul {
+.wiki-detail-list ul {
+  display: flex;
+  flex-direction: column;
   margin: 1rem;
   padding: 0;
   list-style: none;

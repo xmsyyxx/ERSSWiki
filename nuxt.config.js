@@ -1,5 +1,15 @@
 const path = require("path");
-const wikiData = require("./content/wiki.json");
+
+const createSitemapRoutes = async () => {
+  let routes = [];
+  const { $content } = require("@nuxt/content");
+  if (posts === null || posts.length === 0)
+    posts = await $content("wiki").fetch();
+  for (const post of posts) {
+    routes.push(`wiki/${post.slug}`);
+  }
+  return routes;
+};
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -41,7 +51,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "@nuxtjs/markdownit"],
+  modules: ["@nuxt/content", "@nuxtjs/sitemap", "@nuxtjs/markdownit"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -88,7 +98,11 @@ export default {
 
   generate: {
     fallback: "404.html",
-    routes: wikiData,
+    async routes() {
+      const { $content } = require("@nuxt/content");
+      const files = await $content({ deep: true }).only(["path"]).fetch();
+      return files.map((file) => (file.path === "/index" ? "/" : file.path));
+    },
   },
 
   markdownit: {
@@ -102,5 +116,11 @@ export default {
       "markdown-it-deflist",
     ],
     runtime: true, // Support `$md()`
+  },
+
+  sitemap: {
+    hostname: "https://baike.xmsyyxx.com/",
+    gzip: true,
+    routes: createSitemapRoutes,
   },
 };

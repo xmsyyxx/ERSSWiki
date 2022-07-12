@@ -1,12 +1,12 @@
 <template>
-  <div class="wiki-hot">
+  <section class="wiki-hot">
     <div class="wiki-hot-tips">最新词条</div>
     <div class="wiki-hot-list">
       <ul>
         <li class="wiki-hot-item"></li>
       </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
       .only(["title", "slug", "updatedAt"])
       .sortBy("updatedAt", "desc")
       .fetch();
-    console.log(WikiData);
+    // console.log(WikiData);
     return {
       WikiData,
     };

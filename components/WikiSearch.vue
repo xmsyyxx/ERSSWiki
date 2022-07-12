@@ -1,5 +1,5 @@
 <template>
-  <div class="wiki-search">
+  <section class="wiki-search">
     <div class="wiki-icon-search" @click="onClickSearchIcon">
       <IconSearch />
     </div>
@@ -20,27 +20,30 @@
             <NuxtLink :to="'/wiki/' + article.title">
               <span @click="isStartSearch = false">{{ article.title }}</span>
             </NuxtLink>
-            <div class="wiki-search-go-icon">↩</div>
+            <div class="wiki-search-go-icon">
+              <IconEnter />
+            </div>
           </li>
         </ul>
         <ul v-if="!articles.length && searchQuery" class="wiki-search-list">
           <li class="wiki-search-item-no-resoult">无结果</li>
         </ul>
-        <div @click="isStartSearch = false" class="wiki-search-return">
+        <div class="wiki-search-return" @click="isStartSearch = false">
           返回
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
+import IconEnter from "./icons/IconEnter.vue";
 import IconSearch from "./icons/IconSearch.vue";
-
 export default {
   name: "WikiSearch",
   components: {
     IconSearch,
+    IconEnter,
   },
   data() {
     return {
@@ -68,22 +71,18 @@ export default {
         return;
       }
       let search = await this.$content("wiki")
-        .only(["title"])
+        .only(["title", "tags"])
         .sortBy("case_insensitive__title", "asc")
         .fetch();
+      query = query.toLocaleLowerCase();
       search = search.filter((content) => {
-        if (
-          content.title
-            .toString()
-            .toLocaleLowerCase()
-            .includes(query.toLocaleLowerCase())
-        ) {
+        if (content.title.toString().toLocaleLowerCase().includes(query)) {
+          console.log("匹配");
           return content;
         }
         return null;
       });
       this.articles = search;
-      console.log(search);
     },
   },
   methods: {
@@ -126,7 +125,7 @@ export default {
   width: 100% !important;
   box-sizing: border-box;
   height: 2.2rem;
-  font-size: 0.5rem;
+  font-size: 1rem;
   color: #333;
   outline: 0;
   margin-bottom: 1rem;
