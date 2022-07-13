@@ -27,7 +27,7 @@ export default {
   text-align: left;
   padding-top: 44px;
   background-color: #fff;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .wiki-space-fill {

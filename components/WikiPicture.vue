@@ -50,24 +50,32 @@ export default {
 .wiki-picture-icon {
   font-size: 1rem;
 }
+
+@media only screen and (min-width: 500px) {
+  .nuxt-content > .wiki-picture {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    margin-bottom: -2rem;
+  }
+
+  .nuxt-content > .wiki-picture > .wiki-picrute-box {
+    width: 30%;
+  }
+
+  .nuxt-content > .wiki-picture > .wiki-picture-fill {
+    width: 70%;
+  }
+
+  .wiki-picture-img {
+    width: 100%;
+  }
+}
 </style>
 
 <style>
 .nuxt-content > .wiki-picture {
   margin-left: 1rem;
   margin-right: 1rem;
-}
-
-.wiki-pc > * > * > .wiki-picture {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
-}
-
-.wiki-pc > * > * > .wiki-picture > .wiki-picrute-box {
-  width: 25%;
-}
-.wiki-pc > * > * > .wiki-picture > .wiki-picture-fill {
-  width: 75%;
 }
 </style>

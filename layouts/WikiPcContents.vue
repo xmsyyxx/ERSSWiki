@@ -27,7 +27,7 @@ export default {
   text-align: left;
   padding-top: 60px;
   background-color: #fff;
-  word-break: break-all;
+  word-break: break-word;
 
   display: flex;
   height: 100%;

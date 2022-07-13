@@ -41,7 +41,7 @@ export default {
 }
 
 .wiki-tags-item {
-  word-break: break-all;
+  word-break: break-word;
   border: 1px solid #f1f2f3;
   border-radius: 6px;
   background-color: #f6f7f8;

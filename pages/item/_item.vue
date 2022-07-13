@@ -5,47 +5,61 @@
       :description="WikiData.description"
     />
     <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
-    <div class="wiki-info">
-      <div class="wiki-intro">
-        <WikiBaseIntroductions
+    <section class="wiki-info">
+      <section class="wiki-info-left">
+        <WikiPcBaseIntroductions
           v-if="WikiData.introduction"
           :data="WikiData.introduction"
         />
+        <section class="wiki-article">
+          <nuxt-content :document="WikiData" tag="div" />
+          <section class="wiki-article-fill"></section>
+        </section>
+      </section>
+      <section v-if="WikiData.img || WikiData.info" class="wiki-info-right">
+        <section v-if="WikiData.img" class="wiki-info-picture">
+          <WikiPicture :src="WikiData.img" :alt="WikiData.title" />
+        </section>
         <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
-      </div>
-      <WikiPicture
-        v-if="WikiData.img"
-        :src="WikiData.img"
-        :alt="WikiData.title"
-      />
-    </div>
-    <section class="wiki-article wiki-pc">
-      <nuxt-content :document="WikiData" tag="div" />
+        <WikiPcStatus
+          v-if="WikiData.createdAt || WikiData.updatedAt"
+          :created="WikiData.createdAt"
+          :updated="WikiData.updatedAt"
+        />
+      </section>
     </section>
   </article>
 </template>
 
 <script>
-import WikiBaseIntroductions from "../../components/WikiBaseIntroductions";
 import WikiPicture from "../../components/WikiPicture.vue";
 import WikiTags from "../../components/WikiTags.vue";
 import WikiPcItemInformation from "../../components/pc/WikiPcItemInformation.vue";
 import WikiPcDetailsList from "../../components/pc/WikiPcDetailsList.vue";
+import WikiPcBaseIntroductions from "../../components/pc/WikiPcBaseIntroductions.vue";
+import WikiPcStatus from "../../components/pc/WikiPcStatus.vue";
 
 export default {
   name: "WikiPcItem",
   components: {
     WikiPcDetailsList,
-    WikiBaseIntroductions,
+    WikiPcBaseIntroductions,
     WikiPcItemInformation,
     WikiPicture,
     WikiTags,
+    WikiPcStatus,
   },
   layout: "WikiPcContents",
   async asyncData({ $content, params }) {
     const WikiData = await $content("wiki", params.item).fetch();
     // console.log(WikiData);
     const { title } = WikiData;
+    if (!WikiData.info) {
+      WikiData.info = {
+        中文名: WikiData.title,
+        标签: String(WikiData.tags).replace(/,/g, "，"),
+      };
+    }
     const metaTitle = title + " [耳斯百科]";
     return {
       WikiData,
@@ -112,23 +126,33 @@ export default {
 .wiki-info {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.wiki-intro {
-  width: 70%;
+.wiki-info-left {
+  width: 69%;
+}
+
+.wiki-info-right {
+  width: 29%;
 }
 </style>
 
 <style>
+.nuxt-content {
+  width: 100%;
+}
+
 .wiki-info > .wiki-picture {
   width: 30%;
 }
 
 .nuxt-content h2 {
+  font-size: 1.5rem;
   font-weight: 700;
   margin-left: 1rem;
   margin-right: 1rem;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
   border-bottom: 2px solid #e6e6e6;
   padding-bottom: 1rem;
 }

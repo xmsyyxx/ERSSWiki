@@ -16,6 +16,7 @@
     "@nuxt/content": "^1.15.1",
     "@nuxtjs/markdownit": "^2.0.0",
     "core-js": "^3.19.3",
+    "dayjs": "^1.11.3",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-div": "^1.1.0",
     "markdown-it-highlightjs": "^4.0.1",

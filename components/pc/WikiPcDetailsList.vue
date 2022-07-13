@@ -1,5 +1,6 @@
 <template>
   <section v-if="data" class="wiki-details">
+    <div class="wiki-details-tips">基本信息</div>
     <div v-if="infoKeys" class="wiki-detail-list">
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-detail-item">
@@ -12,7 +13,6 @@
             >
           </div>
           <div class="wiki-detail-text">{{ data[key] }}</div>
-          <div class="wiki-detail-fill"></div>
         </li>
       </ul>
     </div>
@@ -45,6 +45,17 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+  border: 1px solid #f1f2f3;
+  border-radius: 5px;
+  background-color: #f6f7f8;
+}
+
+.wiki-details-tips {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  color: #666;
 }
 
 .wiki-detail-list {
@@ -53,7 +64,7 @@ export default {
   justify-content: flex-start;
   font-size: 1.1rem;
   font-weight: 400;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .wiki-detail-list ul {
@@ -62,7 +73,7 @@ export default {
   margin: 1rem;
   padding: 0;
   list-style: none;
-  width: 60%;
+  width: 100%;
 }
 
 .wiki-detail-item {
