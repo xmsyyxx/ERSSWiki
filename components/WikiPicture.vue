@@ -1,9 +1,12 @@
 <template>
   <section class="wiki-picture">
-    <img :src="src" :alt="alt" class="wiki-picture-img" />
-    <label v-if="alt" class="wiki-picture-description">
-      <span class="wiki-picture-icon"><IconUp /></span> {{ alt }}
-    </label>
+    <div class="wiki-picture-fill"></div>
+    <div class="wiki-picrute-box">
+      <img :src="src" :alt="alt" class="wiki-picture-img" />
+      <label v-if="alt" class="wiki-picture-description">
+        <span class="wiki-picture-icon"><IconUp /></span> {{ alt }}
+      </label>
+    </div>
   </section>
 </template>
 
@@ -53,5 +56,18 @@ export default {
 .nuxt-content > .wiki-picture {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.wiki-pc > * > * > .wiki-picture {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+.wiki-pc > * > * > .wiki-picture > .wiki-picrute-box {
+  width: 25%;
+}
+.wiki-pc > * > * > .wiki-picture > .wiki-picture-fill {
+  width: 75%;
 }
 </style>

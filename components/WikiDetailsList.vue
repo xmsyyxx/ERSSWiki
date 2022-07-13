@@ -3,7 +3,14 @@
     <div v-if="infoKeys" class="wiki-detail-list">
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-detail-item">
-          <div class="wiki-detail-title">{{ key }}</div>
+          <div class="wiki-detail-title">
+            <span
+              v-for="item of key.split('')"
+              :key="item"
+              class="wiki-detail-title-item"
+              >{{ item }}</span
+            >
+          </div>
           <div class="wiki-detail-text">{{ data[key] }}</div>
         </li>
       </ul>
@@ -41,7 +48,7 @@ export default {
 
 .wiki-detail-list {
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .wiki-detail-list ul {
@@ -55,11 +62,15 @@ export default {
 .wiki-detail-item {
   position: relative;
   display: flex;
+  justify-content: space-between;
 }
 
 .wiki-detail-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   float: left;
-  color: #333;
+  color: #444;
   word-wrap: break-word;
   width: 33.33%; /* 4/12 */
   max-width: 33.33%;

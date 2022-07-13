@@ -76,21 +76,21 @@ export default {
         },
       },
     },
-    extend(config, ctx) {
-      config.resolve.alias["@ant-design/icons/lib/dist$"] = path.resolve(
-        __dirname,
-        "./plugins/antd-icon.js"
-      ); // 引入需要的
-      config.resolve.alias["@"] = path.resolve(__dirname, "../plugins");
-    },
   },
 
   generate: {
     fallback: "404.html",
     async routes() {
       const { $content } = require("@nuxt/content");
-      const files = await $content({ deep: true }).only(["path"]).fetch();
-      return files.map((file) => (file.path === "/index" ? "/" : file.path));
+      const files = await $content({ deep: true }).only(["slug"]).fetch();
+      const pathPerfix = ["/wiki", "/item"];
+      let routes = [];
+      files.forEach((file) => {
+        for (let path of pathPerfix) {
+          routes.push(`${path}/${file.slug}`);
+        }
+      });
+      return routes;
     },
   },
 

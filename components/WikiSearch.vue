@@ -47,10 +47,6 @@
 import IconEnter from "./icons/IconEnter.vue";
 import IconSearch from "./icons/IconSearch.vue";
 
-function isMobile() {
-  return window.innerWidth < 500;
-}
-
 export default {
   name: "WikiSearch",
   components: {
@@ -84,9 +80,6 @@ export default {
       });
       this.articles = search;
     },
-  },
-  beforeMount() {
-    this.isStartSearch = !isMobile();
   },
   hooks: {
     "content:file:beforeInsert": (document) => {
@@ -203,46 +196,5 @@ export default {
 
 .wiki-search-link {
   width: 100%;
-}
-
-@media only screen and (min-width: 500px) {
-  .wiki-search {
-    width: 33.33%; /* 8/24 */
-  }
-
-  .wiki-search-container {
-    position: relative;
-    top: unset;
-    left: unset;
-    right: unset;
-    bottom: unset;
-    background-color: transparent;
-    min-height: unset;
-  }
-
-  .wiki-search-input > input {
-    margin-bottom: 0;
-    border-radius: 4px;
-  }
-
-  .wiki-search-list {
-    background-color: #fff;
-    padding: 1rem;
-    overflow-y: auto;
-    max-height: 250px;
-  }
-
-  .wiki-search-item {
-    justify-content: center;
-  }
-
-  .wiki-search-return {
-    display: none;
-  }
-
-  .wiki-search-input {
-    margin: auto;
-    margin-top: 10px;
-  }
 }
 </style>

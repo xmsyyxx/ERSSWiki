@@ -1,9 +1,7 @@
 <template>
   <div class="wiki-footer">
-    <div class="wiki-footer-info">
-      耳斯百科 &middot; 厦门市音乐学校非官方百科网
-    </div>
-    <div class="wiki-footer-copyright">&copy; 2022 耳斯百科</div>
+    <div class="wiki-footer-info">耳斯百科</div>
+    <div class="wiki-footer-copyright">&copy; 2022 Xhemj</div>
   </div>
 </template>
 

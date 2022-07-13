@@ -47,6 +47,7 @@ export default {
     return {
       WikiData,
       metaTitle,
+      slug: params.item,
     };
   },
   head() {
@@ -78,6 +79,13 @@ export default {
         },
       ],
     };
+  },
+  beforeMount() {
+    if (window.outerWidth > 500) {
+      return window.location.replace(
+        `/item/${window.location.pathname.split("/").pop()}`
+      );
+    }
   },
 };
 </script>

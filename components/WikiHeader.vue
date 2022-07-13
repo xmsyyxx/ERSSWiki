@@ -5,13 +5,9 @@
         <IconHome />
       </NuxtLink>
       <div class="wiki-logo-text">
-        <NuxtLink to="/">
-          耳斯百科
-          <span class="wiki-phone-tips"> &middot; 手机版</span>
-        </NuxtLink>
+        <NuxtLink to="/"> 耳斯百科 &middot; 手机版 </NuxtLink>
       </div>
       <WikiSearch />
-      <div class="wiki-tips"></div>
     </div>
   </div>
 </template>
@@ -74,40 +70,5 @@ export default {
   font-weight: 700;
   width: 66.67%; /* 8/12 */
   text-align: center;
-}
-
-@media only screen and (min-width: 500px) {
-  .wiki-header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 60px;
-  }
-
-  .wiki-header-nav {
-    max-width: 1180px;
-    min-width: 960px;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-  }
-
-  .wiki-phone-tips {
-    display: none;
-  }
-
-  .wiki-logo-text {
-    font-size: 1.5rem;
-    width: 16.67%; /* 4/24 */
-  }
-
-  .wiki-tips {
-    display: block;
-    width: 50%; /* 12/24 */
-  }
-
-  .wiki-icon-home {
-    display: none;
-  }
 }
 </style>

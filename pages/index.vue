@@ -20,7 +20,7 @@ export default {
   components: {
     // WikiHot,
   },
-  layout: "WikiContents",
+  layout: "WikiHome",
   hooks: {
     "content:file:beforeInsert": (document) => {
       if (document.extension === ".md") {
