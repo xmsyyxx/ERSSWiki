@@ -32,7 +32,6 @@ export default {
 .wiki-picture {
   display: flex;
   flex-direction: column;
-  width: 100%;
   text-align: center;
 }
 
@@ -42,10 +41,17 @@ export default {
 
 .wiki-picture-description {
   color: #999;
-  font-size: 0.1rem;
+  font-size: 0.8rem;
 }
 
 .wiki-picture-icon {
   font-size: 1rem;
+}
+</style>
+
+<style>
+.nuxt-content > .wiki-picture {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 </style>

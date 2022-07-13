@@ -1,29 +1,36 @@
 <template>
   <section class="wiki-search">
-    <div class="wiki-icon-search" @click="onClickSearchIcon">
+    <div
+      v-if="!isStartSearch"
+      class="wiki-icon-search"
+      @click="onClickSearchIcon"
+    >
       <IconSearch />
     </div>
-    <div v-if="isStartSearch" class="wiki-search-container">
+    <div v-else class="wiki-search-container">
       <div class="wiki-search-input">
         <input
           v-model="searchQuery"
           type="search"
           autocomplete="off"
           placeholder="搜索"
+          @blur="onInputBlur"
         />
         <ul v-if="articles.length" class="wiki-search-list">
-          <li
+          <NuxtLink
             v-for="article of articles"
             :key="article.title"
-            class="wiki-search-item"
+            :to="'/wiki/' + article.title"
           >
-            <NuxtLink :to="'/wiki/' + article.title">
-              <span @click="isStartSearch = false">{{ article.title }}</span>
-            </NuxtLink>
-            <div class="wiki-search-go-icon">
-              <IconEnter />
+            <div class="wiki-search-link" @click="isStartSearch = false">
+              <li class="wiki-search-item">
+                <span>{{ article.title }}</span>
+                <div class="wiki-search-go-icon">
+                  <IconEnter />
+                </div>
+              </li>
             </div>
-          </li>
+          </NuxtLink>
         </ul>
         <ul v-if="!articles.length && searchQuery" class="wiki-search-list">
           <li class="wiki-search-item-no-resoult">无结果</li>
@@ -39,6 +46,11 @@
 <script>
 import IconEnter from "./icons/IconEnter.vue";
 import IconSearch from "./icons/IconSearch.vue";
+
+function isMobile() {
+  return window.innerWidth < 500;
+}
+
 export default {
   name: "WikiSearch",
   components: {
@@ -51,18 +63,6 @@ export default {
       searchQuery: "",
       articles: [],
     };
-  },
-  hooks: {
-    "content:file:beforeInsert": (document) => {
-      if (document.extension === ".md") {
-        Object.entries(document).forEach(([key, value]) => {
-          const _key = `case_insensitive__${key}`; // prefix is arbitrary
-          if (!document[_key] && typeof value === "string") {
-            document[_key] = value.toLocaleLowerCase();
-          }
-        });
-      }
-    },
   },
   watch: {
     async searchQuery(query) {
@@ -77,7 +77,7 @@ export default {
       query = query.toLocaleLowerCase();
       search = search.filter((content) => {
         if (content.title.toString().toLocaleLowerCase().includes(query)) {
-          console.log("匹配");
+          // console.log("匹配");
           return content;
         }
         return null;
@@ -85,9 +85,27 @@ export default {
       this.articles = search;
     },
   },
+  beforeMount() {
+    this.isStartSearch = !isMobile();
+  },
+  hooks: {
+    "content:file:beforeInsert": (document) => {
+      if (document.extension === ".md") {
+        Object.entries(document).forEach(([key, value]) => {
+          const _key = `case_insensitive__${key}`; // prefix is arbitrary
+          if (!document[_key] && typeof value === "string") {
+            document[_key] = value.toLocaleLowerCase();
+          }
+        });
+      }
+    },
+  },
   methods: {
     onClickSearchIcon() {
       this.isStartSearch = true;
+    },
+    onInputBlur() {
+      // this.isStartSearch = false;
     },
   },
 };
@@ -100,7 +118,6 @@ export default {
   text-align: center;
   color: #000;
 }
-
 .wiki-search-container {
   display: block;
   position: absolute;
@@ -134,7 +151,7 @@ export default {
   padding-right: 0.8rem;
   padding-top: 0;
   transform: translateY(-0.5rem);
-  border-radius: 2rem;
+  border-radius: 15px;
   border: 1px solid #ccc;
 }
 
@@ -149,7 +166,7 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid #cccccc;
 }
 
 .wiki-search-item {
@@ -178,5 +195,54 @@ export default {
 .wiki-search-return {
   color: #000;
   font-size: 1rem;
+}
+
+.wiki-search-hide {
+  display: none;
+}
+
+.wiki-search-link {
+  width: 100%;
+}
+
+@media only screen and (min-width: 500px) {
+  .wiki-search {
+    width: 33.33%; /* 8/24 */
+  }
+
+  .wiki-search-container {
+    position: relative;
+    top: unset;
+    left: unset;
+    right: unset;
+    bottom: unset;
+    background-color: transparent;
+    min-height: unset;
+  }
+
+  .wiki-search-input > input {
+    margin-bottom: 0;
+    border-radius: 4px;
+  }
+
+  .wiki-search-list {
+    background-color: #fff;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 250px;
+  }
+
+  .wiki-search-item {
+    justify-content: center;
+  }
+
+  .wiki-search-return {
+    display: none;
+  }
+
+  .wiki-search-input {
+    margin: auto;
+    margin-top: 10px;
+  }
 }
 </style>

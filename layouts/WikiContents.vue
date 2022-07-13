@@ -31,9 +31,21 @@ export default {
 }
 
 .wiki-space-fill {
-  width: 100vw;
+  width: 100%;
   height: 0.7rem;
   background-color: #f5f5f5;
   border: 0;
+}
+
+@media only screen and (min-width: 500px) {
+  .wiki-body {
+    padding-top: 60px;
+    display: flex;
+    height: 100%;
+  }
+
+  .wiki-space-fill {
+    width: 100%;
+  }
 }
 </style>

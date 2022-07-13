@@ -86,11 +86,11 @@ export default {
 .wiki-article {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 .wiki-space-fill {
-  width: 100vw;
+  width: 100%;
   height: 0.7rem;
   background-color: #f5f5f5;
   border: 0;
@@ -100,6 +100,8 @@ export default {
 <style>
 .nuxt-content h2 {
   font-weight: 700;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .nuxt-content > h2 > a ::before {
@@ -110,6 +112,8 @@ export default {
   font-weight: 400;
   font-size: 1.1rem;
   color: #333;
+  margin-left: 1rem;
+  margin-right: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -118,13 +122,17 @@ export default {
   width: 100%;
 }
 
-.nuxt-content hr,
-.place-hr {
-  width: 100vw;
+.nuxt-content hr {
+  width: 100%;
   height: 0.7rem;
   background-color: #f5f5f5;
   border: 0;
   transform: translateX(-1rem);
+}
+
+.footnotes {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .footnote-ref {
@@ -157,5 +165,16 @@ export default {
 
 .footnote-backref {
   display: none;
+}
+
+@media only screen and (min-width: 500px) {
+  .wiki-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 1180px;
+    min-width: 960px;
+    height: 100%;
+    margin: auto;
+  }
 }
 </style>

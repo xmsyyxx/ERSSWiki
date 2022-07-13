@@ -52,6 +52,7 @@ export default {
   padding-top: 44px;
   background-color: #fff;
   text-align: center;
+  margin: auto;
 }
 
 .wiki-all-list {

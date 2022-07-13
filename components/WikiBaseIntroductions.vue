@@ -33,8 +33,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 1rem;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 1rem;
-  color: #000;
+  color: #666;
 }
 </style>
