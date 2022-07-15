@@ -120,7 +120,7 @@ export default {
 .wiki-app-footer {
   position: absolute;
   bottom: 0;
-  widows: 100%;
+  width: 100%;
 }
 
 @media only screen and (max-width: 500px) {
