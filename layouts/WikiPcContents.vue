@@ -5,19 +5,22 @@
       <Nuxt />
     </div>
     <div class="wiki-space-fill"></div>
+    <WikiFancyImage />
     <WikiFooter />
   </div>
 </template>
 
 <script>
-import WikiPcHeader from "../components/pc/WikiPcHeader";
-import WikiFooter from "../components/WikiFooter";
+import WikiPcHeader from "../components/pc/WikiPcHeader.vue";
+import WikiFancyImage from "../components/WikiFancyImage.vue";
+import WikiFooter from "../components/WikiFooter.vue";
 
 export default {
   name: "WikiPcContents",
   components: {
     WikiPcHeader,
     WikiFooter,
+    WikiFancyImage,
   },
 };
 </script>

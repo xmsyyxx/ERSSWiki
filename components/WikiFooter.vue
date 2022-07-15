@@ -19,5 +19,6 @@ export default {
   text-align: center;
   color: #888;
   padding: 1rem;
+  user-select: none;
 }
 </style>

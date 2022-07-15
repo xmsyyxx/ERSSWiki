@@ -14,7 +14,11 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/64x64.png" },
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap",
@@ -45,34 +49,19 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     publicPath: "https://s-sh-1943-wiki.oss.dogecdn.com/public",
-    // analyze: true,
+    analyze: true,
     babelrc: true,
     extractCSS: true,
-    optimization: {
-      runtimeChunk: {
-        name: (entrypoint) => `runtime-${entrypoint.name}`,
+    postcss: {
+      plugins: {
+        "postcss-url": {},
+        "postcss-nested": {},
+        "postcss-responsive-type": {},
+        "postcss-hexrgba": {},
       },
-      splitChunks: {
-        automaticNameDelimiter: "-",
-        chunks: "all",
-        maxInitialRequests: Infinity,
-        minSize: 50000,
-        maxSize: 50000,
-        minChunks: 1,
-        cacheGroups: {
-          styles: {
-            name: "styles",
-            test: /\.(css|vue)$/,
-            chunks: "all",
-            enforce: true,
-          },
-          vendor: {
-            name: "vendor",
-            minChunks: 2,
-            test: /[\\/]node_modules[\\/]|[\\/]gamedata[\\/]|[\\/]renderer[\\/]/,
-            filename: "[contenthash:8].chunk.js",
-            priority: -50,
-          },
+      preset: {
+        autoprefixer: {
+          grid: true,
         },
       },
     },
@@ -105,5 +94,9 @@ export default {
       "markdown-it-deflist",
     ],
     runtime: true, // Support `$md()`
+  },
+
+  loading: {
+    color: "#5755d9",
   },
 };

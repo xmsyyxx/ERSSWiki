@@ -109,7 +109,7 @@ export default {
   font-size: 1.5rem;
   width: 16.67%; /* 2/12 */
   text-align: center;
-  color: #000;
+  color: #4a5568;
 }
 .wiki-search-container {
   display: block;
@@ -169,8 +169,8 @@ export default {
   border-bottom: 1px solid #ededed;
 }
 
-.wiki-search-item a {
-  color: #333;
+.wiki-search-item {
+  color: #4a5568;
 }
 
 .wiki-search-go-icon {

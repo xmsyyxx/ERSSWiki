@@ -5,7 +5,7 @@
         <IconHome />
       </NuxtLink>
       <div class="wiki-logo-text">
-        <NuxtLink to="/"> 耳斯百科 &middot; 手机版 </NuxtLink>
+        <NuxtLink to="/"> 耳斯百科 &middot; 开发版 </NuxtLink>
       </div>
       <WikiSearch />
     </div>

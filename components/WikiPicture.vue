@@ -2,7 +2,12 @@
   <section class="wiki-picture">
     <div class="wiki-picture-fill"></div>
     <div class="wiki-picrute-box">
-      <img :src="src" :alt="alt" class="wiki-picture-img" />
+      <img
+        :src="src"
+        :alt="alt"
+        class="wiki-picture-img"
+        @click="onClickImage"
+      />
       <label v-if="alt" class="wiki-picture-description">
         <span class="wiki-picture-icon"><IconUp /></span> {{ alt }}
       </label>
@@ -28,6 +33,15 @@ export default {
       default: "",
     },
   },
+  methods: {
+    onClickImage() {
+      this.$root.$emit("WikiFancyImage", {
+        src: this.src,
+        title: this.alt,
+        description: this.alt,
+      });
+    },
+  },
 };
 </script>
 
@@ -40,6 +54,7 @@ export default {
 
 .wiki-picture-img {
   width: 100%;
+  cursor: pointer;
 }
 
 .wiki-picture-description {

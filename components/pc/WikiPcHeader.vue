@@ -2,11 +2,18 @@
   <div class="wiki-header">
     <div class="wiki-header-nav">
       <div class="wiki-logo-text">
-        <div class="wiki-logo"><img src="/64x64.png" alt="" /></div>
+        <div class="wiki-logo">
+          <img
+            src="https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png"
+            alt=""
+          />
+        </div>
         <NuxtLink to="/"> 耳斯百科 </NuxtLink>
       </div>
       <WikiPcSearch />
-      <div class="wiki-tips"></div>
+      <div class="wiki-tips">
+        <div class="wiki-development-tips">开发版 v0.1.0-beta6</div>
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +38,7 @@ export default {
   height: 60px;
   color: #333;
   line-height: 44px;
-  background-color: #fff;
+  background-color: #edf2f7;
   user-select: none;
   border-bottom: 1px solid #e6e6e6;
   z-index: 1000;
@@ -47,7 +54,7 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  max-width: 1180px;
+  max-width: 1190px;
   min-width: 960px;
   justify-content: space-around;
   height: 100%;
@@ -57,6 +64,7 @@ export default {
 .wiki-logo-text {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   font-size: 1.5rem;
   width: 16.67%; /* 4/24 */
   font-weight: 700;
@@ -73,7 +81,15 @@ export default {
 }
 
 .wiki-tips {
-  display: block;
+  display: flex;
   width: 50%; /* 12/24 */
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+.wiki-development-tips {
+  font-weight: 600;
+  font-size: 0.8rem;
 }
 </style>

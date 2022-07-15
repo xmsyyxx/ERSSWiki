@@ -5,8 +5,8 @@
       :description="WikiData.description"
     />
     <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
-    <section class="wiki-info">
-      <section class="wiki-info-left">
+    <section class="wiki-main">
+      <section class="wiki-main-left">
         <WikiPcBaseIntroductions
           v-if="WikiData.introduction"
           :data="WikiData.introduction"
@@ -16,16 +16,18 @@
           <section class="wiki-article-fill"></section>
         </section>
       </section>
-      <section v-if="WikiData.img || WikiData.info" class="wiki-info-right">
-        <section v-if="WikiData.img" class="wiki-info-picture">
+      <section v-if="WikiData.img || WikiData.info" class="wiki-main-right">
+        <section v-if="WikiData.img" class="wiki-main-picture">
           <WikiPicture :src="WikiData.img" :alt="WikiData.title" />
         </section>
-        <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
-        <WikiPcStatus
-          v-if="WikiData.createdAt || WikiData.updatedAt"
-          :created="WikiData.createdAt"
-          :updated="WikiData.updatedAt"
-        />
+        <section class="wiki-sticky">
+          <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
+          <WikiPcStatus
+            v-if="WikiData.createdAt || WikiData.updatedAt"
+            :created="WikiData.createdAt"
+            :updated="WikiData.updatedAt"
+          />
+        </section>
       </section>
     </section>
   </article>
@@ -70,6 +72,12 @@ export default {
   head() {
     return {
       title: this.metaTitle,
+      link: [
+        {
+          rel: "canonical",
+          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
+        },
+      ],
       meta: [
         {
           hid: "description",
@@ -98,11 +106,14 @@ export default {
     };
   },
   beforeMount() {
-    if (window.outerWidth < 500) {
-      return window.location.replace(
-        `/wiki/${window.location.pathname.split("/").pop()}`
-      );
+    function onresize() {
+      const path = window.location.pathname.split("/").pop();
+      if (window.outerWidth < 500 && path) {
+        return window.location.replace(`/wiki/${path}`);
+      }
     }
+    onresize();
+    window.onresize = onresize;
   },
 };
 </script>
@@ -123,101 +134,109 @@ export default {
   margin: 1rem 0;
 }
 
-.wiki-info {
+.wiki-main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.wiki-info-left {
+.wiki-main-left {
   width: 69%;
 }
 
-.wiki-info-right {
+.wiki-main-right {
   width: 29%;
+  transform: translateY(-2rem);
+}
+
+.wiki-sticky {
+  position: sticky;
+  top: calc(3rem + 60px);
 }
 </style>
 
 <style>
-.nuxt-content {
-  width: 100%;
-}
+@media only screen and (min-width: 500px) {
+  .nuxt-content {
+    width: 100%;
+  }
 
-.wiki-info > .wiki-picture {
-  width: 30%;
-}
+  .wiki-main > .wiki-picture {
+    width: 30%;
+  }
 
-.nuxt-content h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 3.5rem;
-  border-bottom: 2px solid #e6e6e6;
-  padding-bottom: 1rem;
-}
+  .nuxt-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 3.5rem;
+    border-bottom: 2px solid #e6e6e6;
+    padding-bottom: 1rem;
+  }
 
-.nuxt-content > h2 > a ::before {
-  content: "# ";
-}
+  .nuxt-content > h2 > a ::before {
+    content: "# ";
+  }
 
-.nuxt-content p {
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: #333;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+  .nuxt-content p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #333;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-.nuxt-content img {
-  width: 100%;
-}
+  .nuxt-content img {
+    width: 100%;
+  }
 
-.nuxt-content > .wiki-picture {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
+  .nuxt-content > .wiki-picture {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
-.nuxt-content hr {
-  display: none;
-}
+  .nuxt-content hr {
+    display: none;
+  }
 
-.footnotes {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
+  .footnotes {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
-.footnote-ref {
-  font-weight: 500;
-}
+  .footnote-ref {
+    font-weight: 500;
+  }
 
-.footnote-ref::before {
-  content: "[";
-}
+  .footnote-ref::before {
+    content: "[";
+  }
 
-.footnote-ref::after {
-  content: "]";
-}
+  .footnote-ref::after {
+    content: "]";
+  }
 
-.footnotes > hr {
-  display: none;
-}
+  .footnotes > hr {
+    display: none;
+  }
 
-.footnotes > ol {
-  padding-left: 1rem;
-}
+  .footnotes > ol {
+    padding-left: 1rem;
+  }
 
-.footnotes > ol > li::marker {
-  font-weight: 700;
-}
+  .footnotes > ol > li::marker {
+    font-weight: 700;
+  }
 
-.footnote-backref::before {
-  content: " ";
-}
+  .footnote-backref::before {
+    content: " ";
+  }
 
-.footnote-backref {
-  display: none;
+  .footnote-backref {
+    display: none;
+  }
 }
 </style>

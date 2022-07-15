@@ -30,6 +30,7 @@ export default {
 .wiki-tags {
   display: flex;
   flex-direction: column;
+  width: 69%;
 }
 
 .wiki-tags-list {
@@ -38,6 +39,7 @@ export default {
   list-style: none;
   padding: 0;
   margin-left: 1rem;
+  user-select: none;
 }
 
 .wiki-tags-item {
@@ -46,6 +48,7 @@ export default {
   border-radius: 6px;
   background-color: #f6f7f8;
   padding: 0 5px;
+  font-weight: 500;
 }
 
 .wiki-tags-item::before {

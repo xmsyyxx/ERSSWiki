@@ -1,7 +1,11 @@
 <template>
   <section class="wiki-item-information">
     <div class="wiki-item-title">{{ title }}</div>
-    <div class="wiki-item-description">{{ description }}</div>
+    <div class="wiki-item-description">
+      <div v-for="item of descriptions" :key="item" class="wiki-description">
+        {{ item }}
+      </div>
+    </div>
   </section>
 </template>
 
@@ -16,6 +20,16 @@ export default {
     description: {
       type: String,
       default: "",
+    },
+  },
+  computed: {
+    descriptions() {
+      return (
+        this.description &&
+        this.description.split("\n").filter((content) => {
+          return content && content.trim();
+        })
+      );
     },
   },
 };

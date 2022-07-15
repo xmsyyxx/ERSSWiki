@@ -5,14 +5,15 @@
         v-model="searchQuery"
         type="search"
         autocomplete="off"
-        placeholder="搜索"
+        :placeholder="placeholder"
+        @click="onClicnSearchInput"
         @blur="onInputBlur"
       />
       <ul v-if="isStartSearch && articles.length" class="wiki-search-list">
         <NuxtLink
           v-for="article of articles"
           :key="article.title"
-          :to="'/item/' + article.title"
+          :to="path + article.title"
         >
           <div class="wiki-search-link" @click="isStartSearch = false">
             <li class="wiki-search-item">
@@ -24,8 +25,14 @@
           </div>
         </NuxtLink>
       </ul>
-      <ul v-if="!articles.length && searchQuery" class="wiki-search-list">
-        <li class="wiki-search-item-no-resoult">无结果</li>
+      <ul v-if="!articles.length && searchTips" class="wiki-search-list">
+        <li class="wiki-search-item-tips">{{ searchTips }}</li>
+      </ul>
+      <ul
+        v-else-if="isStartSearch && !articles.length && searchQuery"
+        class="wiki-search-list"
+      >
+        <li class="wiki-search-item-tips">无结果</li>
       </ul>
     </div>
   </section>
@@ -39,9 +46,17 @@ export default {
   components: {
     IconEnter,
   },
+  props: {
+    path: {
+      type: String,
+      default: "/item/",
+    },
+  },
   data() {
     return {
+      placeholder: "搜索词条",
       isStartSearch: false,
+      searchTips: "",
       searchQuery: "",
       articles: [],
     };
@@ -50,13 +65,19 @@ export default {
     async searchQuery(query) {
       if (!query) {
         this.articles = [];
+        this.searchTips = "尝试搜索点什么……";
         return;
       }
       this.isStartSearch = true;
+      this.searchTips = "搜索中……";
+      this.articles = [];
+      this.$nuxt.$loading.start();
       let search = await this.$content("wiki")
         .only(["title", "tags"])
         .sortBy("case_insensitive__title", "asc")
         .fetch();
+      this.searchTips = "";
+      this.$nuxt.$loading.finish();
       query = query.toLocaleLowerCase();
       search = search.filter((content) => {
         if (content.title.toString().toLocaleLowerCase().includes(query)) {
@@ -81,10 +102,15 @@ export default {
     },
   },
   methods: {
-    onClickSearchIcon() {
+    onClicnSearchInput() {
+      this.searchTips = "尝试搜索点什么……";
       this.isStartSearch = true;
+      this.placeholder = "";
     },
     onInputBlur() {
+      this.placeholder = "搜索词条";
+      this.searchTips = "";
+      // // this.articles = [];
       // this.isStartSearch = false;
     },
   },
@@ -96,7 +122,7 @@ export default {
   font-size: 1.5rem;
   width: 33.33%; /* 8/24 */
   text-align: center;
-  color: #000;
+  color: #4a5568;
 }
 .wiki-search-container {
   display: block;
@@ -106,18 +132,17 @@ export default {
 
 .wiki-search-input {
   height: 2.5rem;
-  background: #fff;
   border-radius: 2rem;
   margin: auto;
-  margin-top: 8px;
+  /* margin-top: 8px; */
 }
 
 .wiki-search-input > input {
-  width: 100% !important;
+  width: 100%;
   box-sizing: border-box;
   height: 2rem;
-  font-size: 1rem;
-  color: #333;
+  font-size: 0.8rem;
+  color: #4a5568;
   outline: 0;
   margin-bottom: 0;
   padding-left: 0.8rem;
@@ -125,7 +150,17 @@ export default {
   padding-top: 0;
   transform: translateY(-0.5rem);
   border-radius: 4px;
-  border: 1px solid #ccc;
+  background-color: #e2e8f0;
+  border: 1px #f1eeee solid;
+
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+}
+
+.wiki-search-input > input:focus,
+.wiki-search-input > input:hover {
+  background-color: #fff;
+  border: 1px #e2e8f0 solid;
 }
 
 .wiki-search-input-icon {
@@ -139,24 +174,25 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #cccccc;
   background-color: #fff;
   padding: 1rem;
   padding-top: 0;
   overflow-y: auto;
   max-height: 250px;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  border-bottom: 1px solid #e2e2e2;
 }
 
 .wiki-search-item {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 1rem;
   border-bottom: 1px solid #ededed;
 }
 
-.wiki-search-item a {
-  color: #333;
+.wiki-search-item {
+  color: #4a5568;
 }
 
 .wiki-search-go-icon {
@@ -165,7 +201,7 @@ export default {
   right: 0;
 }
 
-.wiki-search-item-no-resoult {
+.wiki-search-item-tips {
   position: relative;
   font-size: 1rem;
   border-bottom: 1px solid #ededed;

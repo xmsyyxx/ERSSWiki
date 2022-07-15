@@ -53,6 +53,12 @@ export default {
   head() {
     return {
       title: this.metaTitle,
+      link: [
+        {
+          rel: "canonical",
+          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
+        },
+      ],
       meta: [
         {
           hid: "description",
@@ -81,11 +87,14 @@ export default {
     };
   },
   beforeMount() {
-    if (window.outerWidth > 500) {
-      return window.location.replace(
-        `/item/${window.location.pathname.split("/").pop()}`
-      );
+    function onresize() {
+      const path = window.location.pathname.split("/").pop();
+      if (window.outerWidth > 500 && path) {
+        return window.location.replace(`/item/${path}`);
+      }
     }
+    onresize();
+    window.onresize = onresize;
   },
 };
 </script>
@@ -106,83 +115,85 @@ export default {
 </style>
 
 <style>
-.nuxt-content h2 {
-  font-weight: 700;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
+@media only screen and (max-width: 500px) {
+  .nuxt-content h2 {
+    font-weight: 700;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
-.nuxt-content > h2 > a ::before {
-  content: "# ";
-}
+  .nuxt-content > h2 > a ::before {
+    content: "# ";
+  }
 
-.nuxt-content p {
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: #333;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+  .nuxt-content p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #333;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-.nuxt-content img {
-  width: 100%;
-}
+  .nuxt-content img {
+    width: 100%;
+  }
 
-.nuxt-content hr {
-  width: 100%;
-  height: 0.7rem;
-  background-color: #f5f5f5;
-  border: 0;
-  transform: translateX(-1rem);
-}
+  .nuxt-content hr {
+    width: 100%;
+    height: 0.7rem;
+    background-color: #f5f5f5;
+    border: 0;
+    transform: translateX(-1rem);
+  }
 
-.footnotes {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
+  .footnotes {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
-.footnote-ref {
-  font-weight: 500;
-}
+  .footnote-ref {
+    font-weight: 500;
+  }
 
-.footnote-ref::before {
-  content: "[";
-}
+  .footnote-ref::before {
+    content: "[";
+  }
 
-.footnote-ref::after {
-  content: "]";
-}
+  .footnote-ref::after {
+    content: "]";
+  }
 
-.footnotes > hr {
-  display: none;
-}
+  .footnotes > hr {
+    display: none;
+  }
 
-.footnotes > ol {
-  padding-left: 1rem;
-}
+  .footnotes > ol {
+    padding-left: 1rem;
+  }
 
-.footnotes > ol > li::marker {
-  font-weight: 700;
-}
+  .footnotes > ol > li::marker {
+    font-weight: 700;
+  }
 
-.footnote-backref::before {
-  content: " ";
-}
+  .footnote-backref::before {
+    content: " ";
+  }
 
-.footnote-backref {
-  display: none;
-}
+  .footnote-backref {
+    display: none;
+  }
 
-@media only screen and (min-width: 500px) {
-  .wiki-item {
-    display: flex;
-    flex-direction: column;
-    max-width: 1180px;
-    min-width: 960px;
-    height: 100%;
-    margin: auto;
+  @media only screen and (min-width: 500px) {
+    .wiki-item {
+      display: flex;
+      flex-direction: column;
+      max-width: 1180px;
+      min-width: 960px;
+      height: 100%;
+      margin: auto;
+    }
   }
 }
 </style>

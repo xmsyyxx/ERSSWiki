@@ -1,24 +1,39 @@
 <template>
   <div class="wiki-app">
-    <div class="wiki-contruction">主页施工中……</div>
-    <div class="wiki-all">
-      <div class="wiki-all-tips">所有条目：</div>
-      <ul class="wiki-all-list">
-        <li v-for="article of WikiData" :key="article.slug" class="krz-list">
-          <NuxtLink :to="'/wiki/' + article.slug">{{ article.title }}</NuxtLink>
-        </li>
-      </ul>
+    <div class="wiki-app-search">
+      <div class="wiki-app-text">
+        <div class="wiki-app-logo">
+          <img
+            src="https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png"
+          />
+          <span>耳斯百科</span>
+          <div class="wiki-development-tips">开发版</div>
+        </div>
+      </div>
+      <WikiPcSearch />
+      <div class="wiki-app-footer">
+        <WikiFooter />
+      </div>
     </div>
+    <!-- <ul class="wiki-all-list">
+      <li v-for="article of WikiData" :key="article.slug" class="krz-list">
+        <NuxtLink :to="'/wiki/' + article.slug">{{ article.title }}</NuxtLink>
+      </li>
+    </ul> -->
   </div>
 </template>
 
 <script>
+import WikiPcSearch from "../components/pc/WikiPcSearch.vue";
+import WikiFooter from "../components/WikiFooter.vue";
 // import WikiHot from "../components/WikiHot.vue";
 
 export default {
   name: "WikiHome",
   components: {
     // WikiHot,
+    WikiPcSearch,
+    WikiFooter,
   },
   layout: "WikiHome",
   hooks: {
@@ -49,15 +64,143 @@ export default {
 <style scoped>
 .wiki-app {
   text-align: left;
-  padding-top: 44px;
   background-color: #fff;
   text-align: center;
   margin: auto;
 }
 
+.wiki-app-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 1180px;
+  min-width: 960px;
+  margin: auto;
+}
+
+.wiki-app-search > .wiki-search {
+  display: block;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 714px;
+}
+
+.wiki-app-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.5rem;
+  width: 16.67%;
+  font-weight: 700;
+  text-align: center;
+  margin-top: -120px;
+  margin-bottom: 60px;
+  max-width: 1180px;
+  min-width: 960px;
+}
+
+.wiki-app-logo {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 40px;
+  user-select: none;
+}
+
 .wiki-all-list {
+  display: none;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.wiki-development-tips {
+  font-size: 1rem;
+  float: right;
+}
+
+.wiki-app-footer {
+  position: absolute;
+  bottom: 0;
+  widows: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .wiki-app-text {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin-top: -120px;
+    margin-bottom: 30px;
+  }
+
+  .wiki-app-search > .wiki-search {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .wiki-app-search {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    justify-content: flex-start;
+    padding-top: 200px;
+    min-height: auto;
+    flex-direction: column;
+  }
+}
+</style>
+
+<style>
+.wiki-app-search > .wiki-search > .wiki-search-input > input {
+  height: 50px !important;
+  background-color: #fff !important;
+  font-size: 1rem !important;
+  color: #222 !important;
+  border: 1px solid #999 !important;
+}
+
+.wiki-app-search > .wiki-search > .wiki-search-input > input:focus,
+.wiki-app-search > .wiki-search > .wiki-search-input > input:hover {
+  color: #222 !important;
+  border: 1px solid #999 !important;
+}
+.wiki-app-search > .wiki-search > .wiki-search-input > .wiki-search-list {
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
+  border-bottom: 1px solid #e2e2e2 !important;
+  background-color: #fff !important;
+}
+
+.wiki-app-search
+  > .wiki-search
+  > .wiki-search-input
+  > ul
+  > a
+  > .wiki-search-link
+  > .wiki-search-item,
+.wiki-app-search > .wiki-search > .wiki-search-input > ul > li {
+  border-bottom: none !important;
+  justify-content: flex-start !important;
+  margin: 1rem !important;
+  font-size: 1.1rem;
+}
+
+.wiki-app-search > .wiki-search > .wiki-search-input > ul > a :hover {
+  background-color: #fafafa !important;
+}
+
+.wiki-app-search
+  > .wiki-search
+  > .wiki-search-input
+  > ul
+  > a
+  > .wiki-search-link
+  > .wiki-search-item
+  > .wiki-search-go-icon {
+  display: none;
 }
 </style>
