@@ -52,22 +52,26 @@ export default {
     WikiPcStatus,
   },
   layout: "WikiPcContents",
-  async asyncData({ $content, params }) {
-    const WikiData = await $content("wiki", params.item).fetch();
-    // console.log(WikiData);
-    const { title } = WikiData;
-    if (!WikiData.info) {
-      WikiData.info = {
-        中文名: WikiData.title,
-        标签: String(WikiData.tags).replace(/,/g, "，"),
+  async asyncData({ $content, params, redirect }) {
+    try {
+      const WikiData = await $content("wiki", params.item).fetch();
+      // console.log(WikiData);
+      const { title } = WikiData;
+      if (!WikiData.info) {
+        WikiData.info = {
+          中文名: WikiData.title,
+          标签: String(WikiData.tags).replace(/,/g, "，"),
+        };
+      }
+      const metaTitle = title + " [耳斯百科]";
+      return {
+        WikiData,
+        metaTitle,
+        slug: params.item,
       };
+    } catch {
+      return redirect(`/404?name=${params.item}`);
     }
-    const metaTitle = title + " [耳斯百科]";
-    return {
-      WikiData,
-      metaTitle,
-      slug: params.item,
-    };
   },
   head() {
     return {

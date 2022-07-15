@@ -1,14 +1,8 @@
 <template>
   <div class="wiki-app">
     <div class="wiki-app-search">
-      <div class="wiki-app-text">
-        <div class="wiki-app-logo">
-          <img
-            src="https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png"
-          />
-          <span>耳斯百科</span>
-          <div class="wiki-development-tips">开发版</div>
-        </div>
+      <div class="wiki-app-logo">
+        <WikiLogo />
       </div>
       <WikiPcSearch />
       <div class="wiki-app-footer">
@@ -26,6 +20,7 @@
 <script>
 import WikiPcSearch from "../components/pc/WikiPcSearch.vue";
 import WikiFooter from "../components/WikiFooter.vue";
+import WikiLogo from "../components/WikiLogo.vue";
 // import WikiHot from "../components/WikiHot.vue";
 
 export default {
@@ -34,6 +29,7 @@ export default {
     // WikiHot,
     WikiPcSearch,
     WikiFooter,
+    WikiLogo,
   },
   layout: "WikiHome",
   hooks: {
@@ -88,7 +84,7 @@ export default {
   width: 714px;
 }
 
-.wiki-app-text {
+.wiki-app-logo {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -128,7 +124,7 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  .wiki-app-text {
+  .wiki-app-logo {
     width: 100%;
     max-width: none;
     min-width: 0;

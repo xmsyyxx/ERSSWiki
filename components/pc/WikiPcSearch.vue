@@ -73,7 +73,7 @@ export default {
       this.articles = [];
       this.$nuxt.$loading.start();
       let search = await this.$content("wiki")
-        .only(["title", "tags"])
+        .only(["title", "tags", "alias"])
         .sortBy("case_insensitive__title", "asc")
         .fetch();
       this.searchTips = "";

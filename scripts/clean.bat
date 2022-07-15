@@ -8,3 +8,4 @@ rm -rf app.css
 rm -rf components
 rm -rf pages
 rm -rf vendors
+cd ..

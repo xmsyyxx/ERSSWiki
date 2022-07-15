@@ -39,16 +39,20 @@ export default {
     WikiTags,
   },
   layout: "WikiContents",
-  async asyncData({ $content, params }) {
-    const WikiData = await $content("wiki", params.item).fetch();
-    // console.log(WikiData);
-    const { title } = WikiData;
-    const metaTitle = title + " [耳斯百科]";
-    return {
-      WikiData,
-      metaTitle,
-      slug: params.item,
-    };
+  async asyncData({ $content, params, redirect }) {
+    try {
+      const WikiData = await $content("wiki", params.item).fetch();
+      // console.log(WikiData);
+      const { title } = WikiData;
+      const metaTitle = title + " [耳斯百科]";
+      return {
+        WikiData,
+        metaTitle,
+        slug: params.item,
+      };
+    } catch {
+      return redirect(`/404?name=${params.item}`);
+    }
   },
   head() {
     return {

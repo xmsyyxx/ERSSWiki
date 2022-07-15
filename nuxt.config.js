@@ -49,7 +49,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     publicPath: "https://s-sh-1943-wiki.oss.dogecdn.com/public",
-    analyze: true,
+    // analyze: true,
     babelrc: true,
     extractCSS: true,
     postcss: {
@@ -71,12 +71,19 @@ export default {
     fallback: "404.html",
     async routes() {
       const { $content } = require("@nuxt/content");
-      const files = await $content({ deep: true }).only(["slug"]).fetch();
+      const files = await $content({ deep: true })
+        .only(["slug", "alias"])
+        .fetch();
       const pathPerfix = ["/wiki", "/item"];
       let routes = [];
       files.forEach((file) => {
         for (let path of pathPerfix) {
           routes.push(`${path}/${file.slug}`);
+          if (file.alias) {
+            for (let alias of file.alias) {
+              routes.push(`${path}${alias}`);
+            }
+          }
         }
       });
       return routes;
