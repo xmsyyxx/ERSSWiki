@@ -145,6 +145,8 @@ export default {
     min-width: 0;
     justify-content: flex-start;
     padding-top: 200px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     min-height: auto;
     flex-direction: column;
   }

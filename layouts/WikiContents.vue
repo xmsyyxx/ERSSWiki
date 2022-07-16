@@ -7,6 +7,7 @@
     <div class="wiki-space-fill"></div>
     <WikiFancyImage />
     <WikiFooter />
+    <WikiLog />
   </div>
 </template>
 
@@ -14,6 +15,7 @@
 import WikiHeader from "../components/WikiHeader.vue";
 import WikiFancyImage from "../components/WikiFancyImage.vue";
 import WikiFooter from "../components/WikiFooter.vue";
+import WikiLog from "../components/WikiLog.vue";
 
 export default {
   name: "WikiContents",
@@ -21,6 +23,7 @@ export default {
     WikiHeader,
     WikiFooter,
     WikiFancyImage,
+    WikiLog,
   },
 };
 </script>

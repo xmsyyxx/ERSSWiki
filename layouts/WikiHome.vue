@@ -1,12 +1,18 @@
 <template>
   <div class="wiki-body">
     <Nuxt />
+    <WikiLog />
   </div>
 </template>
 
 <script>
+import WikiLog from "../components/WikiLog.vue";
+
 export default {
   name: "WikiHome",
+  components: {
+    WikiLog,
+  },
 };
 </script>
 

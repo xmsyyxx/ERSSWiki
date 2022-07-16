@@ -339,7 +339,7 @@ body {
   border-radius: 6px !important;
   outline: 2px solid #f0f0f0 !important;
   outline-offset: -2px !important;
-  background-color: #bbb !important;
+  background-color: #999 !important;
 }
 
 ::-webkit-scrollbar-track-piece {
