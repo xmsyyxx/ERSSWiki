@@ -6,7 +6,7 @@
     </div>
     <div class="wiki-space-fill"></div>
     <WikiFancyImage />
-    <WikiFooter />
+    <div class="wiki-content-footer"><WikiFooter /></div>
     <WikiLog />
   </div>
 </template>

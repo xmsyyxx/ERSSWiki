@@ -32,8 +32,14 @@
             </div>
           </NuxtLink>
         </ul>
-        <ul v-if="!articles.length && searchQuery" class="wiki-search-list">
-          <li class="wiki-search-item-no-resoult">无结果</li>
+        <ul v-if="!articles.length && searchTips" class="wiki-search-list">
+          <li class="wiki-search-item-tips">{{ searchTips }}</li>
+        </ul>
+        <ul
+          v-else-if="isStartSearch && !articles.length && searchQuery"
+          class="wiki-search-list"
+        >
+          <li class="wiki-search-item-tips">无结果</li>
         </ul>
         <div class="wiki-search-return" @click="isStartSearch = false">
           返回
@@ -57,6 +63,7 @@ export default {
     return {
       isStartSearch: false,
       searchQuery: "",
+      searchTips: "",
       articles: [],
     };
   },
@@ -66,10 +73,16 @@ export default {
         this.articles = [];
         return;
       }
+      this.isStartSearch = true;
+      this.searchTips = "搜索中……";
+      this.articles = [];
+      this.$nuxt.$loading.start();
       let search = await this.$content("wiki")
         .only(["title", "tags"])
         .sortBy("case_insensitive__title", "asc")
         .fetch();
+      this.searchTips = "";
+      this.$nuxt.$loading.finish();
       query = query.toLocaleLowerCase();
       search = search.filter((content) => {
         if (content.title.toString().toLocaleLowerCase().includes(query)) {
@@ -98,7 +111,7 @@ export default {
       this.isStartSearch = true;
     },
     onInputBlur() {
-      // this.isStartSearch = false;
+      this.searchTips = "";
     },
   },
 };
@@ -110,6 +123,7 @@ export default {
   width: 16.67%; /* 2/12 */
   text-align: center;
   color: #4a5568;
+  z-index: 100;
 }
 .wiki-search-container {
   display: block;
@@ -192,6 +206,12 @@ export default {
 
 .wiki-search-hide {
   display: none;
+}
+
+.wiki-search-item-tips {
+  position: relative;
+  font-size: 1rem;
+  border-bottom: 1px solid #ededed;
 }
 
 .wiki-search-link {

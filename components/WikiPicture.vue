@@ -1,13 +1,14 @@
 <template>
   <section class="wiki-picture">
     <div class="wiki-picture-fill"></div>
+
     <div class="wiki-picrute-box">
-      <img
-        :src="src"
-        :alt="alt"
-        class="wiki-picture-img"
-        @click="onClickImage"
-      />
+      <a
+        :href="'/image/' + src.split('/static/')[1].split('.')[0]"
+        target="_blank"
+      >
+        <img :src="src" :alt="alt" class="wiki-picture-img" />
+      </a>
       <label v-if="alt" class="wiki-picture-description">
         <span class="wiki-picture-icon"><IconUp /></span> {{ alt }}
       </label>
@@ -31,15 +32,6 @@ export default {
     alt: {
       type: String,
       default: "",
-    },
-  },
-  methods: {
-    onClickImage() {
-      this.$root.$emit("WikiFancyImage", {
-        src: this.src,
-        title: this.alt,
-        description: this.alt,
-      });
     },
   },
 };

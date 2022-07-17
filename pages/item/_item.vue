@@ -11,7 +11,7 @@
           v-if="WikiData.introduction"
           :data="WikiData.introduction"
         />
-        <section class="wiki-article">
+        <section class="wiki-article markdown-body">
           <nuxt-content :document="WikiData" tag="div" />
           <section class="wiki-article-fill"></section>
         </section>
@@ -156,91 +156,5 @@ export default {
 .wiki-sticky {
   position: sticky;
   top: calc(3rem + 60px);
-}
-</style>
-
-<style>
-@media only screen and (min-width: 500px) {
-  .nuxt-content {
-    width: 100%;
-  }
-
-  .wiki-main > .wiki-picture {
-    width: 30%;
-  }
-
-  .nuxt-content h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 3.5rem;
-    border-bottom: 2px solid #e6e6e6;
-    padding-bottom: 1rem;
-  }
-
-  .nuxt-content > h2 > a ::before {
-    content: "# ";
-  }
-
-  .nuxt-content p {
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: #333;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .nuxt-content img {
-    width: 100%;
-  }
-
-  .nuxt-content > .wiki-picture {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .nuxt-content hr {
-    display: none;
-  }
-
-  .footnotes {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .footnote-ref {
-    font-weight: 500;
-  }
-
-  .footnote-ref::before {
-    content: "[";
-  }
-
-  .footnote-ref::after {
-    content: "]";
-  }
-
-  .footnotes > hr {
-    display: none;
-  }
-
-  .footnotes > ol {
-    padding-left: 1rem;
-  }
-
-  .footnotes > ol > li::marker {
-    font-weight: 700;
-  }
-
-  .footnote-backref::before {
-    content: " ";
-  }
-
-  .footnote-backref {
-    display: none;
-  }
 }
 </style>

@@ -29,7 +29,11 @@ export default {
   target: "static",
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["./assets/css/global.css"],
+  css: [
+    "./assets/css/global.css",
+    // "github-markdown-css/github-markdown.css",
+    "./assets/css/custom.css",
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

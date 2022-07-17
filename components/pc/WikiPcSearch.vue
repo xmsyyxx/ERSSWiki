@@ -123,7 +123,9 @@ export default {
   width: 33.33%; /* 8/24 */
   text-align: center;
   color: #4a5568;
+  z-index: 100;
 }
+
 .wiki-search-container {
   display: block;
   position: relative;

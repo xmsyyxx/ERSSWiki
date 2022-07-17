@@ -33,7 +33,11 @@ export default {
       "https://s-sh-1943-static.oss.dogecdn.com/xhemj.com/js/chunk-32d23b45.js",
       { async: "async" }
     ).then(function () {
-      if (!window.isInitXhs && location.hostname !== "log.xhemj.top") {
+      if (
+        !window.isInitXhs &&
+        location.hostname !== "log.xhemj.top" &&
+        location.hostname !== "local.xhemj.work"
+      ) {
         return window._xhs.new(
           "33cf0150-d77d-4d35-8fe8-fc8b4e876800",
           undefined,

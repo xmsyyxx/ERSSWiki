@@ -12,7 +12,7 @@
       </div>
       <WikiPcSearch />
       <div class="wiki-tips">
-        <div class="wiki-development-tips">开发版 v0.1.0-beta6</div>
+        <div class="wiki-development-tips">开发版 v0.1.0-beta7</div>
       </div>
     </div>
   </div>
@@ -40,9 +40,12 @@ export default {
   line-height: 44px;
   background-color: #edf2f7;
   user-select: none;
-  border-bottom: 1px solid #e6e6e6;
   z-index: 1000;
   width: 100vw;
+
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+  border-image: linear-gradient(#edf2f7f2, #edf2f7f2);
 }
 
 .wiki-logo-text > a {

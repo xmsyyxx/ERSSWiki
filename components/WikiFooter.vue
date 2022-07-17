@@ -20,5 +20,6 @@ export default {
   color: #888;
   padding: 1rem;
   user-select: none;
+  z-index: -100;
 }
 </style>

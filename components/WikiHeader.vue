@@ -37,9 +37,12 @@ export default {
   line-height: 44px;
   background-color: #fff;
   user-select: none;
-  border-bottom: 1px solid #e6e6e6;
   z-index: 1000;
   width: 100vw;
+
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+  border-image: linear-gradient(#fffffff2, #fffffff2);
 }
 
 .wiki-logo-text > a {
