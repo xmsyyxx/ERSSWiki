@@ -17,7 +17,7 @@ export default {
       {
         rel: "icon",
         type: "image/x-icon",
-        href: "https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png",
+        href: "https://wikioss.xhemj.work/static/logo/64x64.png",
       },
       {
         rel: "stylesheet",
@@ -52,7 +52,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: "https://s-sh-1943-wiki.oss.dogecdn.com/public",
+    publicPath: "https://wikioss.xhemj.work/public",
     // analyze: true,
     babelrc: true,
     extractCSS: true,

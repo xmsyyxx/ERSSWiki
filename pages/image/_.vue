@@ -5,7 +5,7 @@
         <div class="wiki-logo-text">
           <div class="wiki-logo">
             <img
-              src="https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png"
+              src="https://wikioss.xhemj.work/static/logo/64x64.png"
             />
           </div>
           <NuxtLink to="/"> 耳斯百科 </NuxtLink>
@@ -36,7 +36,7 @@ export default {
   computed: {
     imgSrc() {
       return (
-        "https://s-sh-1943-wiki.oss.dogecdn.com/static" + this.path + ".png"
+        "https://wikioss.xhemj.work/static" + this.path + ".png"
       );
     },
   },

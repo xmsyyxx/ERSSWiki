@@ -4,7 +4,7 @@
       <div class="wiki-logo-text">
         <div class="wiki-logo">
           <img
-            src="https://s-sh-1943-wiki.oss.dogecdn.com/static/logo/64x64.png"
+            src="https://wikioss.xhemj.work/static/logo/64x64.png"
             alt=""
           />
         </div>
