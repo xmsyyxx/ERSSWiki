@@ -1,7 +1,7 @@
 <template>
   <div class="wiki-header">
     <div class="wiki-header-nav">
-      <NuxtLink to="/" class="wiki-icon-home">
+      <NuxtLink to="/" class="wiki-icon-home wiki--click--WikiHomeIcon">
         <IconHome />
       </NuxtLink>
       <div class="wiki-logo-text">

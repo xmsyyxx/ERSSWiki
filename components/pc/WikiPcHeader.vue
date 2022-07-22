@@ -1,12 +1,9 @@
 <template>
   <div class="wiki-header">
     <div class="wiki-header-nav">
-      <div class="wiki-logo-text">
+      <div class="wiki-logo-text wiki--click--WikiLogo">
         <div class="wiki-logo">
-          <img
-            src="https://wikioss.xhemj.work/static/logo/64x64.png"
-            alt=""
-          />
+          <img src="https://wikioss.xhemj.work/static/logo/64x64.png" alt="" />
         </div>
         <NuxtLink to="/"> 耳斯百科 </NuxtLink>
       </div>
@@ -92,7 +89,7 @@ export default {
 }
 
 .wiki-development-tips {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.8rem;
 }
 </style>

@@ -54,6 +54,18 @@ export default {
       WikiData,
     };
   },
+  mounted() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then(async function (registrations) {
+          for (let registration of registrations) {
+            await registration.unregister();
+          }
+          console.log("ServiceWorker unregistered successfully.");
+        });
+    }
+  },
 };
 </script>
 

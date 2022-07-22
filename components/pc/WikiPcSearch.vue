@@ -6,6 +6,7 @@
         type="search"
         autocomplete="off"
         :placeholder="placeholder"
+        class="wiki--click--WikiSearchInput"
         @click="onClicnSearchInput"
         @blur="onInputBlur"
       />
@@ -67,6 +68,7 @@ export default {
       this.searchTips = "搜索中……";
       this.articles = [];
       this.$nuxt.$loading.start();
+      window.umami.trackEvent("WikiContent", "fetch");
       let search = await this.$content("wiki")
         .only(["title", "tags", "alias"])
         .sortBy("case_insensitive__title", "asc")

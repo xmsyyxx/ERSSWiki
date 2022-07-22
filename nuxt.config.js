@@ -21,10 +21,17 @@ export default {
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap",
       },
     ],
-    script: [{ src: "https://wikioss.xhemj.work/js/init.js" }],
+    script: [
+      {
+        src: "https://wikioss.xhemj.work/js/wiki.js",
+        "data-website-id": "8f7c6463-9ca3-48a1-b82b-55bef7bd0cc9",
+        "data-cache": "true",
+        "data-host-url": "https://a.xhemj.work",
+      },
+    ],
   },
 
   target: "static",

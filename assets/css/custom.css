@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Noto Sans SC", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -32,13 +32,13 @@ body {
 
 .nuxt-content h3 {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nuxt-content p {
   font-weight: 400;
   font-size: 1.1rem;
-  color: #333;
+  color: #303742;
 }
 
 .nuxt-content > h2 > a ::before {
@@ -133,7 +133,6 @@ body {
   }
 
   .nuxt-content p {
-    color: #333;
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 0.5rem;

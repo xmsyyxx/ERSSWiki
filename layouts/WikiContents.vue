@@ -5,14 +5,12 @@
       <Nuxt />
     </div>
     <div class="wiki-space-fill"></div>
-    <WikiFancyImage />
     <div class="wiki-content-footer"><WikiFooter /></div>
   </div>
 </template>
 
 <script>
 import WikiHeader from "../components/WikiHeader.vue";
-import WikiFancyImage from "../components/WikiFancyImage.vue";
 import WikiFooter from "../components/WikiFooter.vue";
 
 export default {
@@ -20,7 +18,6 @@ export default {
   components: {
     WikiHeader,
     WikiFooter,
-    WikiFancyImage,
   },
 };
 </script>

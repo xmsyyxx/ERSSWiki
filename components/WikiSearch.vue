@@ -14,6 +14,7 @@
           type="search"
           autocomplete="off"
           placeholder="搜索"
+          class="wiki--click--WikiSearchInput"
           @blur="onInputBlur"
         />
         <ul v-if="articles.length" class="wiki-search-list">
@@ -77,6 +78,7 @@ export default {
       this.searchTips = "搜索中……";
       this.articles = [];
       this.$nuxt.$loading.start();
+      window.umami.trackEvent("WikiContent", "fetch");
       let search = await this.$content("wiki")
         .only(["title", "tags"])
         .sortBy("case_insensitive__title", "asc")

@@ -119,6 +119,18 @@ export default {
     onresize();
     window.addEventListener("resize", onresize);
   },
+  mounted() {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then(async function (registrations) {
+          for (const registration of registrations) {
+            await registration.unregister();
+          }
+          console.log("ServiceWorker unregistered successfully.");
+        });
+    }
+  },
 };
 </script>
 

@@ -7,9 +7,9 @@
         :href="'/image/' + src.split('/static/')[1].split('.')[0]"
         target="_blank"
       >
-        <picture class="wiki-picture-img">
+        <picture class="wiki-picture-img wiki--click--WikiPicture">
           <source type="image/webp" :srcset="src + '/thumb_webp'" />
-          <img :src="src + '/thumb'" :alt="alt" />
+          <img :src="src + '/thumb'" :alt="alt" :title="alt" />
         </picture>
       </a>
       <label v-if="alt" class="wiki-picture-description">
@@ -80,7 +80,8 @@ export default {
   }
 
   .nuxt-content > .wiki-picture > .wiki-picrute-box {
-    width: 30%;
+    width: 40%;
+    max-height: 300px;
   }
 
   .nuxt-content > .wiki-picture > .wiki-picture-fill {
