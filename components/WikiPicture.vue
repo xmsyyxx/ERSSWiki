@@ -7,10 +7,17 @@
         :href="'/image/' + src.split('/static/')[1].split('.')[0]"
         target="_blank"
       >
-        <img :src="src" :alt="alt" class="wiki-picture-img" />
+        <picture class="wiki-picture-img">
+          <source type="image/webp" :srcset="src + '/thumb_webp'" />
+          <img :src="src + '/thumb'" :alt="alt" />
+        </picture>
       </a>
       <label v-if="alt" class="wiki-picture-description">
-        <span class="wiki-picture-icon"><IconUp /></span> {{ alt }}
+        <span class="wiki-picture-alt">
+          <span class="wiki-picture-icon"><IconUp /></span>
+          {{ alt }}
+        </span>
+        <div class="wiki-picture-tips">（点击可查看大图）</div>
       </label>
     </div>
   </section>
@@ -44,7 +51,9 @@ export default {
   text-align: center;
 }
 
-.wiki-picture-img {
+.wiki-picture-img,
+.wiki-picture-img > source,
+.wiki-picture-img > img {
   width: 100%;
   cursor: pointer;
 }
@@ -56,6 +65,10 @@ export default {
 
 .wiki-picture-icon {
   font-size: 1rem;
+}
+
+.wiki-picture-tips {
+  font-size: 0.5rem;
 }
 
 @media only screen and (min-width: 500px) {

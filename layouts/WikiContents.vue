@@ -7,7 +7,6 @@
     <div class="wiki-space-fill"></div>
     <WikiFancyImage />
     <div class="wiki-content-footer"><WikiFooter /></div>
-    <WikiLog />
   </div>
 </template>
 
@@ -15,7 +14,6 @@
 import WikiHeader from "../components/WikiHeader.vue";
 import WikiFancyImage from "../components/WikiFancyImage.vue";
 import WikiFooter from "../components/WikiFooter.vue";
-import WikiLog from "../components/WikiLog.vue";
 
 export default {
   name: "WikiContents",
@@ -23,24 +21,6 @@ export default {
     WikiHeader,
     WikiFooter,
     WikiFancyImage,
-    WikiLog,
-  },
-  mounted() {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker
-          .register("https://baike.xmsyyxx.com/sw@v1.js")
-          .then(function (registration) {
-            console.log(
-              "ServiceWorker registration successful with scope: ",
-              registration.scope
-            );
-          })
-          .catch(function (err) {
-            console.log("ServiceWorker registration failed: ", err);
-          });
-      });
-    }
   },
 };
 </script>

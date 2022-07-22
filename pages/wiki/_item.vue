@@ -91,14 +91,14 @@ export default {
     };
   },
   beforeMount() {
-    function onresize() {
+    const onresize = () => {
       const path = window.location.pathname.split("/").pop();
       if (window.outerWidth > 500 && path) {
         return window.location.replace(`/item/${path}`);
       }
-    }
+    };
     onresize();
-    window.onresize = onresize;
+    window.addEventListener("resize", onresize);
   },
 };
 </script>

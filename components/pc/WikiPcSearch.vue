@@ -46,14 +46,9 @@ export default {
   components: {
     IconEnter,
   },
-  props: {
-    path: {
-      type: String,
-      default: "/item/",
-    },
-  },
   data() {
     return {
+      path: "/item/",
       placeholder: "搜索词条",
       isStartSearch: false,
       searchTips: "",
@@ -100,6 +95,13 @@ export default {
         });
       }
     },
+  },
+  mounted() {
+    const onresize = () => {
+      this.path = window.outerWidth < 500 ? "/wiki/" : "/item/";
+    };
+    onresize();
+    window.addEventListener("resize", onresize);
   },
   methods: {
     onClicnSearchInput() {

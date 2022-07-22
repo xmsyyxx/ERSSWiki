@@ -4,9 +4,7 @@
       <div class="wiki-image-header-nav">
         <div class="wiki-logo-text">
           <div class="wiki-logo">
-            <img
-              src="https://wikioss.xhemj.work/static/logo/64x64.png"
-            />
+            <img src="https://wikioss.xhemj.work/static/logo/64x64.png" />
           </div>
           <NuxtLink to="/"> 耳斯百科 </NuxtLink>
         </div>
@@ -16,7 +14,10 @@
       <div class="wiki-image-description">
         <span class="wiki-image-title">{{ item }}</span>
       </div>
-      <img class="wiki-image" :src="imgSrc" />
+      <picture class="wiki-image">
+        <source type="image/webp" :srcset="imgSrc + '/big_webp'" />
+        <img :src="imgSrc + '/big'" />
+      </picture>
     </div>
   </div>
 </template>
@@ -35,9 +36,7 @@ export default {
   },
   computed: {
     imgSrc() {
-      return (
-        "https://wikioss.xhemj.work/static" + this.path + ".png"
-      );
+      return "https://wikioss.xhemj.work/static" + this.path + ".png";
     },
   },
 };
@@ -117,7 +116,9 @@ export default {
   min-width: 260px;
 }
 
-.wiki-image-body img {
+.wiki-image,
+.wiki-image > source,
+.wiki-image > img {
   max-width: 100%;
   margin: auto;
   max-height: 620px;
