@@ -78,7 +78,7 @@ export default {
 
 .wiki-detail-text {
   margin-left: 0;
-  color: #666;
+  color: var(--wiki-description-black);
   word-wrap: break-word;
   width: 66.67%; /* 8/12 */
   max-width: 66.67%;

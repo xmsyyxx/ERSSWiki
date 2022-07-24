@@ -55,6 +55,7 @@ export default {
       searchTips: "",
       searchQuery: "",
       articles: [],
+      isFetchContent: false,
     };
   },
   watch: {
@@ -68,11 +69,14 @@ export default {
       this.searchTips = "搜索中……";
       this.articles = [];
       this.$nuxt.$loading.start();
-      window.umami.trackEvent("WikiContent", "fetch");
       let search = await this.$content("wiki")
         .only(["title", "tags", "alias"])
         .sortBy("case_insensitive__title", "asc")
         .fetch();
+      if (!this.isFetchContent) {
+        window.umami.trackEvent("WikiContent", "fetch");
+        this.isFetchContent = true;
+      }
       this.searchTips = "";
       this.$nuxt.$loading.finish();
       query = query.toLocaleLowerCase();
@@ -126,8 +130,11 @@ export default {
   font-size: 1.5rem;
   width: 33.33%; /* 8/24 */
   text-align: center;
-  color: #4a5568;
+  color: var(--wiki-search-black);
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .wiki-search-container {
@@ -140,7 +147,7 @@ export default {
   height: 2.5rem;
   border-radius: 2rem;
   margin: auto;
-  /* margin-top: 8px; */
+  width: 100%;
 }
 
 .wiki-search-input > input {
@@ -148,7 +155,7 @@ export default {
   box-sizing: border-box;
   height: 2rem;
   font-size: 0.8rem;
-  color: #4a5568;
+  color: var(--wiki-search-black);
   outline: 0;
   margin-bottom: 0;
   padding-left: 0.8rem;
@@ -156,8 +163,8 @@ export default {
   padding-top: 0;
   transform: translateY(-0.5rem);
   border-radius: 4px;
-  background-color: #e2e8f0;
-  border: 1px #f1eeee solid;
+  background-color: var(--wiki-search-gray);
+  border: 1px var(--wiki-search-border-gray) solid;
 
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.15s;
@@ -165,7 +172,7 @@ export default {
 
 .wiki-search-input > input:focus,
 .wiki-search-input > input:hover {
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   border: 1px #e2e8f0 solid;
 }
 
@@ -180,7 +187,7 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   padding: 1rem;
   padding-top: 0;
   overflow-y: auto;
@@ -198,12 +205,12 @@ export default {
 }
 
 .wiki-search-item {
-  color: #4a5568;
+  color: var(--wiki-search-black);
 }
 
 .wiki-search-go-icon {
   position: absolute;
-  color: #333;
+  color: var(--wiki-content-black);
   right: 0;
 }
 

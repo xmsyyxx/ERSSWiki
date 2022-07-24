@@ -35,7 +35,7 @@ export default {
   margin: 1rem;
   font-weight: 400;
   font-size: 1rem;
-  color: #666;
+  color: var(--wiki-description-black);
   margin-bottom: 5rem;
 }
 </style>

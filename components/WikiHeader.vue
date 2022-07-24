@@ -33,20 +33,23 @@ export default {
   left: 0;
   right: 0;
   height: 44px;
-  color: #333;
+  color: var(--wiki-content-black);
   line-height: 44px;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   user-select: none;
   z-index: 1000;
   width: 100vw;
 
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--wiki-border-gray);
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
-  border-image: linear-gradient(#fffffff2, #fffffff2);
+  border-image: linear-gradient(
+    var(--wiki-light-white),
+    var(--wiki-light-white)
+  );
 }
 
 .wiki-logo-text > a {
-  color: #333;
+  color: var(--wiki-content-black);
 }
 
 .wiki-header-nav {
@@ -61,7 +64,7 @@ export default {
   font-size: 1.5rem;
   width: 16.67%; /* 2/12 */
   text-align: center;
-  color: #000;
+  color: var(--wiki-content-black);
 }
 
 .wiki-tips {

@@ -8,7 +8,7 @@
     <WikiPicture
       v-if="WikiData.img"
       :src="WikiData.img"
-      :alt="WikiData.title"
+      :title="WikiData.title"
     />
     <WikiBaseIntroductions
       v-if="WikiData.introduction"
@@ -44,7 +44,7 @@ export default {
       const WikiData = await $content("wiki", params.item).fetch();
       // console.log(WikiData);
       const { title } = WikiData;
-      const metaTitle = title + " [耳斯百科]";
+      const metaTitle = title + " - 耳斯百科";
       return {
         WikiData,
         metaTitle,
@@ -108,7 +108,6 @@ export default {
           for (const registration of registrations) {
             await registration.unregister();
           }
-          console.log("ServiceWorker unregistered successfully.");
         });
     }
   },

@@ -37,8 +37,8 @@ body {
 
 .nuxt-content p {
   font-weight: 400;
-  font-size: 1.1rem;
-  color: #303742;
+  font-size: 1rem;
+  color: var(--wiki-content-black);
 }
 
 .nuxt-content > h2 > a ::before {
@@ -63,7 +63,7 @@ body {
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 3.5rem;
-    border-bottom: 2px solid #e6e6e6;
+    border-bottom: 2px solid var(--wiki-border-gray);
     padding-bottom: 1rem;
   }
 
@@ -192,8 +192,8 @@ body {
     .wiki-item {
       display: flex;
       flex-direction: column;
-      max-width: 1180px;
-      min-width: 960px;
+      max-width: var(--wiki-max-width);
+      min-width: var(--wiki-min-width);
       height: 100%;
       margin: auto;
     }

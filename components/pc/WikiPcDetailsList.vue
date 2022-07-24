@@ -55,7 +55,7 @@ export default {
   font-weight: 700;
   margin-left: 1rem;
   margin-top: 1rem;
-  color: #666;
+  color: var(--wiki-description-black);
 }
 
 .wiki-detail-list {
@@ -92,15 +92,15 @@ export default {
   word-wrap: break-word;
   width: 33.33%; /* 4/12 */
   max-width: 33.33%;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--wiki-border-gray);
 }
 
 .wiki-detail-text {
   margin-left: 0;
-  color: #666;
+  color: var(--wiki-description-black);
   word-wrap: break-word;
   width: 66.67%; /* 8/12 */
   max-width: 66.67%;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--wiki-border-gray);
 }
 </style>

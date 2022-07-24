@@ -5,9 +5,6 @@
         <WikiLogo />
       </div>
       <WikiPcSearch />
-      <div class="wiki-app-footer">
-        <WikiFooter />
-      </div>
     </div>
     <!-- <ul class="wiki-all-list">
       <li v-for="article of WikiData" :key="article.slug" class="krz-list">
@@ -19,16 +16,12 @@
 
 <script>
 import WikiPcSearch from "../components/pc/WikiPcSearch.vue";
-import WikiFooter from "../components/WikiFooter.vue";
 import WikiLogo from "../components/WikiLogo.vue";
-// import WikiHot from "../components/WikiHot.vue";
 
 export default {
   name: "WikiHome",
   components: {
-    // WikiHot,
     WikiPcSearch,
-    WikiFooter,
     WikiLogo,
   },
   layout: "WikiHome",
@@ -59,10 +52,9 @@ export default {
       navigator.serviceWorker
         .getRegistrations()
         .then(async function (registrations) {
-          for (let registration of registrations) {
+          for (const registration of registrations) {
             await registration.unregister();
           }
-          console.log("ServiceWorker unregistered successfully.");
         });
     }
   },
@@ -72,7 +64,7 @@ export default {
 <style scoped>
 .wiki-app {
   text-align: left;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   text-align: center;
   margin: auto;
 }
@@ -83,8 +75,8 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  max-width: 1180px;
-  min-width: 960px;
+  max-width: var(--wiki-max-width);
+  min-width: var(--wiki-min-width);
   margin: auto;
 }
 
@@ -106,8 +98,8 @@ export default {
   text-align: center;
   margin-top: -120px;
   margin-bottom: 60px;
-  max-width: 1180px;
-  min-width: 960px;
+  max-width: var(--wiki-max-width);
+  min-width: var(--wiki-min-width);
 }
 
 .wiki-app-logo {
@@ -127,12 +119,6 @@ export default {
 .wiki-development-tips {
   font-size: 1rem;
   float: right;
-}
-
-.wiki-app-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 @media only screen and (max-width: 500px) {

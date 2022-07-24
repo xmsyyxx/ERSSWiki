@@ -5,14 +5,12 @@
       <Nuxt />
     </div>
     <div class="wiki-space-fill"></div>
-    <WikiFancyImage />
     <WikiFooter />
   </div>
 </template>
 
 <script>
 import WikiPcHeader from "../components/pc/WikiPcHeader.vue";
-import WikiFancyImage from "../components/WikiFancyImage.vue";
 import WikiFooter from "../components/WikiFooter.vue";
 
 export default {
@@ -20,7 +18,6 @@ export default {
   components: {
     WikiPcHeader,
     WikiFooter,
-    WikiFancyImage,
   },
 };
 </script>
@@ -29,7 +26,7 @@ export default {
 .wiki-body {
   text-align: left;
   padding-top: 60px;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   word-break: break-word;
 
   display: flex;

@@ -18,7 +18,7 @@
       </section>
       <section v-if="WikiData.img || WikiData.info" class="wiki-main-right">
         <section v-if="WikiData.img" class="wiki-main-picture">
-          <WikiPicture :src="WikiData.img" :alt="WikiData.title" />
+          <WikiPicture :src="WikiData.img" :title="WikiData.title" />
         </section>
         <section class="wiki-sticky">
           <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
@@ -55,7 +55,7 @@ export default {
   async asyncData({ $content, params, redirect }) {
     try {
       const WikiData = await $content("wiki", params.item).fetch();
-      // console.log(WikiData);
+      // console.log(WikiData.body);
       const { title } = WikiData;
       if (!WikiData.info) {
         WikiData.info = {
@@ -63,7 +63,7 @@ export default {
           标签: String(WikiData.tags).replace(/,/g, "，"),
         };
       }
-      const metaTitle = title + " [耳斯百科]";
+      const metaTitle = title + " - 耳斯百科";
       return {
         WikiData,
         metaTitle,
@@ -127,7 +127,6 @@ export default {
           for (const registration of registrations) {
             await registration.unregister();
           }
-          console.log("ServiceWorker unregistered successfully.");
         });
     }
   },
@@ -138,8 +137,8 @@ export default {
 .wiki-item {
   display: flex;
   flex-direction: column;
-  max-width: 1180px;
-  min-width: 960px;
+  max-width: var(--wiki-max-width);
+  min-width: var(--wiki-min-width);
   height: 100%;
   margin: 0 auto;
 }

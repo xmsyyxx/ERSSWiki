@@ -9,13 +9,13 @@
       >
         <picture class="wiki-picture-img wiki--click--WikiPicture">
           <source type="image/webp" :srcset="src + '/thumb_webp'" />
-          <img :src="src + '/thumb'" :alt="alt" :title="alt" />
+          <img :src="src + '/thumb'" :alt="title" :title="title" />
         </picture>
       </a>
-      <label v-if="alt" class="wiki-picture-description">
+      <label v-if="title" class="wiki-picture-description">
         <span class="wiki-picture-alt">
           <span class="wiki-picture-icon"><IconUp /></span>
-          {{ alt }}
+          {{ title }}
         </span>
         <div class="wiki-picture-tips">（点击可查看大图）</div>
       </label>
@@ -36,7 +36,7 @@ export default {
       type: String,
       default: "",
     },
-    alt: {
+    title: {
       type: String,
       default: "",
     },

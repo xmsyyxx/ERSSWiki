@@ -34,6 +34,11 @@ export default {
       item,
     };
   },
+  head() {
+    return {
+      title: this.item + " - 耳斯百科",
+    };
+  },
   computed: {
     imgSrc() {
       return "https://wikioss.xhemj.work/static" + this.path + ".png";
@@ -47,7 +52,6 @@ export default {
           for (const registration of registrations) {
             await registration.unregister();
           }
-          console.log("ServiceWorker unregistered successfully.");
         });
     }
   },
@@ -73,16 +77,19 @@ export default {
   top: 0;
   left: 0;
   height: 60px;
-  color: #000;
+  color: var(--wiki-content-black);
   line-height: 44px;
-  background-color: #333;
+  background-color: var(--wiki-content-black);
   user-select: none;
   z-index: 10;
   width: 100%;
   min-width: 260px;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--wiki-border-gray);
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
-  border-image: linear-gradient(#edf2f7f2, #edf2f7f2);
+  border-image: linear-gradient(
+    var(--wiki-header-light-gray),
+    var(--wiki-header-light-gray)
+  );
 }
 
 .wiki-image-header-nav {
@@ -93,7 +100,7 @@ export default {
 }
 
 .wiki-logo-text > a {
-  color: #fff;
+  color: var(--wiki-common-white);
 }
 
 .wiki-logo-text {

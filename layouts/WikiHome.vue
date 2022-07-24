@@ -13,6 +13,6 @@ export default {
 <style scoped>
 .wiki-body {
   text-align: left;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
 }
 </style>

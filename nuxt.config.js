@@ -1,4 +1,10 @@
-const path = require("path");
+const webpack = require("webpack");
+const version = require("./package.json").version;
+const dayjs = require("dayjs");
+require("dayjs/locale/zh-cn");
+dayjs.locale("zh-cn");
+const time = dayjs().format("YYYY-M-D HH:mm:ss");
+const randomId = Math.random().toString(16).substring(2).slice(6);
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -10,18 +16,18 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      { hid: "description", name: "description", content: "耳斯百科" },
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
       {
         rel: "icon",
         type: "image/x-icon",
-        href: "https://wikioss.xhemj.work/static/logo/64x64.png",
+        href: "https://baike.xmsyyxx.com/favicon.ico",
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap",
+        href: "https://wikioss.xhemj.work/css/wikifonts.css",
       },
     ],
     script: [
@@ -39,6 +45,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     "./assets/css/global.css",
+    "./assets/css/variables.css",
     // "github-markdown-css/github-markdown.css",
     "./assets/css/custom.css",
   ],
@@ -62,19 +69,27 @@ export default {
   build: {
     publicPath: "https://wikioss.xhemj.work/public",
     // analyze: true,
-    babelrc: true,
     extractCSS: true,
+    profile: true,
+    plugins: [
+      new webpack.BannerPlugin(
+        [
+          "ERSS WIKI",
+          `(c) 2021-${new Date().getFullYear()} Xhemj`,
+          `Build: ${time}`,
+          `Version: ${version}`,
+          "====",
+          "o(〃＾▽＾〃)o",
+        ].join("\n")
+      ),
+    ],
     postcss: {
       plugins: {
         "postcss-url": {},
         "postcss-nested": {},
         "postcss-responsive-type": {},
         "postcss-hexrgba": {},
-      },
-      preset: {
-        autoprefixer: {
-          grid: true,
-        },
+        "postcss-css-variables": {},
       },
     },
   },

@@ -66,6 +66,7 @@ export default {
       searchQuery: "",
       searchTips: "",
       articles: [],
+      isFetchContent: false,
     };
   },
   watch: {
@@ -78,11 +79,14 @@ export default {
       this.searchTips = "搜索中……";
       this.articles = [];
       this.$nuxt.$loading.start();
-      window.umami.trackEvent("WikiContent", "fetch");
       let search = await this.$content("wiki")
         .only(["title", "tags"])
         .sortBy("case_insensitive__title", "asc")
         .fetch();
+      if (!this.isFetchContent) {
+        window.umami.trackEvent("WikiContent", "fetch");
+        this.isFetchContent = true;
+      }
       this.searchTips = "";
       this.$nuxt.$loading.finish();
       query = query.toLocaleLowerCase();
@@ -124,7 +128,7 @@ export default {
   font-size: 1.5rem;
   width: 16.67%; /* 2/12 */
   text-align: center;
-  color: #4a5568;
+  color: var(--wiki-search-black);
   z-index: 100;
 }
 .wiki-search-container {
@@ -134,7 +138,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   min-height: 100vh;
 }
 
@@ -142,7 +146,7 @@ export default {
   margin-left: 1rem;
   margin-right: 1rem;
   height: 2.5rem;
-  background: #fff;
+  background: var(--wiki-common-white);
   border-radius: 2rem;
   margin-top: 1rem;
 }
@@ -152,7 +156,7 @@ export default {
   box-sizing: border-box;
   height: 2.2rem;
   font-size: 1rem;
-  color: #333;
+  color: var(--wiki-content-black);
   outline: 0;
   margin-bottom: 1rem;
   margin-top: 0;
@@ -186,12 +190,12 @@ export default {
 }
 
 .wiki-search-item {
-  color: #4a5568;
+  color: var(--wiki-search-black);
 }
 
 .wiki-search-go-icon {
   position: absolute;
-  color: #333;
+  color: var(--wiki-content-black);
   right: 0;
 }
 
@@ -202,7 +206,7 @@ export default {
 }
 
 .wiki-search-return {
-  color: #000;
+  color: var(--wiki-content-black);
   font-size: 1rem;
 }
 

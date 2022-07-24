@@ -41,7 +41,6 @@ export default {
           for (const registration of registrations) {
             await registration.unregister();
           }
-          console.log("ServiceWorker unregistered successfully.");
         });
     }
   },

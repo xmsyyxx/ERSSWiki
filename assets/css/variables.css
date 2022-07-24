@@ -1,0 +1,22 @@
+:root {
+  --wiki-title-black: #000;
+  --wiki-content-black: #333;
+  --wiki-description-black: #666;
+
+  --wiki-header-gray: #edf2f7;
+  --wiki-header-light-gray: #edf2f7f2;
+
+  --wiki-search-gray: #e2e8f0;
+  --wiki-search-border-gray: #f1eeee;
+  --wiki-search-black: #4a5568;
+
+  --wiki-border-gray: #e6e6e6;
+
+  --wiki-common-white: #fff;
+  --wiki-light-white: #fffffff2;
+
+  --wiki-footer-gray: #f2f2f2;
+
+  --wiki-max-width: 1180px;
+  --wiki-min-width: 960px;
+}

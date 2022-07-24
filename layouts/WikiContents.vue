@@ -26,7 +26,7 @@ export default {
 .wiki-body {
   text-align: left;
   padding-top: 44px;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   word-break: break-word;
 }
 

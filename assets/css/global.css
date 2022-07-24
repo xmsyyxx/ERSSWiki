@@ -15,7 +15,7 @@ input::-ms-reveal {
 *::before,
 *::after {
   box-sizing: border-box;
-  border: 0 solid #e2e8f0;
+  border: 0 solid var(--wiki-border-gray);
 }
 html {
   font-family: sans-serif;
@@ -50,7 +50,7 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-variant: tabular-nums;
   line-height: 1.5;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   font-feature-settings: "tnum";
 }
 [tabindex="-1"]:focus {
@@ -312,10 +312,10 @@ mark {
   background-color: #feffe6;
 }
 ::-moz-selection {
-  color: #fff;
+  color: var(--wiki-common-white);
   background: #1890ff;
 }
 ::selection {
-  color: #fff;
+  color: var(--wiki-common-white);
   background: #1890ff;
 }

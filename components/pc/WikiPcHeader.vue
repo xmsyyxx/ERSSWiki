@@ -3,13 +3,16 @@
     <div class="wiki-header-nav">
       <div class="wiki-logo-text wiki--click--WikiLogo">
         <div class="wiki-logo">
-          <img src="https://wikioss.xhemj.work/static/logo/64x64.png" alt="" />
+          <img
+            src="https://wikioss.xhemj.work/static/logo/64x64.png"
+            title="耳斯百科"
+          />
         </div>
         <NuxtLink to="/"> 耳斯百科 </NuxtLink>
       </div>
       <WikiPcSearch />
       <div class="wiki-tips">
-        <div class="wiki-development-tips">开发版 v0.1.0-beta7</div>
+        <div class="wiki-development-tips">开发版 {{ version }}</div>
       </div>
     </div>
   </div>
@@ -23,6 +26,11 @@ export default {
   components: {
     WikiPcSearch,
   },
+  data() {
+    return {
+      version: require("~/package.json").version,
+    };
+  },
 };
 </script>
 
@@ -33,20 +41,23 @@ export default {
   top: 0;
   left: 0;
   height: 60px;
-  color: #333;
+  color: var(--wiki-content-black);
   line-height: 44px;
-  background-color: #edf2f7;
+  background-color: var(--wiki-header-gray);
   user-select: none;
   z-index: 1000;
   width: 100vw;
 
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--wiki-border-gray);
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
-  border-image: linear-gradient(#edf2f7f2, #edf2f7f2);
+  border-image: linear-gradient(
+    var(--wiki-header-light-gray),
+    var(--wiki-header-light-gray)
+  );
 }
 
 .wiki-logo-text > a {
-  color: #333;
+  color: var(--wiki-content-black);
 }
 
 .wiki-header-nav {
@@ -54,8 +65,8 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  max-width: 1190px;
-  min-width: 960px;
+  max-width: var(--wiki-max-width);
+  min-width: var(--wiki-min-width);
   justify-content: space-around;
   height: 100%;
   margin: 0 auto;

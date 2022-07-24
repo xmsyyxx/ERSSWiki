@@ -45,13 +45,13 @@ export default {
 }
 
 .wiki-item-title {
-  color: #000;
+  color: var(--wiki-title-black);
   font-size: 2.5rem;
   font-weight: 700;
 }
 
 .wiki-item-description {
-  color: #666;
+  color: var(--wiki-description-black);
   font-size: 1rem;
   font-weight: 400;
 }
