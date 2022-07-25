@@ -147,7 +147,6 @@ export default {
   margin-right: 1rem;
   height: 2.5rem;
   background: var(--wiki-common-white);
-  border-radius: 2rem;
   margin-top: 1rem;
 }
 

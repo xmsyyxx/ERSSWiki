@@ -145,7 +145,6 @@ export default {
 
 .wiki-search-input {
   height: 2.5rem;
-  border-radius: 2rem;
   margin: auto;
   width: 100%;
 }
