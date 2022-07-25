@@ -61,7 +61,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   margin-bottom: 1rem;
 }
