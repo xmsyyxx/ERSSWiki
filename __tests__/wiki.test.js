@@ -2,33 +2,35 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 const path = require("path");
 
-describe("百科文章", () => {
-  test("所有百科文件都位于正确的文件夹中", () => {
+describe("所有百科文章", () => {
+  it("位于正确的文件夹中", () => {
     const content = fs.readdirSync(path.resolve(__dirname, "../content"));
-    const wiki = fs.readdirSync(path.resolve(__dirname, "../content/wiki"));
-
     expect(content).toContain("wiki");
+
+    const wiki = fs.readdirSync(path.resolve(__dirname, "../content/wiki"));
     expect(wiki.length > 0).toBe(true);
   });
+});
 
-  const wikis = fs.readdirSync(path.resolve(__dirname, "../content/wiki"));
+const wikis = fs.readdirSync(path.resolve(__dirname, "../content/wiki"));
 
-  for (let name of wikis) {
-    const markdown = fs.readFileSync(
-      path.resolve(__dirname, "../content/wiki/" + name),
-      "utf-8"
-    );
-    const re = /---(.*?)---/gs;
-    const source = re.exec(markdown)[1];
-    const frontMatter = yaml.load(source);
-    const keys = Object.keys(frontMatter);
+for (let name of wikis) {
+  const markdown = fs.readFileSync(
+    path.resolve(__dirname, "../content/wiki/" + name),
+    "utf-8"
+  );
+  const re = /---(.*?)---/gs;
+  const source = re.exec(markdown)[1];
+  const frontMatter = yaml.load(source);
+  const keys = Object.keys(frontMatter);
 
-    test(`文件 "${name}" 的页头至少包含 title 与 description`, () => {
+  describe(`${name.split(".")[0]}`, () => {
+    it(`页头至少包含 title 与 description`, () => {
       expect(keys).toContain("title");
       expect(keys).toContain("description");
     });
 
-    test(`文件 "${name}" 的页头不包含不存在的值`, () => {
+    it(`页头不包含不存在的值`, () => {
       const expectKeys = [
         "title",
         "description",
@@ -43,20 +45,20 @@ describe("百科文章", () => {
       }
     });
 
-    test(`  "${name}" 页头的 "title" 为 string 类型`, () => {
+    it(`"title" 为 string 类型`, () => {
       expect(Object.prototype.toString.call(frontMatter.title)).toBe(
         "[object String]"
       );
     });
 
-    test(`  "${name}" 页头的 "description" 为 string 类型`, () => {
+    it(`"description" 为 string 类型`, () => {
       expect(Object.prototype.toString.call(frontMatter.description)).toBe(
         "[object String]"
       );
     });
 
     if (keys.includes("introduction")) {
-      test(`  "${name}" 页头的 "introduction" 为 string 类型`, () => {
+      it(`"introduction" 为 string 类型`, () => {
         expect(Object.prototype.toString.call(frontMatter.introduction)).toBe(
           "[object String]"
         );
@@ -64,7 +66,7 @@ describe("百科文章", () => {
     }
 
     if (keys.includes("img")) {
-      test(`  "${name}" 页头的 "img" 为 string 类型`, () => {
+      it(`"img" 为 string 类型`, () => {
         expect(Object.prototype.toString.call(frontMatter.img)).toBe(
           "[object String]"
         );
@@ -72,7 +74,7 @@ describe("百科文章", () => {
     }
 
     if (keys.includes("info")) {
-      test(`  "${name}" 页头的 "info" 为 object 类型`, () => {
+      it(`"info" 为 object 类型`, () => {
         expect(Object.prototype.toString.call(frontMatter.info)).toBe(
           "[object Object]"
         );
@@ -80,7 +82,7 @@ describe("百科文章", () => {
     }
 
     if (keys.includes("tags")) {
-      test(`  "${name}" 页头的 "tags" 为 array 类型`, () => {
+      it(`"tags" 为 array 类型`, () => {
         expect(Object.prototype.toString.call(frontMatter.tags)).toBe(
           "[object Array]"
         );
@@ -88,11 +90,11 @@ describe("百科文章", () => {
     }
 
     if (keys.includes("alias")) {
-      test(`  "${name}" 页头的 "alias" 为 array 类型`, () => {
+      it(`"alias" 为 array 类型`, () => {
         expect(Object.prototype.toString.call(frontMatter.alias)).toBe(
           "[object Array]"
         );
       });
     }
-  }
-});
+  });
+}
