@@ -75,7 +75,7 @@ export default {
   },
   head() {
     return {
-      title: this.metaTitle,
+      title: this.metaTitle || "",
       link: [
         {
           rel: "canonical",
@@ -86,25 +86,29 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: this.WikiData.description,
+          content: this.WikiData.description || "",
         },
         // Open Graph
-        { hid: "og:title", property: "og:title", content: this.WikiData.title },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.WikiData.title || "",
+        },
         {
           hid: "og:description",
           property: "og:description",
-          content: this.WikiData.description,
+          content: this.WikiData.description || "",
         },
         // Twitter Card
         {
           hid: "twitter:title",
           name: "twitter:title",
-          content: this.WikiData.title,
+          content: this.WikiData.title || "",
         },
         {
           hid: "twitter:description",
           name: "twitter:description",
-          content: this.WikiData.description,
+          content: this.WikiData.description || "",
         },
       ],
     };
@@ -118,17 +122,6 @@ export default {
     };
     onresize();
     window.addEventListener("resize", onresize);
-  },
-  mounted() {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .getRegistrations()
-        .then(async function (registrations) {
-          for (const registration of registrations) {
-            await registration.unregister();
-          }
-        });
-    }
   },
 };
 </script>

@@ -6,11 +6,13 @@
     </div>
     <div class="wiki-space-fill"></div>
     <WikiFooter />
+    <WikiCommon />
   </div>
 </template>
 
 <script>
 import WikiPcHeader from "../components/pc/WikiPcHeader.vue";
+import WikiCommon from "../components/WikiCommon.vue";
 import WikiFooter from "../components/WikiFooter.vue";
 
 export default {
@@ -18,6 +20,7 @@ export default {
   components: {
     WikiPcHeader,
     WikiFooter,
+    WikiCommon,
   },
 };
 </script>

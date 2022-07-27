@@ -144,7 +144,7 @@ export default {
 }
 
 .wiki-search-input {
-  height: 2.5rem;
+  height: 40px;
   margin: auto;
   width: 100%;
 }

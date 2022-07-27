@@ -6,18 +6,21 @@
     </div>
     <div class="wiki-space-fill"></div>
     <div class="wiki-content-footer"><WikiFooter /></div>
+    <WikiCommon />
   </div>
 </template>
 
 <script>
 import WikiHeader from "../components/WikiHeader.vue";
 import WikiFooter from "../components/WikiFooter.vue";
+import WikiCommon from "../components/WikiCommon.vue";
 
 export default {
   name: "WikiContents",
   components: {
     WikiHeader,
     WikiFooter,
+    WikiCommon,
   },
 };
 </script>

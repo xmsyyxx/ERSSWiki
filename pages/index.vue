@@ -47,17 +47,6 @@ export default {
       WikiData,
     };
   },
-  mounted() {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .getRegistrations()
-        .then(async function (registrations) {
-          for (const registration of registrations) {
-            await registration.unregister();
-          }
-        });
-    }
-  },
 };
 </script>
 
@@ -155,7 +144,7 @@ export default {
 .wiki-app-search > .wiki-search > .wiki-search-input > input {
   height: 50px !important;
   background-color: #fff !important;
-  font-size: 1rem !important;
+  font-size: 1.1rem !important;
   color: #222 !important;
   border: 1px solid #999 !important;
 }

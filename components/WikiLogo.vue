@@ -25,8 +25,17 @@ export default {
   user-select: none;
 }
 
+.wiki-logo-image {
+  width: 64px;
+  height: 64px;
+}
+
 .wiki-development-tips {
-  font-size: 1rem;
+  font-size: 16px;
   float: right;
+}
+
+.wiki-logo-text {
+  font-size: 40px;
 }
 </style>

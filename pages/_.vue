@@ -33,17 +33,6 @@ export default {
       }
     }
   },
-  mounted() {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .getRegistrations()
-        .then(async function (registrations) {
-          for (const registration of registrations) {
-            await registration.unregister();
-          }
-        });
-    }
-  },
 };
 </script>
 

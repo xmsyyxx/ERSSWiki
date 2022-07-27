@@ -1,12 +1,18 @@
 <template>
   <div class="wiki-body">
     <Nuxt />
+    <WikiCommon />
   </div>
 </template>
 
 <script>
+import WikiCommon from "../components/WikiCommon.vue";
+
 export default {
   name: "WikiHome",
+  components: {
+    WikiCommon,
+  },
 };
 </script>
 
