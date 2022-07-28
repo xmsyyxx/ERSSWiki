@@ -43,13 +43,13 @@ export default {
     };
   },
   mounted() {
-    document.documentElement.scrollTop = 10;
     // 如果有滚动条
     // 则将 footer 放置于滚到底部的底部
-    if (document.documentElement.scrollTop > 0) {
+    if (
+      document.querySelector(".wiki-body").offsetHeight > window.innerHeight
+    ) {
       this.isScroll = true;
     }
-    document.documentElement.scrollTop = 0;
   },
 };
 </script>
