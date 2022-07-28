@@ -1,20 +1,26 @@
 <template>
   <article class="wiki-item">
     <WikiItemInformation
-      :title="WikiData.title"
-      :description="WikiData.description"
+      :title="WikiData && WikiData.title"
+      :description="WikiData && WikiData.description"
     />
-    <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
+    <WikiTags
+      v-if="WikiData && WikiData.tags"
+      :tags="WikiData && WikiData.tags"
+    />
     <WikiPicture
-      v-if="WikiData.img"
-      :src="WikiData.img"
-      :title="WikiData.title"
+      v-if="WikiData && WikiData.img"
+      :src="WikiData && WikiData.img"
+      :title="WikiData && WikiData.title"
     />
     <WikiBaseIntroductions
-      v-if="WikiData.introduction"
-      :data="WikiData.introduction"
+      v-if="WikiData && WikiData.introduction"
+      :data="WikiData && WikiData.introduction"
     />
-    <WikiDetailsList v-if="WikiData.info" :data="WikiData.info" />
+    <WikiDetailsList
+      v-if="WikiData && WikiData.info"
+      :data="WikiData && WikiData.info"
+    />
     <section class="wiki-space-fill"></section>
     <section class="wiki-article markdown-body">
       <nuxt-content :document="WikiData" tag="div" />
@@ -67,29 +73,29 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: this.WikiData.description || "",
+          content: (this.WikiData && this.WikiData.description) || "",
         },
         // Open Graph
         {
           hid: "og:title",
           property: "og:title",
-          content: this.WikiData.title || "",
+          content: (this.WikiData && this.WikiData.title) || "",
         },
         {
           hid: "og:description",
           property: "og:description",
-          content: this.WikiData.description || "",
+          content: (this.WikiData && this.WikiData.description) || "",
         },
         // Twitter Card
         {
           hid: "twitter:title",
           name: "twitter:title",
-          content: this.WikiData.title || "",
+          content: (this.WikiData && this.WikiData.title) || "",
         },
         {
           hid: "twitter:description",
           name: "twitter:description",
-          content: this.WikiData.description || "",
+          content: (this.WikiData && this.WikiData.description) || "",
         },
       ],
     };

@@ -1,31 +1,43 @@
 <template>
   <article class="wiki-item">
     <WikiPcItemInformation
-      :title="WikiData.title"
-      :description="WikiData.description"
+      :title="WikiData && WikiData.title"
+      :description="WikiData && WikiData.description"
     />
-    <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
+    <WikiTags
+      v-if="WikiData && WikiData.tags"
+      :tags="WikiData && WikiData.tags"
+    />
     <section class="wiki-main">
       <section class="wiki-main-left">
         <WikiPcBaseIntroductions
-          v-if="WikiData.introduction"
-          :data="WikiData.introduction"
+          v-if="WikiData && WikiData.introduction"
+          :data="WikiData && WikiData.introduction"
         />
         <section class="wiki-article markdown-body">
           <nuxt-content :document="WikiData" tag="div" />
           <section class="wiki-article-fill"></section>
         </section>
       </section>
-      <section v-if="WikiData.img || WikiData.info" class="wiki-main-right">
-        <section v-if="WikiData.img" class="wiki-main-picture">
-          <WikiPicture :src="WikiData.img" :title="WikiData.title" />
+      <section
+        v-if="(WikiData && WikiData.img) || WikiData.info"
+        class="wiki-main-right"
+      >
+        <section v-if="WikiData && WikiData.img" class="wiki-main-picture">
+          <WikiPicture
+            :src="WikiData && WikiData.img"
+            :title="WikiData && WikiData.title"
+          />
         </section>
         <section class="wiki-sticky">
-          <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
+          <WikiPcDetailsList
+            v-if="WikiData && WikiData.info"
+            :data="WikiData && WikiData.info"
+          />
           <WikiPcStatus
-            v-if="WikiData.createdAt || WikiData.updatedAt"
-            :created="WikiData.createdAt"
-            :updated="WikiData.updatedAt"
+            v-if="(WikiData && WikiData.createdAt) || WikiData.updatedAt"
+            :created="WikiData && WikiData.createdAt"
+            :updated="WikiData && WikiData.updatedAt"
           />
         </section>
       </section>
@@ -86,29 +98,29 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: this.WikiData.description || "",
+          content: (this.WikiData && this.WikiData.description) || "",
         },
         // Open Graph
         {
           hid: "og:title",
           property: "og:title",
-          content: this.WikiData.title || "",
+          content: (this.WikiData && this.WikiData.title) || "",
         },
         {
           hid: "og:description",
           property: "og:description",
-          content: this.WikiData.description || "",
+          content: (this.WikiData && this.WikiData.description) || "",
         },
         // Twitter Card
         {
           hid: "twitter:title",
           name: "twitter:title",
-          content: this.WikiData.title || "",
+          content: (this.WikiData && this.WikiData.title) || "",
         },
         {
           hid: "twitter:description",
           name: "twitter:description",
-          content: this.WikiData.description || "",
+          content: (this.WikiData && this.WikiData.description) || "",
         },
       ],
     };
