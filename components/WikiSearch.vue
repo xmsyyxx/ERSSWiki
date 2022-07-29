@@ -1,5 +1,5 @@
 <template>
-  <section class="wiki-search">
+  <div class="wiki-search">
     <div
       v-if="!isStartSearch"
       class="wiki-icon-search"
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

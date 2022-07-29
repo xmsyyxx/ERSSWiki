@@ -1,5 +1,5 @@
 <template>
-  <section class="wiki-picture">
+  <div class="wiki-picture">
     <div class="wiki-picture-fill"></div>
 
     <div class="wiki-picrute-box">
@@ -20,7 +20,7 @@
         <div class="wiki-picture-tips">（点击可查看大图）</div>
       </label>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

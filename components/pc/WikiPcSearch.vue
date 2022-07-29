@@ -1,5 +1,5 @@
 <template>
-  <section class="wiki-search">
+  <div class="wiki-search">
     <div class="wiki-search-input">
       <input
         v-model="searchQuery"
@@ -36,7 +36,7 @@
         <li class="wiki-search-item-tips">无结果</li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

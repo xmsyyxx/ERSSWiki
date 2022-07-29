@@ -1,5 +1,5 @@
 <template>
-  <section v-if="data" class="wiki-details">
+  <div v-if="data" class="wiki-details">
     <div class="wiki-details-tips">基本信息</div>
     <div v-if="infoKeys" class="wiki-detail-list">
       <ul>
@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

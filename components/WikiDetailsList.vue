@@ -1,5 +1,5 @@
 <template>
-  <section v-if="data" class="wiki-details">
+  <div v-if="data" class="wiki-details">
     <div v-if="infoKeys" class="wiki-detail-list">
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-detail-item">
@@ -15,7 +15,7 @@
         </li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

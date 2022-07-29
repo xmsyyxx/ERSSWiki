@@ -1,5 +1,5 @@
 <template>
-  <section class="wiki-status">
+  <div class="wiki-status">
     <div class="wiki-status-tips">词条统计</div>
     <div class="wiki-status-list">
       <ul>
@@ -13,7 +13,7 @@
         </li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

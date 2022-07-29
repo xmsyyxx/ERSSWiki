@@ -1,30 +1,24 @@
 <template>
   <article class="wiki-item">
     <WikiItemInformation
-      :title="WikiData && WikiData.title"
-      :description="WikiData && WikiData.description"
+      :title="WikiData.title"
+      :description="WikiData.description"
     />
-    <WikiTags
-      v-if="WikiData && WikiData.tags"
-      :tags="WikiData && WikiData.tags"
-    />
+    <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
     <WikiPicture
-      v-if="WikiData && WikiData.img"
-      :src="WikiData && WikiData.img"
-      :title="WikiData && WikiData.title"
+      v-if="WikiData.img"
+      :src="WikiData.img"
+      :alt="WikiData.title"
     />
     <WikiBaseIntroductions
-      v-if="WikiData && WikiData.introduction"
-      :data="WikiData && WikiData.introduction"
+      v-if="WikiData.introduction"
+      :data="WikiData.introduction"
     />
-    <WikiDetailsList
-      v-if="WikiData && WikiData.info"
-      :data="WikiData && WikiData.info"
-    />
-    <section class="wiki-space-fill"></section>
-    <section class="wiki-article markdown-body">
+    <WikiDetailsList v-if="WikiData.info" :data="WikiData.info" />
+    <div class="wiki-space-fill"></div>
+    <div class="wiki-article">
       <nuxt-content :document="WikiData" tag="div" />
-    </section>
+    </div>
   </article>
 </template>
 

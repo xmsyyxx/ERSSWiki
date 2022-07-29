@@ -1,47 +1,35 @@
 <template>
   <article class="wiki-item">
     <WikiPcItemInformation
-      :title="WikiData && WikiData.title"
-      :description="WikiData && WikiData.description"
+      :title="WikiData.title"
+      :description="WikiData.description"
     />
-    <WikiTags
-      v-if="WikiData && WikiData.tags"
-      :tags="WikiData && WikiData.tags"
-    />
-    <section class="wiki-main">
-      <section class="wiki-main-left">
+    <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
+    <div class="wiki-main">
+      <div class="wiki-main-left">
         <WikiPcBaseIntroductions
-          v-if="WikiData && WikiData.introduction"
-          :data="WikiData && WikiData.introduction"
+          v-if="WikiData.introduction"
+          :data="WikiData.introduction"
         />
-        <section class="wiki-article markdown-body">
+        <div class="wiki-article">
           <nuxt-content :document="WikiData" tag="div" />
-          <section class="wiki-article-fill"></section>
-        </section>
-      </section>
-      <section
-        v-if="WikiData && (WikiData.img || WikiData.info)"
-        class="wiki-main-right"
-      >
-        <section v-if="WikiData && WikiData.img" class="wiki-main-picture">
-          <WikiPicture
-            :src="WikiData && WikiData.img"
-            :title="WikiData && WikiData.title"
-          />
-        </section>
-        <section class="wiki-sticky">
-          <WikiPcDetailsList
-            v-if="WikiData && WikiData.info"
-            :data="WikiData && WikiData.info"
-          />
+          <div class="wiki-article-fill"></div>
+        </div>
+      </div>
+      <div v-if="WikiData.img || WikiData.info" class="wiki-main-right">
+        <div v-if="WikiData.img" class="wiki-main-picture">
+          <WikiPicture :src="WikiData.img" :title="WikiData.title" />
+        </div>
+        <div class="wiki-sticky">
+          <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
           <WikiPcStatus
-            v-if="WikiData && (WikiData.createdAt || WikiData.updatedAt)"
-            :created="WikiData && WikiData.createdAt"
-            :updated="WikiData && WikiData.updatedAt"
+            v-if="WikiData.createdAt || WikiData.updatedAt"
+            :created="WikiData.createdAt"
+            :updated="WikiData.updatedAt"
           />
-        </section>
-      </section>
-    </section>
+        </div>
+      </div>
+    </div>
   </article>
 </template>
 
@@ -67,7 +55,7 @@ export default {
   async asyncData({ $content, params, redirect }) {
     try {
       const WikiData = await $content("wiki", params.item).fetch();
-      // console.log(WikiData);
+      // console.log(WikiData.body);
       const { title } = WikiData;
       if (!WikiData.info) {
         WikiData.info = {

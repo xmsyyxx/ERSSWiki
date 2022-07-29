@@ -1,12 +1,12 @@
 <template>
-  <section class="wiki-item-information">
+  <div class="wiki-item-information">
     <div class="wiki-item-title">{{ title }}</div>
     <div class="wiki-item-description">
       <div v-for="item of descriptions" :key="item" class="wiki-description">
         {{ item }}
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
-  <section v-if="tags !== []" class="wiki-tags">
+  <div v-if="tags !== []" class="wiki-tags">
     <ul class="wiki-tags-list">
       <li v-for="tag of tags" :key="tag" class="wiki-tags-item">
         <!-- <span class="wiki-tag-icon"><IconTag /></span> -->
         <span class="wiki-tag-text">{{ tag }}</span>
       </li>
     </ul>
-  </section>
+  </div>
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 <template>
-  <section class="wiki-item-information">
+  <div class="wiki-item-information">
     <div class="wiki-item-title">{{ title }}</div>
     <div class="wiki-item-description">{{ description }}</div>
-  </section>
+  </div>
 </template>
 
 <script>

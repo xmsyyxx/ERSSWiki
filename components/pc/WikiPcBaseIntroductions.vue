@@ -1,9 +1,9 @@
 <template>
-  <section v-if="data" class="wiki-base-introductions">
+  <div v-if="data" class="wiki-base-introductions">
     <p v-for="text of introductions" :key="text" class="wiki-introduction-text">
       {{ text }}
     </p>
-  </section>
+  </div>
 </template>
 
 <script>
