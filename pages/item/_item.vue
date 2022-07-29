@@ -132,8 +132,14 @@ export default {
         return window.location.replace(`/wiki/${path}`);
       }
     };
+    const onhashchange = () => {
+      document.documentElement.scrollTop =
+        document.documentElement.scrollTop - 60;
+    };
     onresize();
+    // onhashchange();
     window.addEventListener("resize", onresize);
+    window.addEventListener("hashchange", onhashchange);
   },
 };
 </script>

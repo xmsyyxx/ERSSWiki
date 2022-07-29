@@ -107,8 +107,14 @@ export default {
         return window.location.replace(`/item/${path}`);
       }
     };
+    const onhashchange = () => {
+      document.documentElement.scrollTop =
+        document.documentElement.scrollTop - 44;
+    };
     onresize();
+    // onhashchange();
     window.addEventListener("resize", onresize);
+    window.addEventListener("hashchange", onhashchange);
   },
 };
 </script>
