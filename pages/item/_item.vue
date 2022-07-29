@@ -20,7 +20,7 @@
         </section>
       </section>
       <section
-        v-if="(WikiData && WikiData.img) || WikiData.info"
+        v-if="WikiData && (WikiData.img || WikiData.info)"
         class="wiki-main-right"
       >
         <section v-if="WikiData && WikiData.img" class="wiki-main-picture">
@@ -35,7 +35,7 @@
             :data="WikiData && WikiData.info"
           />
           <WikiPcStatus
-            v-if="(WikiData && WikiData.createdAt) || WikiData.updatedAt"
+            v-if="WikiData && (WikiData.createdAt || WikiData.updatedAt)"
             :created="WikiData && WikiData.createdAt"
             :updated="WikiData && WikiData.updatedAt"
           />
@@ -67,7 +67,7 @@ export default {
   async asyncData({ $content, params, redirect }) {
     try {
       const WikiData = await $content("wiki", params.item).fetch();
-      // console.log(WikiData.body);
+      // console.log(WikiData);
       const { title } = WikiData;
       if (!WikiData.info) {
         WikiData.info = {
