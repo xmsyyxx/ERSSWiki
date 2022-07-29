@@ -1,7 +1,5 @@
 const log = console.log;
 
-const CACHE_NAME = "sw-cache-v3";
-
 function onInstall() {
   self.skipWaiting();
 }
@@ -16,6 +14,26 @@ async function onActivate() {
   await self.clients.claim();
 }
 
+async function trackEvent(type, value) {
+  return fetch("https://a.xhemj.work/api", {
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      type: "event",
+      payload: {
+        website: "e95e96cf-e2c8-470d-90f2-3e62be3963f0",
+        hostname: "baike.xmsyyxx.com",
+        language: "zh-CN",
+        url: "/",
+        event_type: type,
+        event_value: value,
+      },
+    }),
+    method: "POST",
+  });
+}
+
 async function removeOldCache() {
   log("Removing old cache");
   let keys = await caches.keys();
@@ -26,34 +44,11 @@ async function removeOldCache() {
   );
 }
 
-async function preFetch(res) {
+async function returnResponse(res) {
   return new Response(await res.arrayBuffer(), {
     status: res.status,
     headers: res.headers,
   });
-}
-
-function createPromiseAny() {
-  Promise.any = function (promises) {
-    return new Promise((resolve, reject) => {
-      promises = Array.isArray(promises) ? promises : [];
-      let len = promises.length;
-      let errs = [];
-      if (len === 0)
-        return reject(new AggregateError("All promises were rejected"));
-      promises.forEach((p) => {
-        if (!p instanceof Promise) return reject(p);
-        p.then(
-          (res) => resolve(res),
-          (err) => {
-            len--;
-            errs.push(err);
-            if (len === 0) reject(new AggregateError(errs));
-          }
-        );
-      });
-    });
-  };
 }
 
 async function handleFetch(req) {
@@ -77,42 +72,71 @@ async function handleFetch(req) {
     url.hostname === siteHostname
   ) {
     log("Fetching: " + request.url);
-    const controller = new AbortController();
     const urls = cdnList.map((cdn) => {
       return new URL(cdn + pathname).href;
     });
 
-    let tasks = urls.map((url) => {
+    const AbortEvent = new Event("AbortEvent");
+    const Target = new EventTarget();
+    const tasks = urls.map((url) => {
       return new Promise((resolve, reject) => {
+        const controller = new AbortController();
+        let isStop = false;
+        Target.addEventListener(AbortEvent.type, () => {
+          if (!isStop) controller.abort();
+        });
+
         fetch(url, {
           signal: controller.signal,
         })
           .then((res) => {
             log("Hit from: " + url);
-            return preFetch(res);
-          })
-          .then((res) => {
-            const r = res.clone();
-            if (r.status !== 200 && r.status !== 404) {
-              return reject(null);
+            setTimeout(async () => {
+              await trackEvent("cdn", new URL(url).hostname);
+            }, 10);
+            if (res.status == 200 || res.status == 404) {
+              isStop = true;
+              Target.dispatchEvent(AbortEvent);
+              return resolve(returnResponse(res));
             }
-            controller.abort();
-
-            resolve(r);
           })
-          .catch(() => reject(null));
+          .catch((error) => {
+            if (/aborted/.test(error)) {
+              console.log();
+            }
+            reject(error);
+          });
       });
     });
 
     if (!Promise.any) {
-      createPromiseAny();
+      Promise.any = function (promises) {
+        return new Promise((resolve, reject) => {
+          promises = Array.isArray(promises) ? promises : [];
+          let len = promises.length;
+          let errs = [];
+          if (len === 0)
+            return reject(new AggregateError("All promises were rejected"));
+          promises.forEach((p) => {
+            if (!p instanceof Promise) return reject(p);
+            p.then(
+              (res) => resolve(res),
+              (err) => {
+                len--;
+                errs.push(err);
+                if (len === 0) reject(new AggregateError(errs));
+              }
+            );
+          });
+        });
+      };
     }
 
     return Promise.any(tasks)
       .then((res) => res)
       .catch(() => null);
   }
-  return fetch(request);
+  return fetch(request).catch(() => null);
 }
 
 self.skipWaiting();
