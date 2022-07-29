@@ -4,7 +4,6 @@ const dayjs = require("dayjs");
 require("dayjs/locale/zh-cn");
 dayjs.locale("zh-cn");
 const time = dayjs().format("YYYY-M-D HH:mm:ss");
-const randomId = Math.random().toString(16).substring(2).slice(6);
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
