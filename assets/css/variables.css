@@ -17,6 +17,9 @@
 
   --wiki-footer-gray: #f2f2f2;
 
+  --wiki-card-gray: #f6f7f8;
+  --wiki-card-border-gray: #f1f2f3;
+
   --wiki-max-width: 1180px;
   --wiki-min-width: 960px;
 }

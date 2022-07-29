@@ -45,9 +45,9 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  border: 1px solid #f1f2f3;
+  border: 1px solid var(--wiki-card-border-gray);
   border-radius: 5px;
-  background-color: #f6f7f8;
+  background-color: var(--wiki-card-gray);
 }
 
 .wiki-details-tips {

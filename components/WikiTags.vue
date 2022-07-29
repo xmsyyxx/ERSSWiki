@@ -44,9 +44,9 @@ export default {
 
 .wiki-tags-item {
   word-break: break-word;
-  border: 1px solid #f1f2f3;
+  border: 1px solid var(--wiki-card-border-gray);
   border-radius: 6px;
-  background-color: #f6f7f8;
+  background-color: var(--wiki-card-gray);
   padding: 0 5px;
   font-weight: 500;
 }
