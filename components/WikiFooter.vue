@@ -46,7 +46,9 @@ export default {
     // 如果有滚动条
     // 则将 footer 放置于滚到底部的底部
     if (
-      document.querySelector(".wiki-body").offsetHeight > window.innerHeight
+      document.querySelector(".wiki-body").offsetHeight +
+        document.querySelector(".wiki-footer").offsetHeight >
+      window.innerHeight
     ) {
       this.isScroll = true;
     }
