@@ -12,7 +12,7 @@
       </div>
       <WikiPcSearch />
       <div class="wiki-tips">
-        <div class="wiki-development-tips">开发版 {{ version }}</div>
+        <div class="wiki-development-tips">开发版 v{{ version }}</div>
       </div>
     </div>
   </div>

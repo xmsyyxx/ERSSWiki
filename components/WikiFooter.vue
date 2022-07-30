@@ -2,7 +2,7 @@
   <div class="wiki-footer" :class="{ 'wiki-footer-bottom': !isScroll }">
     <div class="wiki-footer-box">
       <div class="wiki-footer-copyright">
-        <span>耳斯百科 - ERSSWIKI</span>
+        <span>耳斯百科 - 开发版 v{{ version }}</span>
         <span>
           Copyright &copy; 2021-{{ new Date().getFullYear() }} Xhemj & ERSS
           工作室
@@ -40,6 +40,7 @@ export default {
   data() {
     return {
       isScroll: false,
+      version: require("~/package.json").version,
     };
   },
   mounted() {

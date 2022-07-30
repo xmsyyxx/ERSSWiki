@@ -6,16 +6,13 @@
       </div>
       <WikiPcSearch />
     </div>
-    <!-- <ul class="wiki-all-list">
-      <li v-for="article of WikiData" :key="article.slug" class="krz-list">
-        <NuxtLink :to="'/wiki/' + article.slug">{{ article.title }}</NuxtLink>
-      </li>
-    </ul> -->
+    <WikiFooter />
   </div>
 </template>
 
 <script>
 import WikiPcSearch from "../components/pc/WikiPcSearch.vue";
+import WikiFooter from "../components/WikiFooter.vue";
 import WikiLogo from "../components/WikiLogo.vue";
 
 export default {
@@ -23,6 +20,7 @@ export default {
   components: {
     WikiPcSearch,
     WikiLogo,
+    WikiFooter,
   },
   layout: "WikiHome",
   hooks: {
@@ -158,6 +156,7 @@ export default {
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
   border-bottom: 1px solid #e2e2e2 !important;
   background-color: #fff !important;
+  z-index: 100;
 }
 
 .wiki-app-search
@@ -186,6 +185,28 @@ export default {
   > .wiki-search-link
   > .wiki-search-item
   > .wiki-search-go-icon {
+  display: none;
+}
+
+.wiki-app > .wiki-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.wiki-app > .wiki-footer > .wiki-footer-box {
+  display: block;
+  position: relative;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.wiki-app > .wiki-footer > .wiki-footer-box > .wiki-footer-space-fill,
+.wiki-app > .wiki-footer > .wiki-footer-box > .wiki-footer-tips {
   display: none;
 }
 </style>
