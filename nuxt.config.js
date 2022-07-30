@@ -5,6 +5,41 @@ require("dayjs/locale/zh-cn");
 dayjs.locale("zh-cn");
 const time = dayjs().format("YYYY-M-D HH:mm:ss");
 
+const createSitemapRoutes = async () => {
+  let routes = [];
+  let posts = [];
+  const { $content } = require("@nuxt/content");
+  if (posts === null || posts.length === 0)
+    posts = await $content("wiki").fetch();
+  for (const post of posts) {
+    routes.push({
+      url: "/",
+      changefreq: "daily",
+      priority: 1,
+      lastmod: new Date().toISOString(),
+    });
+    routes.push({
+      url: `/item/${post.slug}`,
+      changefreq: "weekly",
+      priority: 0.8,
+      lastmod: post.updatedAt,
+    });
+    routes.push({
+      url: `/wiki/${post.slug}`,
+      changefreq: "weekly",
+      priority: 0.5,
+      lastmod: post.updatedAt,
+    });
+    routes.push({
+      url: "/sitemap",
+      changefreq: "daily",
+      priority: 0.5,
+      lastmod: new Date().toISOString(),
+    });
+  }
+  return routes;
+};
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -62,7 +97,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "@nuxtjs/markdownit"],
+  modules: ["@nuxt/content", "@nuxtjs/markdownit", "@nuxtjs/sitemap"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -131,5 +166,10 @@ export default {
 
   loading: {
     color: "#5755d9",
+  },
+
+  sitemap: {
+    hostname: "https://baike.xmsyyxx.com",
+    routes: createSitemapRoutes,
   },
 };
