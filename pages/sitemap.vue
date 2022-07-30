@@ -28,6 +28,11 @@ export default {
       WikiData,
     };
   },
+  head() {
+    return {
+      title: "站点地图 - 耳斯百科",
+    };
+  },
 };
 </script>
 
