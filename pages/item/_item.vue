@@ -81,6 +81,11 @@ export default {
           rel: "canonical",
           href: `https://baike.xmsyyxx.com/item/${this.slug}`,
         },
+        {
+          rel: "alternate",
+          media: "only screen and (max-width: 500px)",
+          href: `https://baike.xmsyyxx.com/wiki/${this.slug}`,
+        },
       ],
       meta: [
         {
