@@ -141,21 +141,21 @@ export default {
 <style>
 .wiki-app-search > .wiki-search > .wiki-search-input > input {
   height: 50px !important;
-  background-color: #fff !important;
+  background-color: var(--wiki-common-white) !important;
   font-size: 1.1rem !important;
-  color: #222 !important;
-  border: 1px solid #999 !important;
+  color: var(--wiki-content-black) !important;
+  border: 1px solid var(--wiki-description-gray) !important;
 }
 
 .wiki-app-search > .wiki-search > .wiki-search-input > input:focus,
 .wiki-app-search > .wiki-search > .wiki-search-input > input:hover {
-  color: #222 !important;
-  border: 1px solid #999 !important;
+  color: var(--wiki-content-black) !important;
+  border: 1px solid var(--wiki-description-gray) !important;
 }
 .wiki-app-search > .wiki-search > .wiki-search-input > .wiki-search-list {
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
-  border-bottom: 1px solid #e2e2e2 !important;
-  background-color: #fff !important;
+  border-bottom: 1px solid var(--wiki-suggest-border-gray) !important;
+  background-color: var(--wiki-common-white) !important;
   z-index: 100;
 }
 
@@ -174,7 +174,7 @@ export default {
 }
 
 .wiki-app-search > .wiki-search > .wiki-search-input > ul > a :hover {
-  background-color: #fafafa !important;
+  background-color: var(--wiki-search-light-gray) !important;
 }
 
 .wiki-app-search
@@ -194,7 +194,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: var(--wiki-common-white);
   z-index: 1;
 }
 

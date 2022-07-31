@@ -128,7 +128,7 @@ export default {
 .wiki-space-fill {
   width: 100%;
   height: 0.7rem;
-  background-color: #f5f5f5;
+  background-color: var(--wiki-footer-light-gray);
   border: 0;
 }
 </style>

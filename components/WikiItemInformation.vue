@@ -25,9 +25,7 @@ export default {
 .wiki-item-information {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .wiki-item-title {

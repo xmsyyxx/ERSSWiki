@@ -60,8 +60,8 @@ export default {
 
 <style scoped>
 .wiki-image-item {
-  color: #b2b2b2;
-  background-color: #0a0a0a;
+  color: var(--wiki-description-gray);
+  background-color: var(--wiki-image-black);
   width: 100%;
   overflow-x: hidden;
   position: fixed;

@@ -30,7 +30,7 @@ export default {
 .wiki-tags {
   display: flex;
   flex-direction: column;
-  width: 69%;
+  width: 100%;
 }
 
 .wiki-tags-list {
@@ -39,6 +39,8 @@ export default {
   list-style: none;
   padding: 0;
   margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
   user-select: none;
 }
 
@@ -57,5 +59,15 @@ export default {
 
 .wiki-tags-item:not(:first-child) {
   margin-left: 1rem;
+}
+
+@media only screen and (min-width: 500px) {
+  .wiki-tags {
+    width: 69%;
+  }
+
+  .wiki-tags-list {
+    margin-bottom: 0;
+  }
 }
 </style>

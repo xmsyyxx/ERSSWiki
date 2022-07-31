@@ -1,24 +1,48 @@
 :root {
-  --wiki-title-black: #000;
-  --wiki-content-black: #333;
+  --wiki-title-black: #000000;
+
+  --wiki-subtitle-black: rgba(0, 0, 0, 0.851);
+
+  --wiki-content-black: #333333;
+
   --wiki-description-black: #465759;
+  --wiki-description-gray: #999999;
+
+  --wiki-image-black: #0a0a0a;
 
   --wiki-header-gray: #edf2f7;
-  --wiki-header-light-gray: #edf2f7f2;
+  --wiki-header-mirror-gray: rgba(237, 242, 247, 0.85);
+  --wiki-header-light-gray: rgba(237, 242, 247, 0.949);
 
   --wiki-search-gray: #e2e8f0;
-  --wiki-search-border-gray: #f1eeee;
+  --wiki-search-mirror-gray: rgba(226, 232, 240, 0.85);
+  --wiki-search-light-gray: #fafafa;
   --wiki-search-black: #4a5568;
+  --wiki-search-border-gray: #cccccc;
+
+  --wiki-suggest-border-gray: #ededed;
 
   --wiki-border-gray: #e6e6e6;
 
-  --wiki-common-white: #fff;
-  --wiki-light-white: #fffffff2;
+  --wiki-common-white: #ffffff;
+  --wiki-common-mirror-white: rgba(255, 255, 255, 0.85);
 
+  --wiki-light-white: rgba(255, 255, 255, 0.949);
+
+  --wiki-footer-light-gray: #f5f5f5;
   --wiki-footer-gray: #f2f2f2;
 
   --wiki-card-gray: #f6f7f8;
   --wiki-card-border-gray: #f1f2f3;
+
+  --wiki-scroll-white: #f0f0f0;
+  --wiki-scroll-gray: #cbcac9;
+
+  --wiki-mark-yellow: #feffe6;
+
+  --wiki-link-blue: #1473e6;
+  --wiki-link-light-blue: #40a9ff;
+  --wiki-link-deep-blue: #096dd9;
 
   --wiki-max-width: 1180px;
   --wiki-min-width: 960px;

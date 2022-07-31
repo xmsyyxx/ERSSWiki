@@ -162,8 +162,8 @@ export default {
   padding-top: 0;
   transform: translateY(-0.5rem);
   border-radius: 4px;
-  background-color: var(--wiki-search-gray);
-  border: 1px var(--wiki-search-border-gray) solid;
+  background-color: var(--wiki-search-mirror-gray);
+  border: 1px var(--wiki-header-gray) solid;
 
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.15s;
@@ -172,7 +172,7 @@ export default {
 .wiki-search-input > input:focus,
 .wiki-search-input > input:hover {
   background-color: var(--wiki-common-white);
-  border: 1px #e2e8f0 solid;
+  border: 1px var(--wiki-search-gray) solid;
 }
 
 .wiki-search-input-icon {
@@ -192,7 +192,7 @@ export default {
   overflow-y: auto;
   max-height: 250px;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid var(--wiki-search-border-gray);
 }
 
 .wiki-search-item {
@@ -200,7 +200,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   font-size: 1rem;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
 .wiki-search-item {
@@ -216,7 +216,7 @@ export default {
 .wiki-search-item-tips {
   position: relative;
   font-size: 1rem;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
 .wiki-search-link {

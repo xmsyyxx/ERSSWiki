@@ -164,7 +164,7 @@ export default {
   padding-top: 0;
   transform: translateY(-0.5rem);
   border-radius: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--wiki-search-border-gray);
 }
 
 .wiki-search-input-icon {
@@ -178,14 +178,14 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid var(--wiki-search-border-gray);
 }
 
 .wiki-search-item {
   position: relative;
   display: flex;
   font-size: 1rem;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
 .wiki-search-item {
@@ -201,7 +201,7 @@ export default {
 .wiki-search-item-no-resoult {
   position: relative;
   font-size: 1rem;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
 .wiki-search-return {
@@ -216,7 +216,7 @@ export default {
 .wiki-search-item-tips {
   position: relative;
   font-size: 1rem;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
 .wiki-search-link {

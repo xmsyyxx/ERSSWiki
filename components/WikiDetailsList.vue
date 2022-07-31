@@ -70,7 +70,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   float: left;
-  color: #444;
+  color: var(--wiki-subtitle-black);
   word-wrap: break-word;
   width: 33.33%; /* 4/12 */
   max-width: 33.33%;

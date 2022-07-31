@@ -59,7 +59,7 @@ export default {
 }
 
 .wiki-picture-description {
-  color: #999;
+  color: var(--wiki-description-gray);
   font-size: 0.8rem;
 }
 

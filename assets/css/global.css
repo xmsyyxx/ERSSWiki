@@ -141,7 +141,7 @@ sup {
   top: -0.5em;
 }
 a {
-  color: #1473e6;
+  color: var(--wiki-link-blue);
   text-decoration: none;
   background-color: transparent;
   outline: none;
@@ -150,10 +150,10 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 a:hover {
-  color: #40a9ff;
+  color: var(--wiki-link-light-blue);
 }
 a:active {
-  color: #096dd9;
+  color: var(--wiki-link-deep-blue);
 }
 a:active,
 a:hover {
@@ -309,13 +309,13 @@ template {
 }
 mark {
   padding: 0.2em;
-  background-color: #feffe6;
+  background-color: var(--wiki-mark-yellow);
 }
 ::-moz-selection {
   color: var(--wiki-common-white);
-  background: #1890ff;
+  background: var(--wiki-link-blue);
 }
 ::selection {
   color: var(--wiki-common-white);
-  background: #1890ff;
+  background: var(--wiki-link-light-blue);
 }

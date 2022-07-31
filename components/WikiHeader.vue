@@ -35,7 +35,7 @@ export default {
   height: 44px;
   color: var(--wiki-content-black);
   line-height: 44px;
-  background-color: var(--wiki-common-white);
+  background-color: var(--wiki-common-mirror-white);
   user-select: none;
   z-index: 1000;
   width: 100vw;
