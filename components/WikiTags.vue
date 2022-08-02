@@ -1,9 +1,9 @@
 <template>
   <div v-if="tags !== []" class="wiki-tags">
-    <ul class="wiki-tags-list">
-      <li v-for="tag of tags" :key="tag" class="wiki-tags-item">
+    <ul class="wiki-tags__list">
+      <li v-for="tag of tags" :key="tag" class="wiki-tags__item">
         <!-- <span class="wiki-tag-icon"><IconTag /></span> -->
-        <span class="wiki-tag-text">{{ tag }}</span>
+        <span class="wiki-tags__item--text">{{ tag }}</span>
       </li>
     </ul>
   </div>
@@ -33,7 +33,7 @@ export default {
   width: 100%;
 }
 
-.wiki-tags-list {
+.wiki-tags__list {
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -44,7 +44,7 @@ export default {
   user-select: none;
 }
 
-.wiki-tags-item {
+.wiki-tags__item {
   word-break: break-word;
   border: 1px solid var(--wiki-card-border-gray);
   border-radius: 6px;
@@ -53,11 +53,11 @@ export default {
   font-weight: 500;
 }
 
-.wiki-tags-item::before {
+.wiki-tags__item::before {
   content: "# ";
 }
 
-.wiki-tags-item:not(:first-child) {
+.wiki-tags__item:not(:first-child) {
   margin-left: 1rem;
 }
 
@@ -66,7 +66,7 @@ export default {
     width: 69%;
   }
 
-  .wiki-tags-list {
+  .wiki-tags__list {
     margin-bottom: 0;
   }
 }

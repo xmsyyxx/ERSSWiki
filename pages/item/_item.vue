@@ -6,21 +6,21 @@
     />
     <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
     <div class="wiki-main">
-      <div class="wiki-main-left">
+      <div class="wiki-main__left">
         <WikiPcBaseIntroductions
           v-if="WikiData.introduction"
           :data="WikiData.introduction"
         />
-        <div class="wiki-article">
+        <div class="wiki-main__article">
           <nuxt-content :document="WikiData" tag="div" />
-          <div class="wiki-article-fill"></div>
+          <div class="wiki-main__article--fill"></div>
         </div>
       </div>
-      <div v-if="WikiData.img || WikiData.info" class="wiki-main-right">
-        <div v-if="WikiData.img" class="wiki-main-picture">
+      <div v-if="WikiData.img || WikiData.info" class="wiki-main__right">
+        <div v-if="WikiData.img" class="wiki-main__picture">
           <WikiPicture :src="WikiData.img" :title="WikiData.title" />
         </div>
-        <div class="wiki-sticky">
+        <div class="wiki-main__sticky">
           <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
           <WikiPcStatus
             v-if="WikiData.createdAt || WikiData.updatedAt"
@@ -147,7 +147,7 @@ export default {
   margin: 0 auto;
 }
 
-.wiki-article {
+.wiki-main__article {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
@@ -159,16 +159,16 @@ export default {
   justify-content: space-between;
 }
 
-.wiki-main-left {
+.wiki-main__left {
   width: 69%;
 }
 
-.wiki-main-right {
+.wiki-main__right {
   width: 29%;
   transform: translateY(-2rem);
 }
 
-.wiki-sticky {
+.wiki-main__sticky {
   position: sticky;
   top: calc(3rem + 60px);
 }

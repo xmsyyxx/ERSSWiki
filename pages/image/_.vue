@@ -1,20 +1,20 @@
 <template>
-  <div class="wiki-image-item">
-    <div class="wiki-image-header">
-      <div class="wiki-image-header-nav">
-        <div class="wiki-logo-text">
-          <div class="wiki-logo">
+  <div class="wiki-image__item">
+    <div class="wiki-image__header">
+      <div class="wiki-image__header--nav">
+        <div class="wiki-image__logo">
+          <div class="wiki-image__logo--main">
             <img src="https://wikioss.xhemj.work/static/logo/64x64.png" />
           </div>
           <NuxtLink to="/"> 耳斯百科 </NuxtLink>
         </div>
       </div>
     </div>
-    <div class="wiki-image-body">
-      <div class="wiki-image-description">
-        <span class="wiki-image-title">{{ item }}</span>
+    <div class="wiki-image__body">
+      <div class="wiki-image__description">
+        <span class="wiki-image__title">{{ item }}</span>
       </div>
-      <picture class="wiki-image">
+      <picture class="wiki-image__picture">
         <source type="image/webp" :srcset="imgSrc + '/big_webp'" />
         <img :src="imgSrc + '/big'" />
       </picture>
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.wiki-image-item {
+.wiki-image__item {
   color: var(--wiki-description-gray);
   background-color: var(--wiki-image-black);
   width: 100%;
@@ -71,7 +71,7 @@ export default {
   top: 0;
 }
 
-.wiki-image-header {
+.wiki-image__header {
   display: block;
   position: fixed;
   top: 0;
@@ -92,18 +92,18 @@ export default {
   );
 }
 
-.wiki-image-header-nav {
+.wiki-image__header--nav {
   height: 100%;
   display: flex;
   align-content: center;
   flex-direction: row;
 }
 
-.wiki-logo-text > a {
+.wiki-image__logo > a {
   color: var(--wiki-common-white);
 }
 
-.wiki-logo-text {
+.wiki-image__logo {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -116,16 +116,16 @@ export default {
   margin-left: 1rem;
 }
 
-.wiki-logo {
+.wiki-image__logo--main {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
 
-.wiki-logo img {
+.wiki-image__logo--main img {
   width: 32px;
 }
 
-.wiki-image-body {
+.wiki-image__body {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -135,15 +135,15 @@ export default {
   min-width: 260px;
 }
 
-.wiki-image,
-.wiki-image > source,
-.wiki-image > img {
+.wiki-image__picture,
+.wiki-image__picture > source,
+.wiki-image__picture > img {
   max-width: 100%;
   margin: auto;
   max-height: 620px;
 }
 
-.wiki-image-description {
+.wiki-image__description {
   position: absolute;
   top: 80px;
   text-align: center;

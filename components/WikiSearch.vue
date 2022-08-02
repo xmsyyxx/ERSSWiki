@@ -7,8 +7,8 @@
     >
       <IconSearch />
     </div>
-    <div v-else class="wiki-search-container">
-      <div class="wiki-search-input">
+    <div v-else class="wiki-search__container">
+      <div class="wiki-search__input">
         <input
           v-model="searchQuery"
           type="search"
@@ -17,32 +17,32 @@
           class="wiki--click--WikiSearchInput"
           @blur="onInputBlur"
         />
-        <ul v-if="articles.length" class="wiki-search-list">
+        <ul v-if="articles.length" class="wiki-search__list">
           <NuxtLink
             v-for="article of articles"
             :key="article.title"
             :to="'/wiki/' + article.title"
           >
-            <div class="wiki-search-link" @click="isStartSearch = false">
-              <li class="wiki-search-item">
+            <div class="wiki-search__link" @click="isStartSearch = false">
+              <li class="wiki-search__item">
                 <span>{{ article.title }}</span>
-                <div class="wiki-search-go-icon">
+                <div class="wiki-search__go-icon">
                   <IconEnter />
                 </div>
               </li>
             </div>
           </NuxtLink>
         </ul>
-        <ul v-if="!articles.length && searchTips" class="wiki-search-list">
-          <li class="wiki-search-item-tips">{{ searchTips }}</li>
+        <ul v-if="!articles.length && searchTips" class="wiki-search__list">
+          <li class="wiki-search__item--tips">{{ searchTips }}</li>
         </ul>
         <ul
           v-else-if="isStartSearch && !articles.length && searchQuery"
-          class="wiki-search-list"
+          class="wiki-search__list"
         >
-          <li class="wiki-search-item-tips">无结果</li>
+          <li class="wiki-search__item--tips">无结果</li>
         </ul>
-        <div class="wiki-search-return" @click="isStartSearch = false">
+        <div class="wiki-search__return" @click="isStartSearch = false">
           返回
         </div>
       </div>
@@ -131,7 +131,7 @@ export default {
   color: var(--wiki-search-black);
   z-index: 100;
 }
-.wiki-search-container {
+.wiki-search__container {
   display: block;
   position: absolute;
   top: 0;
@@ -142,7 +142,7 @@ export default {
   min-height: 100vh;
 }
 
-.wiki-search-input {
+.wiki-search__input {
   margin-left: 1rem;
   margin-right: 1rem;
   height: 2.5rem;
@@ -150,7 +150,7 @@ export default {
   margin-top: 1rem;
 }
 
-.wiki-search-input > input {
+.wiki-search__input > input {
   width: 100% !important;
   box-sizing: border-box;
   height: 2.2rem;
@@ -167,59 +167,42 @@ export default {
   border: 1px solid var(--wiki-search-border-gray);
 }
 
-.wiki-search-input-icon {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  font-size: 1.5rem;
-}
-
-.wiki-search-list {
+.wiki-search__list {
   list-style: none;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid var(--wiki-search-border-gray);
 }
 
-.wiki-search-item {
+.wiki-search__item {
   position: relative;
   display: flex;
   font-size: 1rem;
   border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
-.wiki-search-item {
+.wiki-search__item {
   color: var(--wiki-search-black);
 }
 
-.wiki-search-go-icon {
+.wiki-search__go-icon {
   position: absolute;
   color: var(--wiki-content-black);
   right: 0;
 }
 
-.wiki-search-item-no-resoult {
-  position: relative;
-  font-size: 1rem;
-  border-bottom: 1px solid var(--wiki-suggest-border-gray);
-}
-
-.wiki-search-return {
+.wiki-search__return {
   color: var(--wiki-content-black);
   font-size: 1rem;
 }
 
-.wiki-search-hide {
-  display: none;
-}
-
-.wiki-search-item-tips {
+.wiki-search__item--tips {
   position: relative;
   font-size: 1rem;
   border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
-.wiki-search-link {
+.wiki-search__link {
   width: 100%;
 }
 </style>

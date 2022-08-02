@@ -1,10 +1,10 @@
 <template>
-  <div class="wiki-avatar-card">
-    <div class="wiki-card-content">
-      <div class="wiki-card-avatar">
+  <div class="wiki-avatar">
+    <div class="wiki-card__content">
+      <div class="wiki-card__avatar">
         <img :src="img" />
       </div>
-      <div class="wiki-card-name"><slot></slot></div>
+      <div class="wiki-card__name"><slot></slot></div>
     </div>
   </div>
 </template>
@@ -22,14 +22,14 @@ export default {
 </script>
 
 <style scoped>
-.wiki-avatar-card {
+.wiki-avatar {
   display: flex;
   justify-content: flex-start;
   margin: 20px auto;
   overflow: hidden;
 }
 
-.wiki-card-content {
+.wiki-card__content {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -44,7 +44,7 @@ export default {
   box-sizing: border-box;
 }
 
-.wiki-card-avatar {
+.wiki-card__avatar {
   width: 60px;
   height: 60px;
   margin-right: 20px;
@@ -54,7 +54,7 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  .wiki-avatar-card {
+  .wiki-avatar {
     position: relative;
     width: calc(100% - 2rem);
     margin: 0 1rem;

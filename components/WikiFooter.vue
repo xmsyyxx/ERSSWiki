@@ -1,7 +1,7 @@
 <template>
   <div class="wiki-footer" :class="{ 'wiki-footer-bottom': !isScroll }">
-    <div class="wiki-footer-box">
-      <div class="wiki-footer-copyright">
+    <div class="wiki-footer__box">
+      <div class="wiki-footer__copyright">
         <span>耳斯百科 - 开发版 v{{ version }}</span>
         <span>
           Copyright &copy; 2021-{{ new Date().getFullYear() }} Xhemj & ERSS
@@ -19,9 +19,9 @@
           >。</span
         >
       </div>
-      <div class="wiki-footer-space-fill"></div>
-      <div class="wiki-footer-tips">
-        <span class="wiki-footer-logo">
+      <div class="wiki-footer__fill"></div>
+      <div class="wiki-footer__tips">
+        <span class="wiki-footer__logo">
           <WikiLogo />
         </span>
       </div>
@@ -47,9 +47,10 @@ export default {
     // 如果有滚动条
     // 则将 footer 放置于滚到底部的底部
     if (
-      document.querySelector(".wiki-body").offsetHeight +
-        document.querySelector(".wiki-footer").offsetHeight >
-      window.innerHeight
+      document.querySelector(".wiki-contents__body") &&
+      document.querySelector(".wiki-contents__body").offsetHeight +
+        document.querySelector(".wiki-footer") &&
+      document.querySelector(".wiki-footer").offsetHeight > window.innerHeight
     ) {
       this.isScroll = true;
     }
@@ -73,7 +74,7 @@ export default {
   width: 100%;
 }
 
-.wiki-footer-box {
+.wiki-footer__box {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -85,13 +86,13 @@ export default {
   margin: auto;
 }
 
-.wiki-footer-copyright {
+.wiki-footer__copyright {
   display: flex;
   flex-direction: column;
   line-height: 2;
 }
 
-.wiki-footer-tips {
+.wiki-footer__tips {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,13 +103,13 @@ export default {
     padding: 0 1rem;
   }
 
-  .wiki-footer-box {
+  .wiki-footer__box {
     max-width: 100%;
     min-width: 0;
     flex-direction: column;
   }
 
-  .wiki-footer-tips {
+  .wiki-footer__tips {
     display: none;
   }
 }

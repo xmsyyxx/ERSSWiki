@@ -1,11 +1,11 @@
 <template>
   <div class="wiki-contents">
     <WikiHeader />
-    <div class="wiki-body">
+    <div class="wiki-contents__body">
       <Nuxt />
     </div>
-    <div class="wiki-space-fill"></div>
-    <div class="wiki-content-footer"><WikiFooter /></div>
+    <div class="wiki-contents__fill"></div>
+    <div class="wiki-contents__footer"><WikiFooter /></div>
     <WikiCommon />
   </div>
 </template>
@@ -26,14 +26,14 @@ export default {
 </script>
 
 <style scoped>
-.wiki-body {
+.wiki-contents__body {
   text-align: left;
   padding-top: 44px;
   background-color: var(--wiki-common-white);
   word-break: break-word;
 }
 
-.wiki-space-fill {
+.wiki-contents__fill {
   width: 100%;
   height: 0.7rem;
   background-color: var(--wiki-footer-light-gray);
@@ -41,13 +41,13 @@ export default {
 }
 
 @media only screen and (min-width: 500px) {
-  .wiki-body {
+  .wiki-contents__body {
     padding-top: 60px;
     display: flex;
     height: 100%;
   }
 
-  .wiki-space-fill {
+  .wiki-contents__fill {
     width: 100%;
   }
 }

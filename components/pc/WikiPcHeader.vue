@@ -1,8 +1,8 @@
 <template>
   <div class="wiki-header">
-    <div class="wiki-header-nav">
-      <div class="wiki-logo-text wiki--click--WikiLogo">
-        <div class="wiki-logo">
+    <div class="wiki-header__nav">
+      <div class="wiki-header__logo wiki--click--WikiLogo">
+        <div class="wiki-header__logo--item">
           <img
             src="https://wikioss.xhemj.work/static/logo/64x64.png"
             title="耳斯百科"
@@ -11,8 +11,8 @@
         <NuxtLink to="/"> 耳斯百科 </NuxtLink>
       </div>
       <WikiPcSearch />
-      <div class="wiki-tips">
-        <div class="wiki-development-tips">开发版 v{{ version }}</div>
+      <div class="wiki-header__tips">
+        <div class="wiki-header__tips-item">开发版 v{{ version }}</div>
       </div>
     </div>
   </div>
@@ -57,11 +57,11 @@ export default {
   );
 }
 
-.wiki-logo-text > a {
+.wiki-header__logo > a {
   color: var(--wiki-content-black);
 }
 
-.wiki-header-nav {
+.wiki-header__nav {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -73,7 +73,7 @@ export default {
   margin: 0 auto;
 }
 
-.wiki-logo-text {
+.wiki-header__logo {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -83,16 +83,16 @@ export default {
   text-align: center;
 }
 
-.wiki-logo {
+.wiki-header__logo--item {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
 
-.wiki-logo img {
+.wiki-header__logo--item img {
   width: 32px;
 }
 
-.wiki-tips {
+.wiki-header__tips {
   display: flex;
   width: 50%; /* 12/24 */
   flex-direction: row;
@@ -100,7 +100,7 @@ export default {
   margin-right: 1rem;
 }
 
-.wiki-development-tips {
+.wiki-header__tips-item {
   font-weight: 500;
   font-size: 0.8rem;
 }

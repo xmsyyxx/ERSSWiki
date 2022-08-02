@@ -1,18 +1,13 @@
 <template>
   <div v-if="data" class="wiki-details">
-    <div class="wiki-details-tips">基本信息</div>
-    <div v-if="infoKeys" class="wiki-detail-list">
+    <div class="wiki-details__tips">基本信息</div>
+    <div v-if="infoKeys" class="wiki-details__list">
       <ul>
-        <li v-for="key of infoKeys" :key="key" class="wiki-detail-item">
-          <div class="wiki-detail-title">
-            <span
-              v-for="item of key.split('')"
-              :key="item"
-              class="wiki-detail-title-item"
-              >{{ item }}</span
-            >
+        <li v-for="key of infoKeys" :key="key" class="wiki-details__item">
+          <div class="wiki-details__title">
+            <span class="wiki-details__title--item">{{ key }}</span>
           </div>
-          <div class="wiki-detail-text">{{ data[key] }}</div>
+          <div class="wiki-details__text">{{ data[key] }}</div>
         </li>
       </ul>
     </div>
@@ -50,7 +45,7 @@ export default {
   background-color: var(--wiki-card-gray);
 }
 
-.wiki-details-tips {
+.wiki-details__tips {
   font-size: 1.2rem;
   font-weight: 700;
   margin-left: 1rem;
@@ -58,7 +53,7 @@ export default {
   color: var(--wiki-description-black);
 }
 
-.wiki-detail-list {
+.wiki-details__list {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -67,7 +62,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.wiki-detail-list ul {
+.wiki-details__list ul {
   display: flex;
   flex-direction: column;
   margin: 1rem;
@@ -76,14 +71,14 @@ export default {
   width: 100%;
 }
 
-.wiki-detail-item {
+.wiki-details__item {
   position: relative;
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
 }
 
-.wiki-detail-title {
+.wiki-details__title {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -95,7 +90,7 @@ export default {
   border-bottom: 1px solid var(--wiki-border-gray);
 }
 
-.wiki-detail-text {
+.wiki-details__text {
   margin-left: 0;
   color: var(--wiki-description-black);
   word-wrap: break-word;

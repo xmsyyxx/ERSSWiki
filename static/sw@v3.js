@@ -86,6 +86,9 @@ async function handleFetch(req) {
           if (!isStop) controller.abort();
         });
 
+        if (url.startsWith("https://wikioss.xhemj.work"))
+          url += "?t=" + new Date().getTime();
+
         fetch(url, {
           signal: controller.signal,
         })

@@ -1,5 +1,5 @@
 <template>
-  <div class="wiki-image-show">
+  <div class="wiki-image__show">
     <nuxt />
     <WikiCommon />
   </div>

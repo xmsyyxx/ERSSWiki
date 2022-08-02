@@ -1,15 +1,15 @@
 <template>
   <div class="wiki-status">
-    <div class="wiki-status-tips">词条统计</div>
-    <div class="wiki-status-list">
+    <div class="wiki-status__tips">词条统计</div>
+    <div class="wiki-status__list">
       <ul>
-        <li v-if="created" class="wiki-status-item">
-          <div class="wiki-status-title">创建时间</div>
-          <div class="wiki-status-text">{{ formatTime(created) }}</div>
+        <li v-if="created" class="wiki-status__item">
+          <div class="wiki-status__title">创建时间</div>
+          <div class="wiki-status__text">{{ formatTime(created) }}</div>
         </li>
-        <li v-if="updated" class="wiki-status-item">
-          <div class="wiki-status-title">更新时间</div>
-          <div class="wiki-status-text">{{ formatTime(updated) }}</div>
+        <li v-if="updated" class="wiki-status__item">
+          <div class="wiki-status__title">更新时间</div>
+          <div class="wiki-status__text">{{ formatTime(updated) }}</div>
         </li>
       </ul>
     </div>
@@ -49,7 +49,7 @@ export default {
   background-color: var(--wiki-card-gray);
 }
 
-.wiki-status-tips {
+.wiki-status__tips {
   font-size: 1.2rem;
   font-weight: 700;
   margin-left: 1rem;
@@ -57,7 +57,7 @@ export default {
   color: var(--wiki-description-black);
 }
 
-.wiki-status-list {
+.wiki-status__list {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -66,7 +66,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.wiki-status-list ul {
+.wiki-status__listul {
   display: flex;
   flex-direction: column;
   margin: 1rem;
@@ -75,14 +75,14 @@ export default {
   width: 100%;
 }
 
-.wiki-status-item {
+.wiki-status__item {
   position: relative;
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
 }
 
-.wiki-status-title {
+.wiki-status__title {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -94,7 +94,7 @@ export default {
   border-bottom: 1px solid var(--wiki-border-gray);
 }
 
-.wiki-status-text {
+.wiki-status__text {
   margin-left: 0;
   color: var(--wiki-description-black);
   word-wrap: break-word;

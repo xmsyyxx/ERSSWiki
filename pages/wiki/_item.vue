@@ -15,8 +15,8 @@
       :data="WikiData.introduction"
     />
     <WikiDetailsList v-if="WikiData.info" :data="WikiData.info" />
-    <div class="wiki-space-fill"></div>
-    <div class="wiki-article">
+    <div class="wiki-item__fill"></div>
+    <div class="wiki-item__article">
       <nuxt-content :document="WikiData" tag="div" />
     </div>
   </article>
@@ -119,13 +119,13 @@ export default {
 </script>
 
 <style scoped>
-.wiki-article {
+.wiki-item__article {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
 }
 
-.wiki-space-fill {
+.wiki-item__fill {
   width: 100%;
   height: 0.7rem;
   background-color: var(--wiki-footer-light-gray);

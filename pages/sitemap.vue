@@ -1,12 +1,12 @@
 <template>
   <div class="wiki-sitemap">
-    <div class="wiki-sitemap-box">
-      <h1 class="wiki-sitemap-title">所有百科</h1>
+    <div class="wiki-sitemap__box">
+      <h1 class="wiki-sitemap__title">所有百科</h1>
       <ul>
         <li
           v-for="item of WikiData"
           :key="item.title"
-          class="wiki-sitemap-item"
+          class="wiki-sitemap__item"
         >
           <a :href="'/item/' + item.slug">{{ item.title }}</a>
         </li>
@@ -46,7 +46,7 @@ export default {
   padding: 0;
 }
 
-.wiki-sitemap-box {
+.wiki-sitemap__box {
   text-align: center;
 }
 </style>

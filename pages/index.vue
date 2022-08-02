@@ -1,7 +1,7 @@
 <template>
   <div class="wiki-app">
-    <div class="wiki-app-search">
-      <div class="wiki-app-logo">
+    <div class="wiki-app__search">
+      <div class="wiki-app__logo">
         <WikiLogo />
       </div>
       <WikiPcSearch />
@@ -56,7 +56,7 @@ export default {
   margin: auto;
 }
 
-.wiki-app-search {
+.wiki-app__search {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,7 +67,7 @@ export default {
   margin: auto;
 }
 
-.wiki-app-search > .wiki-search {
+.wiki-app__search > .wiki-search {
   display: block;
   margin-top: 0;
   margin-left: auto;
@@ -75,7 +75,7 @@ export default {
   width: 714px;
 }
 
-.wiki-app-logo {
+.wiki-app__logo {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -89,7 +89,7 @@ export default {
   min-width: var(--wiki-min-width);
 }
 
-.wiki-app-logo {
+.wiki-app__logo {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
   font-size: 40px;
@@ -109,7 +109,7 @@ export default {
 }
 
 @media only screen and (max-width: 500px) {
-  .wiki-app-logo {
+  .wiki-app__logo {
     width: 100%;
     max-width: none;
     min-width: 0;
@@ -117,13 +117,13 @@ export default {
     margin-bottom: 30px;
   }
 
-  .wiki-app-search > .wiki-search {
+  .wiki-app__search > .wiki-search {
     width: 100%;
     max-width: none;
     min-width: 0;
   }
 
-  .wiki-app-search {
+  .wiki-app__search {
     display: flex;
     width: 100%;
     max-width: none;
@@ -139,7 +139,7 @@ export default {
 </style>
 
 <style>
-.wiki-app-search > .wiki-search > .wiki-search-input > input {
+.wiki-app__search > .wiki-search > .wiki-search-input > input {
   height: 50px !important;
   background-color: var(--wiki-common-white) !important;
   font-size: 1.1rem !important;
@@ -147,37 +147,37 @@ export default {
   border: 1px solid var(--wiki-description-gray) !important;
 }
 
-.wiki-app-search > .wiki-search > .wiki-search-input > input:focus,
-.wiki-app-search > .wiki-search > .wiki-search-input > input:hover {
+.wiki-app__search > .wiki-search > .wiki-search-input > input:focus,
+.wiki-app__search > .wiki-search > .wiki-search-input > input:hover {
   color: var(--wiki-content-black) !important;
   border: 1px solid var(--wiki-description-gray) !important;
 }
-.wiki-app-search > .wiki-search > .wiki-search-input > .wiki-search-list {
+.wiki-app__search > .wiki-search > .wiki-search-input > .wiki-search-list {
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
   border-bottom: 1px solid var(--wiki-suggest-border-gray) !important;
   background-color: var(--wiki-common-white) !important;
   z-index: 100;
 }
 
-.wiki-app-search
+.wiki-app__search
   > .wiki-search
   > .wiki-search-input
   > ul
   > a
   > .wiki-search-link
   > .wiki-search-item,
-.wiki-app-search > .wiki-search > .wiki-search-input > ul > li {
+.wiki-app__search > .wiki-search > .wiki-search-input > ul > li {
   border-bottom: none !important;
   justify-content: flex-start !important;
   margin: 1rem !important;
   font-size: 1.1rem;
 }
 
-.wiki-app-search > .wiki-search > .wiki-search-input > ul > a :hover {
+.wiki-app__search > .wiki-search > .wiki-search-input > ul > a :hover {
   background-color: var(--wiki-search-light-gray) !important;
 }
 
-.wiki-app-search
+.wiki-app__search
   > .wiki-search
   > .wiki-search-input
   > ul
@@ -208,5 +208,10 @@ export default {
 .wiki-app > .wiki-footer > .wiki-footer-box > .wiki-footer-space-fill,
 .wiki-app > .wiki-footer > .wiki-footer-box > .wiki-footer-tips {
   display: none;
+}
+
+.wiki-app > .wiki-footer {
+  font-size: 0.1rem;
+  color: var(--wiki-description-gray);
 }
 </style>

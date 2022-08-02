@@ -1,7 +1,7 @@
 <template>
-  <div class="wiki-item-information">
-    <div class="wiki-item-title">{{ title }}</div>
-    <div class="wiki-item-description">{{ description }}</div>
+  <div class="wiki-information">
+    <div class="wiki-information__title">{{ title }}</div>
+    <div class="wiki-information__description">{{ description }}</div>
   </div>
 </template>
 
@@ -22,19 +22,19 @@ export default {
 </script>
 
 <style scoped>
-.wiki-item-information {
+.wiki-information {
   display: flex;
   flex-direction: column;
   margin: 1rem;
 }
 
-.wiki-item-title {
+.wiki-information__title {
   color: var(--wiki-title-black);
   font-size: 1.7rem;
   font-weight: 700;
 }
 
-.wiki-item-description {
+.wiki-information__description {
   color: var(--wiki-description-black);
   font-size: 0.8rem;
   font-weight: 400;

@@ -1,17 +1,12 @@
 <template>
   <div v-if="data" class="wiki-details">
-    <div v-if="infoKeys" class="wiki-detail-list">
+    <div v-if="infoKeys" class="wiki-details__list">
       <ul>
-        <li v-for="key of infoKeys" :key="key" class="wiki-detail-item">
-          <div class="wiki-detail-title">
-            <span
-              v-for="item of key.split('')"
-              :key="item"
-              class="wiki-detail-title-item"
-              >{{ item }}</span
-            >
+        <li v-for="key of infoKeys" :key="key" class="wiki-details__item">
+          <div class="wiki-details__title">
+            <span class="wiki-details__title--item">{{ key }}</span>
           </div>
-          <div class="wiki-detail-text">{{ data[key] }}</div>
+          <div class="wiki-details__text">{{ data[key] }}</div>
         </li>
       </ul>
     </div>
@@ -46,12 +41,12 @@ export default {
   margin-top: -2rem;
 }
 
-.wiki-detail-list {
+.wiki-details__list {
   font-size: 1.1rem;
   font-weight: 400;
 }
 
-.wiki-detail-list ul {
+.wiki-details__list ul {
   display: flex;
   flex-direction: column;
   margin: 1rem;
@@ -59,13 +54,13 @@ export default {
   list-style: none;
 }
 
-.wiki-detail-item {
+.wiki-details__item {
   position: relative;
   display: flex;
   justify-content: space-between;
 }
 
-.wiki-detail-title {
+.wiki-details__title {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -76,7 +71,7 @@ export default {
   max-width: 33.33%;
 }
 
-.wiki-detail-text {
+.wiki-details__text {
   margin-left: 0;
   color: var(--wiki-description-black);
   word-wrap: break-word;

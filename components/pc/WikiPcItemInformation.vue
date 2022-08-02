@@ -1,8 +1,12 @@
 <template>
-  <div class="wiki-item-information">
-    <div class="wiki-item-title">{{ title }}</div>
-    <div class="wiki-item-description">
-      <div v-for="item of descriptions" :key="item" class="wiki-description">
+  <div class="wiki-information">
+    <div class="wiki-information__title">{{ title }}</div>
+    <div class="wiki-information__description">
+      <div
+        v-for="item of descriptions"
+        :key="item"
+        class="wiki-information__description--item"
+      >
         {{ item }}
       </div>
     </div>
@@ -36,21 +40,21 @@ export default {
 </script>
 
 <style scoped>
-.wiki-item-information {
+.wiki-information {
   display: flex;
   flex-direction: column;
   margin: 1rem;
   margin-top: 2rem;
 }
 
-.wiki-item-title {
+.wiki-information__title {
   color: var(--wiki-title-black);
   font-size: 2.5rem;
   font-weight: 700;
 }
 
-.wiki-item-description {
-  color: var(--wiki-description-black);
+.wiki-information__description {
+  color: var(--wiki-information__description--item-black);
   font-size: 1rem;
   font-weight: 400;
 }

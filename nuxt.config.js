@@ -98,7 +98,7 @@ export default {
     publicPath: "https://wikioss.xhemj.work/public",
     // analyze: true,
     extractCSS: true,
-    profile: true,
+    // profile: true,
     plugins: [
       new webpack.BannerPlugin(
         [
@@ -111,15 +111,6 @@ export default {
         ].join("\n")
       ),
     ],
-    postcss: {
-      plugins: {
-        "postcss-url": {},
-        "postcss-nested": {},
-        "postcss-responsive-type": {},
-        "postcss-hexrgba": {},
-        "postcss-css-variables": {},
-      },
-    },
   },
 
   generate: {

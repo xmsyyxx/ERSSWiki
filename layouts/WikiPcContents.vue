@@ -1,10 +1,10 @@
 <template>
   <div class="wiki-contents">
     <WikiPcHeader />
-    <div class="wiki-body">
+    <div class="wiki-contents__body">
       <Nuxt />
     </div>
-    <div class="wiki-space-fill"></div>
+    <div class="wiki-contents__fill"></div>
     <WikiFooter />
     <WikiCommon />
   </div>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.wiki-body {
+.wiki-contents__body {
   text-align: left;
   padding-top: 60px;
   background-color: var(--wiki-common-white);
@@ -36,7 +36,7 @@ export default {
   height: 100%;
 }
 
-.wiki-space-fill {
+.wiki-contents__fill {
   width: 100%;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="wiki-error">
-    <div class="wiki-error-logo">
+    <div class="wiki-error__logo">
       <WikiLogo />
     </div>
-    <div class="wiki-error-tips">页面找不到啦~~</div>
-    <NuxtLink to="/" class="wiki-error-back">返回首页</NuxtLink>
+    <div class="wiki-error__tips">页面找不到啦~~</div>
+    <NuxtLink to="/" class="wiki-error__back">返回首页</NuxtLink>
   </div>
 </template>
 
@@ -46,14 +46,14 @@ export default {
   user-select: none;
 }
 
-.wiki-error-tips {
+.wiki-error__tips {
   margin-top: 10px;
   margin-bottom: 30px;
   font-weight: 700;
   font-size: 1rem;
 }
 
-.wiki-error-back {
+.wiki-error__back {
   font-weight: 700;
   font-size: 1rem;
 }

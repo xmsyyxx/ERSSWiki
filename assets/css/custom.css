@@ -36,7 +36,8 @@ body {
   font-weight: 500;
 }
 
-.nuxt-content p {
+.nuxt-content p,
+.nuxt-content ul {
   font-weight: 400;
   font-size: 1rem;
   color: var(--wiki-content-black);
@@ -190,8 +191,13 @@ body {
 
   @media only screen and (min-width: 500px) {
     .wiki-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
       max-width: var(--wiki-max-width);
       min-width: var(--wiki-min-width);
       height: 100%;

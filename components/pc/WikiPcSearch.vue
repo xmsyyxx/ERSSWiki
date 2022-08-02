@@ -1,6 +1,6 @@
 <template>
   <div class="wiki-search">
-    <div class="wiki-search-input">
+    <div class="wiki-search__input">
       <input
         v-model="searchQuery"
         type="search"
@@ -10,30 +10,30 @@
         @click="onClicnSearchInput"
         @blur="onInputBlur"
       />
-      <ul v-if="isStartSearch && articles.length" class="wiki-search-list">
+      <ul v-if="isStartSearch && articles.length" class="wiki-search__list">
         <NuxtLink
           v-for="article of articles"
           :key="article.title"
           :to="path + article.title"
         >
-          <div class="wiki-search-link" @click="isStartSearch = false">
-            <li class="wiki-search-item">
+          <div class="wiki-search__link" @click="isStartSearch = false">
+            <li class="wiki-search__item">
               <span>{{ article.title }}</span>
-              <div class="wiki-search-go-icon">
+              <div class="wiki-search__go--icon">
                 <IconEnter />
               </div>
             </li>
           </div>
         </NuxtLink>
       </ul>
-      <ul v-if="!articles.length && searchTips" class="wiki-search-list">
-        <li class="wiki-search-item-tips">{{ searchTips }}</li>
+      <ul v-if="!articles.length && searchTips" class="wiki-search__list">
+        <li class="wiki-search__item-tips">{{ searchTips }}</li>
       </ul>
       <ul
         v-else-if="isStartSearch && !articles.length && searchQuery"
-        class="wiki-search-list"
+        class="wiki-search__list"
       >
-        <li class="wiki-search-item-tips">无结果</li>
+        <li class="wiki-search__item-tips">无结果</li>
       </ul>
     </div>
   </div>
@@ -137,19 +137,19 @@ export default {
   justify-content: center;
 }
 
-.wiki-search-container {
+.wiki-search__container {
   display: block;
   position: relative;
   background-color: transparent;
 }
 
-.wiki-search-input {
+.wiki-search__input {
   height: 40px;
   margin: auto;
   width: 100%;
 }
 
-.wiki-search-input > input {
+.wiki-search__input > input {
   width: 100%;
   box-sizing: border-box;
   height: 2rem;
@@ -169,20 +169,20 @@ export default {
   transition-duration: 0.15s;
 }
 
-.wiki-search-input > input:focus,
-.wiki-search-input > input:hover {
+.wiki-search__input > input:focus,
+.wiki-search__input > input:hover {
   background-color: var(--wiki-common-white);
   border: 1px var(--wiki-search-gray) solid;
 }
 
-.wiki-search-input-icon {
+.wiki-search__input-icon {
   position: absolute;
   left: 1rem;
   top: 1rem;
   font-size: 1.5rem;
 }
 
-.wiki-search-list {
+.wiki-search__list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -195,7 +195,7 @@ export default {
   border-bottom: 1px solid var(--wiki-search-border-gray);
 }
 
-.wiki-search-item {
+.wiki-search__item {
   position: relative;
   display: flex;
   justify-content: flex-start;
@@ -203,23 +203,23 @@ export default {
   border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
-.wiki-search-item {
+.wiki-search__item {
   color: var(--wiki-search-black);
 }
 
-.wiki-search-go-icon {
+.wiki-search__go--icon {
   position: absolute;
   color: var(--wiki-content-black);
   right: 0;
 }
 
-.wiki-search-item-tips {
+.wiki-search__item-tips {
   position: relative;
   font-size: 1rem;
   border-bottom: 1px solid var(--wiki-suggest-border-gray);
 }
 
-.wiki-search-link {
+.wiki-search__link {
   width: 100%;
 }
 </style>

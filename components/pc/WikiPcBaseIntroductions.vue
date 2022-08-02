@@ -1,6 +1,10 @@
 <template>
-  <div v-if="data" class="wiki-base-introductions">
-    <p v-for="text of introductions" :key="text" class="wiki-introduction-text">
+  <div v-if="data" class="wiki-introductions">
+    <p
+      v-for="text of introductions"
+      :key="text"
+      class="wiki-introductions__text"
+    >
       {{ text }}
     </p>
   </div>
@@ -29,7 +33,7 @@ export default {
 </script>
 
 <style scoped>
-.wiki-base-introductions {
+.wiki-introductions {
   display: flex;
   flex-direction: column;
   margin: 1rem;

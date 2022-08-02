@@ -1,10 +1,13 @@
 <template>
   <div class="wiki-header">
-    <div class="wiki-header-nav">
-      <NuxtLink to="/" class="wiki-icon-home wiki--click--WikiHomeIcon">
+    <div class="wiki-header__nav">
+      <NuxtLink
+        to="/"
+        class="wiki-header__icon--home wiki--click--WikiHomeIcon"
+      >
         <IconHome />
       </NuxtLink>
-      <div class="wiki-logo-text">
+      <div class="wiki-header__logo--text">
         <NuxtLink to="/"> 耳斯百科 &middot; 开发版 </NuxtLink>
       </div>
       <WikiSearch />
@@ -49,11 +52,11 @@ export default {
   );
 }
 
-.wiki-logo-text > a {
+.wiki-header__logo--text > a {
   color: var(--wiki-content-black);
 }
 
-.wiki-header-nav {
+.wiki-header__nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -61,7 +64,7 @@ export default {
   align-items: center;
 }
 
-.wiki-icon-home {
+.wiki-header__icon--home {
   font-size: 1.5rem;
   width: 16.67%; /* 2/12 */
   text-align: center;
@@ -72,7 +75,7 @@ export default {
   display: none;
 }
 
-.wiki-logo-text {
+.wiki-header__logo--text {
   font-size: 1rem;
   font-weight: 700;
   width: 66.67%; /* 8/12 */
