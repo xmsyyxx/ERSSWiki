@@ -66,7 +66,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.wiki-status__listul {
+.wiki-status__list > ul {
   display: flex;
   flex-direction: column;
   margin: 1rem;

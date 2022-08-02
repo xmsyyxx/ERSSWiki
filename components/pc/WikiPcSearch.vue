@@ -7,8 +7,9 @@
         autocomplete="off"
         :placeholder="placeholder"
         class="wiki--click--WikiSearchInput"
-        @click="onClicnSearchInput"
+        :class="{ 'wiki-search__input--query': searchQuery }"
         @blur="onInputBlur"
+        @click="onClicnSearchInput"
       />
       <ul v-if="isStartSearch && articles.length" class="wiki-search__list">
         <NuxtLink

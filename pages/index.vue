@@ -6,7 +6,7 @@
       </div>
       <WikiPcSearch />
     </div>
-    <WikiFooter />
+    <WikiFooter is-home="true" />
   </div>
 </template>
 
@@ -96,18 +96,6 @@ export default {
   user-select: none;
 }
 
-.wiki-all-list {
-  display: none;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.wiki-development-tips {
-  font-size: 1rem;
-  float: right;
-}
-
 @media only screen and (max-width: 500px) {
   .wiki-app__logo {
     width: 100%;
@@ -139,20 +127,26 @@ export default {
 </style>
 
 <style>
-.wiki-app__search > .wiki-search > .wiki-search-input > input {
+.wiki-app__search > .wiki-search > .wiki-search__input > input {
   height: 50px !important;
-  background-color: var(--wiki-common-white) !important;
   font-size: 1.1rem !important;
   color: var(--wiki-content-black) !important;
-  border: 1px solid var(--wiki-description-gray) !important;
+  /* border: 1px solid var(--wiki-description-gray) !important; */
+  background-color: var(--wiki-search-mirror-gray) !important;
+  border: 1px solid var(--wiki-header-gray) !important;
 }
 
-.wiki-app__search > .wiki-search > .wiki-search-input > input:focus,
-.wiki-app__search > .wiki-search > .wiki-search-input > input:hover {
+.wiki-app__search > .wiki-search > .wiki-search__input > input:focus,
+.wiki-app__search > .wiki-search > .wiki-search__input > input:hover,
+.wiki-app__search
+  > .wiki-search
+  > .wiki-search__input
+  > input.wiki-search__input--query {
   color: var(--wiki-content-black) !important;
   border: 1px solid var(--wiki-description-gray) !important;
+  background-color: var(--wiki-common-white) !important;
 }
-.wiki-app__search > .wiki-search > .wiki-search-input > .wiki-search-list {
+.wiki-app__search > .wiki-search > .wiki-search__input > .wiki-search__list {
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
   border-bottom: 1px solid var(--wiki-suggest-border-gray) !important;
   background-color: var(--wiki-common-white) !important;
@@ -161,30 +155,30 @@ export default {
 
 .wiki-app__search
   > .wiki-search
-  > .wiki-search-input
+  > .wiki-search__input
   > ul
   > a
-  > .wiki-search-link
-  > .wiki-search-item,
-.wiki-app__search > .wiki-search > .wiki-search-input > ul > li {
+  > .wiki-search__link
+  > .wiki-search__item,
+.wiki-app__search > .wiki-search > .wiki-search__input > ul > li {
   border-bottom: none !important;
   justify-content: flex-start !important;
   margin: 1rem !important;
   font-size: 1.1rem;
 }
 
-.wiki-app__search > .wiki-search > .wiki-search-input > ul > a :hover {
+.wiki-app__search > .wiki-search > .wiki-search__input > ul > a :hover {
   background-color: var(--wiki-search-light-gray) !important;
 }
 
 .wiki-app__search
   > .wiki-search
-  > .wiki-search-input
+  > .wiki-search__input
   > ul
   > a
-  > .wiki-search-link
-  > .wiki-search-item
-  > .wiki-search-go-icon {
+  > .wiki-search__link
+  > .wiki-search__item
+  > .wiki-search__go--icon {
   display: none;
 }
 
@@ -198,15 +192,15 @@ export default {
   z-index: 1;
 }
 
-.wiki-app > .wiki-footer > .wiki-footer-box {
+.wiki-app > .wiki-footer > .wiki-footer__box {
   display: block;
   position: relative;
   padding: 20px 0;
   text-align: center;
 }
 
-.wiki-app > .wiki-footer > .wiki-footer-box > .wiki-footer-space-fill,
-.wiki-app > .wiki-footer > .wiki-footer-box > .wiki-footer-tips {
+.wiki-app > .wiki-footer > .wiki-footer__box > .wiki-footer__fill,
+.wiki-app > .wiki-footer > .wiki-footer__box > .wiki-footer__tips {
   display: none;
 }
 

@@ -1,5 +1,11 @@
 <template>
-  <div class="wiki-footer" :class="{ 'wiki-footer-bottom': !isScroll }">
+  <div
+    class="wiki-footer"
+    :class="{
+      'wiki-footer__bottom': !isScroll,
+      'wiki-footer__home': isHome,
+    }"
+  >
     <div class="wiki-footer__box">
       <div class="wiki-footer__copyright">
         <span>耳斯百科 - 开发版 v{{ version }}</span>
@@ -37,6 +43,12 @@ export default {
   components: {
     WikiLogo,
   },
+  props: {
+    isHome: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       isScroll: false,
@@ -47,10 +59,10 @@ export default {
     // 如果有滚动条
     // 则将 footer 放置于滚到底部的底部
     if (
-      document.querySelector(".wiki-contents__body") &&
+      !this.isHome &&
       document.querySelector(".wiki-contents__body").offsetHeight +
-        document.querySelector(".wiki-footer") &&
-      document.querySelector(".wiki-footer").offsetHeight > window.innerHeight
+        document.querySelector(".wiki-footer").offsetHeight >
+        window.innerHeight
     ) {
       this.isScroll = true;
     }
@@ -68,7 +80,7 @@ export default {
   font-size: 0.8rem;
 }
 
-.wiki-footer.wiki-footer-bottom {
+.wiki-footer.wiki-footer__bottom {
   position: absolute;
   bottom: 0;
   width: 100%;
