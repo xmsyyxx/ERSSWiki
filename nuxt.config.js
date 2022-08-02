@@ -25,12 +25,6 @@ const createSitemapRoutes = async () => {
       lastmod: post.updatedAt,
     });
     routes.push({
-      url: `/wiki/${post.slug}`,
-      changefreq: "weekly",
-      priority: 0.5,
-      lastmod: post.updatedAt,
-    });
-    routes.push({
       url: "/sitemap",
       changefreq: "daily",
       priority: 0.5,
@@ -61,7 +55,7 @@ export default {
       },
       {
         rel: "stylesheet",
-        href: "https://wikioss.xhemj.work/css/wikifonts.css",
+        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap",
       },
     ],
     script: [
