@@ -1,3 +1,4 @@
+const VERSION = "0.1.1-dev.8";
 const log = console.log;
 
 function onInstall() {
@@ -87,7 +88,7 @@ async function handleFetch(req) {
         });
 
         if (url.startsWith("https://wikioss.xhemj.work"))
-          url += "?t=" + new Date().getTime();
+          url += "?v=" + VERSION;
 
         fetch(url, {
           signal: controller.signal,
