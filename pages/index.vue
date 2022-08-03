@@ -6,7 +6,7 @@
       </div>
       <WikiPcSearch />
     </div>
-    <WikiFooter is-home="true" />
+    <WikiFooter :is-home="true" />
   </div>
 </template>
 
@@ -205,7 +205,7 @@ export default {
 }
 
 .wiki-app > .wiki-footer {
-  font-size: 0.1rem;
+  font-size: 0.5rem;
   color: var(--wiki-description-gray);
 }
 </style>
