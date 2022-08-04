@@ -30,6 +30,12 @@ for (let name of wikis) {
       expect(keys).toContain("description");
     });
 
+    it(`文件名与 title 相同`, () => {
+      const fileName = name.split(".")[0];
+      const title = frontMatter.title;
+      expect(fileName).toBe(title);
+    });
+
     it(`页头不包含不存在的值`, () => {
       const expectKeys = [
         "title",
