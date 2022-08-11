@@ -25,6 +25,13 @@ body {
   background-color: var(--wiki-scroll-white) !important;
 }
 
+p {
+  text-align: justify;
+  text-indent: 2em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
 .nuxt-content h2 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -196,8 +203,8 @@ body {
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
       max-width: var(--wiki-max-width);
       min-width: var(--wiki-min-width);
       height: 100%;
