@@ -49,6 +49,7 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
+  image-rendering: pixelated;
 }
 
 .wiki-picture__img,
