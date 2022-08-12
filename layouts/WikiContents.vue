@@ -34,10 +34,7 @@ export default {
 }
 
 .wiki-contents__fill {
-  width: 100%;
-  height: 0.7rem;
-  background-color: var(--wiki-footer-light-gray);
-  border: 0;
+  display: none;
 }
 
 @media only screen and (min-width: 500px) {
