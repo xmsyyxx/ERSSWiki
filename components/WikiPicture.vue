@@ -8,8 +8,13 @@
         target="_blank"
       >
         <picture class="wiki-picture__img wiki--click--WikiPicture">
-          <source type="image/webp" :srcset="src + '/thumb_webp'" />
-          <img :src="src + '/thumb'" :alt="title" :title="title" />
+          <source type="image/webp" :srcset="src + webpSuffix" />
+          <img
+            :src="src + normalSuffix"
+            :alt="title"
+            :title="title"
+            @load="onNormalLoad"
+          />
         </picture>
       </a>
       <label v-if="title" class="wiki-picture__description">
@@ -41,6 +46,18 @@ export default {
       default: "",
     },
   },
+  data() {
+    return {
+      normalSuffix: "/thumb",
+      webpSuffix: "/thumb_webp",
+    };
+  },
+  methods: {
+    onNormalLoad() {
+      this.normalSuffix = "/big";
+      this.webpSuffix = "/big_webp";
+    },
+  },
 };
 </script>
 
@@ -49,7 +66,7 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
-  image-rendering: pixelated;
+  /* image-rendering: pixelated; */
 }
 
 .wiki-picture__img,
