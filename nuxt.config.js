@@ -68,6 +68,7 @@ export default {
     ],
   },
 
+  // Deployment Targets: https://nuxtjs.org/docs/features/deployment-targets/
   target: "static",
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -147,6 +148,11 @@ export default {
       "markdown-it-deflist",
     ],
     runtime: true, // Support `$md()`
+  },
+
+  content: {
+    // Disable for security reason on CodeSandBox
+    liveEdit: false,
   },
 
   loading: {
