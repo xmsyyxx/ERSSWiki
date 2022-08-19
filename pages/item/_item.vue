@@ -1,5 +1,5 @@
 <template>
-  <article class="wiki-item">
+  <div class="wiki-item">
     <WikiPcItemInformation
       :title="WikiData.title"
       :description="WikiData.description"
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-  </article>
+  </div>
 </template>
 
 <script>

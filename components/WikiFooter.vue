@@ -113,7 +113,7 @@ export default {
 @media only screen and (max-width: 500px) {
   .wiki-footer {
     padding: 0 1rem;
-    font-size: 10px;
+    /* font-size: 10px; */
     background: var(--wiki-common-white);
     border-top: 0.7rem solid var(--wiki-footer-light-gray);
     text-align: center;

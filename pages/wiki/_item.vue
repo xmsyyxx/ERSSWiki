@@ -1,5 +1,5 @@
 <template>
-  <article class="wiki-item">
+  <div class="wiki-item">
     <WikiItemInformation
       :title="WikiData.title"
       :description="WikiData.description"
@@ -8,7 +8,7 @@
     <WikiPicture
       v-if="WikiData.img"
       :src="WikiData.img"
-      :alt="WikiData.title"
+      :title="WikiData.title"
     />
     <WikiBaseIntroductions
       v-if="WikiData.introduction"
@@ -19,7 +19,7 @@
     <div class="wiki-item__article">
       <nuxt-content :document="WikiData" tag="div" />
     </div>
-  </article>
+  </div>
 </template>
 
 <script>
