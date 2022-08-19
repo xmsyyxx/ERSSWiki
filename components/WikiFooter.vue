@@ -56,16 +56,28 @@ export default {
     };
   },
   mounted() {
-    // 如果有滚动条
-    // 则将 footer 放置于滚到底部的底部
-    if (
-      !this.isHome &&
-      document.querySelector(".wiki-contents__body").offsetHeight +
-        document.querySelector(".wiki-footer").offsetHeight >
-        window.innerHeight
-    ) {
-      this.isScroll = true;
+    if (!this.isHome) {
+      // 如果有滚动条
+      // 则将 footer 放置于滚到底部的底部
+      this.handleScrollBar();
+      const observer = new MutationObserver(this.handleScrollBar);
+      observer.observe(document.querySelector(".wiki-contents__body"), {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
     }
+  },
+  methods: {
+    handleScrollBar() {
+      if (
+        document.querySelector(".wiki-contents__body").offsetHeight +
+          document.querySelector(".wiki-footer").offsetHeight >
+        window.innerHeight
+      ) {
+        this.isScroll = true;
+      }
+    },
   },
 };
 </script>
