@@ -1,18 +1,19 @@
 {
   "name": "ersswiki",
-  "version": "0.1.2-dev.1",
+  "version": "0.1.4-dev.1+build.4",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate && npm run postcss",
+    "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
     "test": "jest",
-    "postcss": "postcss dist\\css\\*.css --no-map --use autoprefixer -d dist\\css"
+    "postcss": "postcss dist\\css\\*.css --no-map --use autoprefixer -d dist\\css",
+    "publish": "npm run generate && npm run postcss"
   },
   "dependencies": {
     "@nuxt/content": "^1.15.1",
@@ -33,6 +34,7 @@
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",
     "vue": "^2.6.14",
+    "vue-cool-lightbox": "^2.7.5",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"

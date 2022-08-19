@@ -205,7 +205,6 @@ export default {
 }
 
 .wiki-app > .wiki-footer {
-  font-size: 0.5rem;
   color: var(--wiki-description-gray);
 }
 </style>

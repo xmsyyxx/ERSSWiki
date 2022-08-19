@@ -44,14 +44,18 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "耳斯百科" },
-      { name: "format-detection", content: "telephone=no" },
+      { "http-equiv": "X-UA-Compatible", content: "IE=edge,chrome=1" },
+      { name: "description", content: "耳斯百科 - 厦门市音乐学校非官方百科网" },
+      {
+        name: "keywords",
+        content: "耳斯百科,厦门市音乐学校,耳斯名言,音乐学校",
+      },
+      { name: "theme-color", content: "#5676dc" },
     ],
     link: [
       {
-        rel: "icon",
-        type: "image/x-icon",
-        href: "https://baike.xmsyyxx.com/favicon.ico",
+        rel: "apple-touch-icon",
+        href: "https://wikioss.xhemj.work/static/logo/64x64.png",
       },
       {
         rel: "stylesheet",
@@ -70,6 +74,10 @@ export default {
 
   // Deployment Targets: https://nuxtjs.org/docs/features/deployment-targets/
   target: "static",
+
+  // TODO:
+  // 迫于 nuxt/content 静态构建后老是报错，所以暂时先取消 ssr
+  ssr: false,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -96,7 +104,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: "https://wikioss.xhemj.work/public",
+    publicPath: "https://wiki.xhemj.work",
     // analyze: true,
     extractCSS: true,
     // profile: true,
@@ -151,7 +159,6 @@ export default {
   },
 
   content: {
-    // Disable for security reason on CodeSandBox
     liveEdit: false,
   },
 
