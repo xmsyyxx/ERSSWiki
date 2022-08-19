@@ -3,20 +3,16 @@
     <div class="wiki-picture__fill"></div>
 
     <div class="wiki-picture__box">
-      <a
-        :href="'/image/' + src.split('/static/')[1].split('.')[0]"
-        target="_blank"
-      >
-        <picture class="wiki-picture__img wiki--click--WikiPicture">
-          <source type="image/webp" :srcset="src + webpSuffix" />
-          <img
-            :src="src + normalSuffix"
-            :alt="title"
-            :title="title"
-            @load="onNormalLoad"
-          />
-        </picture>
-      </a>
+      <picture class="wiki-picture__img wiki--click--WikiPicture">
+        <source type="image/webp" :srcset="src + webpSuffix" />
+        <img
+          :src="src + normalSuffix"
+          :alt="title"
+          :title="title"
+          @load="onNormalLoad"
+          @click="onClickPicture"
+        />
+      </picture>
       <label v-if="title" class="wiki-picture__description">
         <span class="wiki-picture__tips">
           <span class="wiki-picture__tips--icon"><IconUp /></span>
@@ -30,6 +26,19 @@
 
 <script>
 import IconUp from "./icons/IconUp.vue";
+
+function isSupportWebp() {
+  try {
+    return (
+      document
+        .createElement("canvas")
+        .toDataURL("image/webp", 0.5)
+        .indexOf("data:image/webp") === 0
+    );
+  } catch (err) {
+    return false;
+  }
+}
 
 export default {
   name: "WikiPicture",
@@ -56,6 +65,14 @@ export default {
     onNormalLoad() {
       this.normalSuffix = "/big";
       this.webpSuffix = "/big_webp";
+    },
+    onClickPicture() {
+      const url =
+        this.src + (isSupportWebp() ? this.webpSuffix : this.normalSuffix);
+      this.$nuxt.$emit("WikiFancyImage", {
+        src: url,
+        title: this.title,
+      });
     },
   },
 };

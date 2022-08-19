@@ -195,20 +195,8 @@ p {
   .footnote-backref {
     display: none;
   }
+}
 
-  @media only screen and (min-width: 500px) {
-    .wiki-item {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      max-width: var(--wiki-max-width);
-      min-width: var(--wiki-min-width);
-      height: 100%;
-      margin: auto;
-    }
-  }
+.cool-lightbox-caption p {
+  text-align: center !important;
 }

@@ -6,6 +6,7 @@
     </div>
     <div class="wiki-contents__fill"></div>
     <WikiFooter />
+    <WikiFancyImage />
     <WikiCommon />
   </div>
 </template>
@@ -14,6 +15,7 @@
 import WikiPcHeader from "../components/pc/WikiPcHeader.vue";
 import WikiCommon from "../components/WikiCommon.vue";
 import WikiFooter from "../components/WikiFooter.vue";
+import WikiFancyImage from "../components/WikiFancyImage.vue";
 
 export default {
   name: "WikiPcContents",
@@ -21,6 +23,7 @@ export default {
     WikiPcHeader,
     WikiFooter,
     WikiCommon,
+    WikiFancyImage,
   },
 };
 </script>
