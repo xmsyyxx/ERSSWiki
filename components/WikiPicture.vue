@@ -57,14 +57,14 @@ export default {
   },
   data() {
     return {
-      normalSuffix: "/thumb",
-      webpSuffix: "/thumb_webp",
+      normalSuffix: "/thumb.jpg",
+      webpSuffix: "/thumb.webp",
     };
   },
   methods: {
     onNormalLoad() {
-      this.normalSuffix = "/big";
-      this.webpSuffix = "/big_webp";
+      this.normalSuffix = "normal.jpg";
+      this.webpSuffix = "/normal.webp";
     },
     onClickPicture() {
       const url =
@@ -86,10 +86,18 @@ export default {
   /* image-rendering: pixelated; */
 }
 
-.wiki-picture__img,
-.wiki-picture__img > source,
-.wiki-picture__img > img {
+.wiki-picture__box {
+  display: flex;
+  flex-direction: column;
+}
+
+.wiki-picture__img {
   width: 100%;
+}
+
+.wiki-picture__img > img {
+  max-width: 100%;
+  width: auto;
   cursor: pointer;
 }
 
