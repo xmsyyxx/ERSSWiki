@@ -25,6 +25,17 @@ body {
   background-color: var(--wiki-scroll-white) !important;
 }
 
+.wiki-icon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+}
+
 p {
   text-align: justify;
   text-indent: 2em;

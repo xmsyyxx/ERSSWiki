@@ -21,16 +21,3 @@ export default {
   name: "IconTag",
 };
 </script>
-
-<style>
-.wiki-icon {
-  display: inline-block;
-  color: inherit;
-  font-style: normal;
-  line-height: 0;
-  text-align: center;
-  text-transform: none;
-  vertical-align: -0.125em;
-  text-rendering: optimizeLegibility;
-}
-</style>
