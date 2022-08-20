@@ -1,41 +1,75 @@
 <template>
   <div class="wiki-video">
-    <iframe
-      :src="videoSrc"
-      class="wiki-video__iframe"
-      allowfullscreen="true"
-      msallowfullscreen="true"
-      webkitallowfullscreen="true"
-      mozallowfullscreen="true"
-      oallowfullscreen="true"
-      allowtransparency="true"
-      scrolling="no"
-      width="100%"
-      height="200px"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-      referrerPolicy="unsafe-url"
-    ></iframe>
+    <div class="wiki-video__box"></div>
+    <label v-if="title && isLoad" class="wiki-video__description">
+      <span class="wiki-video__tips">
+        <span class="wiki-video__tips--icon"><IconUp /></span>
+        {{ title }}
+      </span>
+    </label>
   </div>
 </template>
 
 <script>
+import IconUp from "./icons/IconUp.vue";
+
+function loadJs(src, opt) {
+  return new Promise(function (resolve) {
+    const script = document.createElement("script");
+    const head = document.getElementsByTagName("head")[0];
+    script.type = "text/javascript";
+    script.src = src;
+    if (opt) {
+      for (const key in opt) {
+        script[key] = opt[key];
+      }
+    }
+    if (script.addEventListener) {
+      script.addEventListener("load", resolve, false);
+    } else if (script.attachEvent) {
+      script.attachEvent("onreadystatechange", () => {
+        const target = window.event.srcElement;
+        if (target.readyState === "loaded") resolve();
+      });
+    }
+    head.appendChild(script);
+  });
+}
+
 export default {
   name: "WikiVideo",
+  components: {
+    IconUp,
+  },
   props: {
     vcode: {
       type: String,
       required: true,
     },
-  },
-  computed: {
-    videoSrc() {
-      return (
-        "https://player.dogecloud.com/web/player.html?vcode=" +
-        this.vcode +
-        "&userId=1943&autoPlay=false&inFrame=true&vtype=10"
-      );
+    title: {
+      type: String,
+      default: "",
     },
+  },
+  data() {
+    return {
+      isLoad: false,
+    };
+  },
+  mounted() {
+    loadJs("https://player.dogecloud.com/js/loader.js").then(() => {
+      const player =
+        window.DogePlayer &&
+        new window.DogePlayer({
+          container: document.querySelector(".wiki-video__box"),
+          userId: 1943,
+          vcode: this.vcode,
+          autoPlay: false,
+        });
+      player.on("infoLoaded", () => {
+        this.isLoad = true;
+      });
+    });
   },
 };
 </script>
@@ -43,19 +77,35 @@ export default {
 <style scoped>
 .wiki-video {
   text-align: center;
+  margin: 0.5rem 0;
 }
 
-.wiki-video__iframe {
+.wiki-video__box {
   width: 100%;
 }
 
 @media only screen and (min-width: 500px) {
-  .wiki-video__iframe {
+  .wiki-video__box {
     width: auto;
     height: auto;
     min-width: calc(var(--wiki-min-width) * 0.69);
     min-height: 350px;
     padding: 0.5rem;
   }
+}
+
+.wiki-video__description {
+  display: flex;
+  flex-direction: column;
+  color: var(--wiki-description-gray);
+  font-size: 0.8rem;
+}
+
+.wiki-video__tips {
+  line-height: 0;
+}
+
+.wiki-video__tips--icon {
+  font-size: 1rem;
 }
 </style>
