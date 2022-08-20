@@ -120,7 +120,12 @@ export default {
   },
   beforeMount() {
     const onresize = () => {
-      const path = window.location.pathname.split("/").pop();
+      // const path = window.location.pathname.split("/").pop();
+      const path =
+        window.location.pathname.split("/").pop() ||
+        window.location.pathname.split("/")[
+          window.location.pathname.split("/").length - 2
+        ];
       if (window.outerWidth < 500 && path) {
         return window.location.replace(`/wiki/${path}`);
       }
