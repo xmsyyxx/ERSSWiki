@@ -13,7 +13,7 @@
           @click="onClickPicture"
         />
       </picture>
-      <label v-if="title" class="wiki-picture__description">
+      <label v-if="title && isLoad" class="wiki-picture__description">
         <span class="wiki-picture__tips">
           <span class="wiki-picture__tips--icon"><IconUp /></span>
           {{ title }}
@@ -59,12 +59,14 @@ export default {
     return {
       normalSuffix: "/thumb.jpg",
       webpSuffix: "/thumb.webp",
+      isLoad: false,
     };
   },
   methods: {
     onNormalLoad() {
-      this.normalSuffix = "normal.jpg";
+      this.normalSuffix = "/normal.jpg";
       this.webpSuffix = "/normal.webp";
+      this.isLoad = true;
     },
     onClickPicture() {
       const url =
@@ -102,8 +104,14 @@ export default {
 }
 
 .wiki-picture__description {
+  display: flex;
+  flex-direction: column;
   color: var(--wiki-description-gray);
   font-size: 0.8rem;
+}
+
+.wiki-picture__tips {
+  line-height: 0;
 }
 
 .wiki-picture__tips--icon {
@@ -114,17 +122,19 @@ export default {
   font-size: 0.5rem;
 }
 
+.wiki-picture__img > img {
+  max-height: 300px;
+}
+
 @media only screen and (min-width: 500px) {
   .nuxt-content > .wiki-picture {
     display: flex;
     flex-direction: row;
     max-width: 100%;
-    margin-bottom: -2rem;
   }
 
   .nuxt-content > .wiki-picture > .wiki-picture__box {
     width: 40%;
-    max-height: 300px;
   }
 
   .nuxt-content > .wiki-picture > .wiki-picture__fill {
