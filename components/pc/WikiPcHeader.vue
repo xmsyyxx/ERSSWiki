@@ -7,10 +7,10 @@
             <source
               type="image/webp"
               srcset="
-                https://wikioss.xhemj.work/static/logo/v2/256x256.png/normal.webp
+                https://wikioss.xhemj.work/static/logo/v3/512x512.png/normal.webp
               "
             />
-            <img src="https://wikioss.xhemj.work/static/logo/v2/256x256.png" />
+            <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
           </picture>
         </div>
         <NuxtLink to="/"> 耳斯百科 </NuxtLink>
@@ -52,7 +52,6 @@ export default {
   user-select: none;
   z-index: 1000;
   width: 100vw;
-  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--wiki-border-gray);
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);

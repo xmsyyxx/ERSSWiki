@@ -6,10 +6,10 @@
           <source
             type="image/webp"
             srcset="
-              https://wikioss.xhemj.work/static/logo/v2/256x256.png/normal.webp
+              https://wikioss.xhemj.work/static/logo/v3/512x512.png/normal.webp
             "
           />
-          <img src="https://wikioss.xhemj.work/static/logo/v2/256x256.png" />
+          <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
         </picture>
       </div>
       <span class="wiki-logo__text">耳斯百科</span>
@@ -37,12 +37,24 @@ export default {
   height: auto;
 }
 
+.wiki-logo__text {
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 500px) {
+  .wiki-logo__image img {
+    width: 160px;
+    min-width: 8rem;
+    height: auto;
+  }
+
+  .wiki-logo__text {
+    font-size: 2.5rem;
+  }
+}
+
 .wiki-logo__tips {
   font-size: 0.5rem;
   float: right;
-}
-
-.wiki-logo__text {
-  font-size: 2rem;
 }
 </style>
