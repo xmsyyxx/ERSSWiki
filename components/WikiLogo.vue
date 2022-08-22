@@ -1,10 +1,17 @@
 <template>
   <div class="wiki-logo">
     <div class="wiki-logo__box">
-      <img
-        class="wiki-logo__image"
-        src="https://wikioss.xhemj.work/static/logo/64x64.png"
-      />
+      <div class="wiki-logo__item">
+        <picture class="wiki-logo__image">
+          <source
+            type="image/webp"
+            srcset="
+              https://wikioss.xhemj.work/static/logo/v2/256x256.png/normal.webp
+            "
+          />
+          <img src="https://wikioss.xhemj.work/static/logo/v2/256x256.png" />
+        </picture>
+      </div>
       <span class="wiki-logo__text">耳斯百科</span>
       <div class="wiki-logo__tips">开发版</div>
     </div>
@@ -21,13 +28,13 @@ export default {
 .wiki-logo__box {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
-  font-size: 40px;
+  font-size: 30px;
   user-select: none;
 }
 
-.wiki-logo__image {
-  width: 64px;
-  height: 64px;
+.wiki-logo__image img {
+  width: 10rem;
+  height: auto;
 }
 
 .wiki-logo__tips {

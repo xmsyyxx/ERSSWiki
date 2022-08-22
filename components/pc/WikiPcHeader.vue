@@ -3,10 +3,15 @@
     <div class="wiki-header__nav">
       <div class="wiki-header__logo wiki--click--WikiLogo">
         <div class="wiki-header__logo--item">
-          <img
-            src="https://wikioss.xhemj.work/static/logo/64x64.png"
-            title="耳斯百科"
-          />
+          <picture class="wiki-logo__image">
+            <source
+              type="image/webp"
+              srcset="
+                https://wikioss.xhemj.work/static/logo/v2/256x256.png/normal.webp
+              "
+            />
+            <img src="https://wikioss.xhemj.work/static/logo/v2/256x256.png" />
+          </picture>
         </div>
         <NuxtLink to="/"> 耳斯百科 </NuxtLink>
       </div>
@@ -88,8 +93,8 @@ export default {
   margin-left: 0.5rem;
 }
 
-.wiki-header__logo--item img {
-  width: 32px;
+.wiki-logo__image img {
+  width: 40px;
 }
 
 .wiki-header__tips {
