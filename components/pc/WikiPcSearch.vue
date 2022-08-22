@@ -150,6 +150,10 @@ export default {
   width: 100%;
 }
 
+.wiki-search__link:hover {
+  background-color: var(--wiki-search-light-gray);
+}
+
 .wiki-search__input > input {
   width: 100%;
   box-sizing: border-box;

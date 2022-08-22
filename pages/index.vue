@@ -61,7 +61,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 75vh;
+  min-height: 70vh;
   max-width: var(--wiki-max-width);
   min-width: var(--wiki-min-width);
   margin: auto;
@@ -170,10 +170,6 @@ export default {
   padding: 0.25rem 0 !important;
   margin: 0.5rem 1rem !important;
   font-size: 1.1rem !important;
-}
-
-.wiki-app__search > .wiki-search > .wiki-search__input > ul > a :hover {
-  background-color: var(--wiki-search-light-gray) !important;
 }
 
 .wiki-app__search
