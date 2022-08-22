@@ -33,16 +33,16 @@ export default {
 }
 
 .wiki-logo__image img {
-  width: 10rem;
+  width: 8rem;
   height: auto;
 }
 
 .wiki-logo__tips {
-  font-size: 16px;
+  font-size: 0.5rem;
   float: right;
 }
 
 .wiki-logo__text {
-  font-size: 40px;
+  font-size: 2rem;
 }
 </style>

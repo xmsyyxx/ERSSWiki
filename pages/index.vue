@@ -61,7 +61,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 75vh;
   max-width: var(--wiki-max-width);
   min-width: var(--wiki-min-width);
   margin: auto;
@@ -84,7 +84,7 @@ export default {
   font-weight: 700;
   text-align: center;
   margin-top: -120px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   max-width: var(--wiki-max-width);
   min-width: var(--wiki-min-width);
 }
@@ -117,7 +117,7 @@ export default {
     max-width: none;
     min-width: 0;
     justify-content: flex-start;
-    padding-top: 200px;
+    padding-top: 150px;
     padding-left: 1rem;
     padding-right: 1rem;
     min-height: auto;
@@ -127,8 +127,12 @@ export default {
 </style>
 
 <style>
+/**
+ * 首页 搜索框 样式
+ * TODO: 优化代码
+ */
 .wiki-app__search > .wiki-search > .wiki-search__input > input {
-  height: 50px !important;
+  height: 3rem !important;
   font-size: 1.1rem !important;
   color: var(--wiki-content-black) !important;
   /* border: 1px solid var(--wiki-description-gray) !important; */
@@ -163,8 +167,9 @@ export default {
 .wiki-app__search > .wiki-search > .wiki-search__input > ul > li {
   border-bottom: none !important;
   justify-content: flex-start !important;
-  margin: 1rem !important;
-  font-size: 1.1rem;
+  padding: 0.25rem 0 !important;
+  margin: 0.5rem 1rem !important;
+  font-size: 1.1rem !important;
 }
 
 .wiki-app__search > .wiki-search > .wiki-search__input > ul > a :hover {

@@ -100,6 +100,9 @@ export default {
     };
   },
   beforeMount() {
+    /**
+     * 电脑端调整
+     */
     const onresize = () => {
       // const path = window.location.pathname.split("/").pop();
       const path =
