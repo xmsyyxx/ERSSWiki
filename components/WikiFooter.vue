@@ -8,11 +8,14 @@
   >
     <div class="wiki-footer__box">
       <div class="wiki-footer__copyright">
-        <span>耳斯百科 - 开发版 v{{ version }}</span>
+        <span>耳斯百科 v{{ version }}</span>
+        <span>构建时间：{{ buildTime }}</span>
         <span>{{ copyright }}</span>
-        <hr />
-        <span>此网站为 厦门市音乐学校 <strong>非官方</strong>百科网， </span>
-        <span
+        <hr v-if="!isHome" />
+        <span v-if="!isHome"
+          >此网站为 厦门市音乐学校 <strong>非官方</strong>百科网，
+        </span>
+        <span v-if="!isHome"
           >如需了解更多学校详情，请点此
           <a
             href="https://xmyyxx.xmedu.cn/"
@@ -22,8 +25,8 @@
           >。</span
         >
       </div>
-      <div class="wiki-footer__fill"></div>
-      <div class="wiki-footer__tips">
+      <div v-if="!isHome" class="wiki-footer__fill"></div>
+      <div v-if="!isHome" class="wiki-footer__tips">
         <span class="wiki-footer__logo">
           <WikiLogo />
         </span>
@@ -50,6 +53,7 @@ export default {
     return {
       isScroll: false,
       version: require("~/package.json").version,
+      buildTime: require("~/assets/build.json").time,
       copyright: `Copyright © 2021-${new Date().getFullYear()} Xhemj & 耳斯工作室`,
     };
   },
@@ -110,7 +114,7 @@ export default {
 .wiki-footer__copyright {
   display: flex;
   flex-direction: column;
-  line-height: 2;
+  line-height: 1.5;
   margin: auto 0;
 }
 
@@ -127,6 +131,10 @@ export default {
     background: var(--wiki-common-white);
     border-top: 0.7rem solid var(--wiki-footer-light-gray);
     text-align: center;
+  }
+
+  .wiki-footer.wiki-footer__home {
+    border-top: none;
   }
 
   .wiki-footer__box {

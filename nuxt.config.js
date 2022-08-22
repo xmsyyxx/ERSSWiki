@@ -1,3 +1,6 @@
+import rename from "./scripts/rename";
+import writeInfo from "./scripts/writeInfo";
+
 const webpack = require("webpack");
 const version = require("./package.json").version;
 const dayjs = require("dayjs");
@@ -81,6 +84,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "normalize.css",
     "./assets/css/global.css",
     "./assets/css/variables.css",
     // "github-markdown-css/github-markdown.css",
@@ -142,6 +146,15 @@ export default {
         }
       });
       return routes;
+    },
+  },
+
+  hooks: {
+    "build:before": () => {
+      writeInfo();
+    },
+    "generate:done": () => {
+      rename();
     },
   },
 
