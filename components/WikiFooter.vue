@@ -9,10 +9,7 @@
     <div class="wiki-footer__box">
       <div class="wiki-footer__copyright">
         <span>耳斯百科 - 开发版 v{{ version }}</span>
-        <span>
-          Copyright &copy; 2021-{{ new Date().getFullYear() }} Xhemj & ERSS
-          工作室
-        </span>
+        <span>{{ copyright }}</span>
         <hr />
         <span>此网站为 厦门市音乐学校 <strong>非官方</strong>百科网， </span>
         <span
@@ -53,6 +50,7 @@ export default {
     return {
       isScroll: false,
       version: require("~/package.json").version,
+      copyright: `Copyright © 2021-${new Date().getFullYear()} Xhemj & 耳斯工作室`,
     };
   },
   mounted() {
@@ -86,7 +84,6 @@ export default {
 .wiki-footer {
   background-color: var(--wiki-footer-gray);
   font-weight: 400;
-  /* user-select: none; */
   z-index: -100;
   padding: 0 50px;
   font-size: 0.8rem;
@@ -103,7 +100,7 @@ export default {
   justify-content: space-between;
   flex-direction: row;
   color: var(--wiki-content-black);
-  padding: 40px 0;
+  padding: 30px 0;
   width: 100%;
   max-width: var(--wiki-max-width);
   min-width: var(--wiki-min-width);
@@ -114,6 +111,7 @@ export default {
   display: flex;
   flex-direction: column;
   line-height: 2;
+  margin: auto 0;
 }
 
 .wiki-footer__tips {
@@ -139,6 +137,15 @@ export default {
   }
 
   .wiki-footer__tips {
+    display: none;
+  }
+}
+</style>
+
+<style>
+@media only screen and (min-width: 500px) {
+  .wiki-footer__logo > .wiki-logo > .wiki-logo__box > .wiki-logo__text,
+  .wiki-footer__logo > .wiki-logo > .wiki-logo__box > .wiki-logo__tips {
     display: none;
   }
 }
