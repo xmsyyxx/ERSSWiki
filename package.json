@@ -59,7 +59,8 @@
     "postcss-nested": "^5.0.6",
     "postcss-responsive-type": "^1.0.0",
     "postcss-url": "^10.1.3",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "puppeteer": "^16.2.0"
   },
   "browserslist": [
     "> 1%",
