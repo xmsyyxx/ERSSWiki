@@ -6,7 +6,7 @@ const version = require("./package.json").version;
 const dayjs = require("dayjs");
 require("dayjs/locale/zh-cn");
 dayjs.locale("zh-cn");
-const time = dayjs().format("YYYY-M-D HH:mm:ss");
+const time = dayjs().format("YYYY-MM-DD HH:mm:ss");
 
 const createSitemapRoutes = async () => {
   let routes = [];
