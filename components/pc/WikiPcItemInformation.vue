@@ -54,7 +54,7 @@ export default {
 }
 
 .wiki-information__description {
-  color: var(--wiki-information__description--item-black);
+  color: var(--wiki-description-black);
   font-size: 1rem;
   font-weight: 400;
 }
