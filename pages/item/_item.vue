@@ -129,10 +129,16 @@ export default {
         window.location.pathname.split("/")[
           window.location.pathname.split("/").length - 2
         ];
-      if (window.outerWidth < 500 && path) {
+      const isPreFetchBot =
+        window.URLSearchParams &&
+        !!(
+          new window.URLSearchParams(window.location.search).get("bot") === "1"
+        );
+      if (!isPreFetchBot && path && window.outerWidth < 500) {
         return window.location.replace(`/wiki/${path}`);
       }
     };
+
     const onhashchange = () => {
       document.documentElement.scrollTop =
         document.documentElement.scrollTop - 60;
