@@ -208,4 +208,8 @@ export default {
 .wiki-app > .wiki-footer {
   color: var(--wiki-description-gray);
 }
+
+.wiki-search__link {
+  line-height: 1.5 !important;
+}
 </style>
