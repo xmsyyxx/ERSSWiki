@@ -150,6 +150,11 @@ export default {
   width: 100%;
 }
 
+.wiki-search__link {
+  width: 100%;
+  line-height: 44px;
+}
+
 .wiki-search__link:hover {
   background-color: var(--wiki-search-light-gray);
 }
@@ -222,9 +227,5 @@ export default {
   position: relative;
   font-size: 1rem;
   border-bottom: 1px solid var(--wiki-suggest-border-gray);
-}
-
-.wiki-search__link {
-  width: 100%;
 }
 </style>
