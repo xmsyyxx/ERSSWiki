@@ -17,33 +17,35 @@
           class="wiki--click--WikiSearchInput"
           @blur="onInputBlur"
         />
-        <ul v-if="articles.length" class="wiki-search__list">
-          <NuxtLink
-            v-for="article of articles"
-            :key="article.title"
-            :to="'/wiki/' + article.title"
+        <div class="wiki-search__suggest">
+          <ul v-if="articles.length" class="wiki-search__list">
+            <NuxtLink
+              v-for="article of articles"
+              :key="article.title"
+              :to="'/wiki/' + article.title"
+            >
+              <div class="wiki-search__link" @click="isStartSearch = false">
+                <li class="wiki-search__item">
+                  <span>{{ article.title }}</span>
+                  <div class="wiki-search__go-icon">
+                    <IconEnter />
+                  </div>
+                </li>
+              </div>
+            </NuxtLink>
+          </ul>
+          <ul v-if="!articles.length && searchTips" class="wiki-search__list">
+            <li class="wiki-search__item--tips">{{ searchTips }}</li>
+          </ul>
+          <ul
+            v-else-if="isStartSearch && !articles.length && searchQuery"
+            class="wiki-search__list"
           >
-            <div class="wiki-search__link" @click="isStartSearch = false">
-              <li class="wiki-search__item">
-                <span>{{ article.title }}</span>
-                <div class="wiki-search__go-icon">
-                  <IconEnter />
-                </div>
-              </li>
-            </div>
-          </NuxtLink>
-        </ul>
-        <ul v-if="!articles.length && searchTips" class="wiki-search__list">
-          <li class="wiki-search__item--tips">{{ searchTips }}</li>
-        </ul>
-        <ul
-          v-else-if="isStartSearch && !articles.length && searchQuery"
-          class="wiki-search__list"
-        >
-          <li class="wiki-search__item--tips">无结果</li>
-        </ul>
-        <div class="wiki-search__return" @click="isStartSearch = false">
-          返回
+            <li class="wiki-search__item--tips">无结果</li>
+          </ul>
+          <div class="wiki-search__return" @click="isStartSearch = false">
+            返回
+          </div>
         </div>
       </div>
     </div>
@@ -165,6 +167,11 @@ export default {
   transform: translateY(-0.5rem);
   border-radius: 15px;
   border: 1px solid var(--wiki-search-border-gray);
+}
+
+.wiki-search__suggest {
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .wiki-search__list {
