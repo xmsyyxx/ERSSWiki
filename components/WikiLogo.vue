@@ -1,20 +1,18 @@
 <template>
   <div class="wiki-logo">
     <div class="wiki-logo__box">
-      <div class="wiki-logo__item">
-        <picture class="wiki-logo__image">
-          <source
-            type="image/webp"
-            srcset="
-              https://wikioss.xhemj.work/static/logo/v3/512x512.png/normal.webp
-            "
-          />
-          <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
-        </picture>
-      </div>
-      <span class="wiki-logo__text">耳斯百科</span>
-      <div class="wiki-logo__tips">开发版</div>
+      <picture class="wiki-logo__image">
+        <source
+          type="image/webp"
+          srcset="
+            https://wikioss.xhemj.work/static/logo/v3/512x512.png/normal.webp
+          "
+        />
+        <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
+      </picture>
     </div>
+    <span class="wiki-logo__text">耳斯百科</span>
+    <div class="wiki-logo__tips">开发版</div>
   </div>
 </template>
 
