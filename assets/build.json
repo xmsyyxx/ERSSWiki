@@ -1,6 +1,6 @@
 {
     "name": "ersswiki",
     "build": "static",
-    "time": "2022-08-22 17:18:08",
-    "version": "0.1.6-dev.3"
+    "time": "2022-08-23 21:01:00",
+    "version": "0.1.6-dev.3+build.3"
 }
