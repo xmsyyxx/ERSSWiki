@@ -84,7 +84,7 @@ export default {
         .sortBy("case_insensitive__title", "asc")
         .fetch();
       if (!this.isFetchContent) {
-        window.umami.trackEvent("WikiContent", "fetch");
+        this.$umami.trackEvent("WikiContent", "fetch");
         this.isFetchContent = true;
       }
       this.searchTips = "";
