@@ -128,6 +128,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/css/variables.scss";
+@import "@/assets/css/mixins.scss";
 
 .wiki-search {
   font-size: 1.5rem;
@@ -181,17 +182,14 @@ export default {
   transition-duration: 0.15s;
 }
 
+.wiki-search__input > input {
+  @include wiki-input-icon($wiki-search-mirror-gray);
+}
+
 .wiki-search__input > input:focus,
 .wiki-search__input > input:hover {
   background-color: $wiki-common-white;
   border: 1px $wiki-search-gray solid;
-}
-
-.wiki-search__input-icon {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  font-size: 1.5rem;
 }
 
 .wiki-search__list {

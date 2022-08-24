@@ -127,6 +127,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/css/variables.scss";
+@import "@/assets/css/mixins.scss";
 
 .wiki-search {
   font-size: 1.5rem;
@@ -169,6 +170,10 @@ export default {
   transform: translateY(-0.5rem);
   border-radius: 15px;
   border: 1px solid $wiki-search-border-gray;
+}
+
+.wiki-search__input > input {
+  @include wiki-input-icon($wiki-common-white);
 }
 
 .wiki-search__suggest {
