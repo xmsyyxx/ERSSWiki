@@ -39,30 +39,32 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-header {
   display: block;
   position: fixed;
   top: 0;
   left: 0;
   height: 60px;
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   line-height: 44px;
-  background-color: var(--wiki-header-mirror-gray);
+  background-color: $wiki-header-mirror-gray;
   user-select: none;
   z-index: 1000;
   width: 100vw;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--wiki-border-gray);
+  border-bottom: 1px solid $wiki-border-gray;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
   border-image: linear-gradient(
-    var(--wiki-header-light-gray),
-    var(--wiki-header-light-gray)
+    $wiki-header-light-gray,
+    $wiki-header-light-gray
   );
 }
 
 .wiki-header__logo > a {
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
 }
 
 .wiki-header__nav {
@@ -70,8 +72,8 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  max-width: var(--wiki-max-width);
-  min-width: var(--wiki-min-width);
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
   justify-content: space-around;
   height: 100%;
   margin: 0 auto;

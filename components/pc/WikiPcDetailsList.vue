@@ -35,14 +35,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-details {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  border: 1px solid var(--wiki-card-border-gray);
+  border: 1px solid $wiki-card-border-gray;
   border-radius: 5px;
-  background-color: var(--wiki-card-gray);
+  background-color: $wiki-card-gray;
 }
 
 .wiki-details__tips {
@@ -50,7 +52,7 @@ export default {
   font-weight: 700;
   margin-left: 1rem;
   margin-top: 1rem;
-  color: var(--wiki-description-black);
+  color: $wiki-description-black;
 }
 
 .wiki-details__list {
@@ -83,19 +85,19 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   float: left;
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   word-wrap: break-word;
   width: 33.33%; /* 4/12 */
   max-width: 33.33%;
-  border-bottom: 1px solid var(--wiki-border-gray);
+  border-bottom: 1px solid $wiki-border-gray;
 }
 
 .wiki-details__text {
   margin-left: 0;
-  color: var(--wiki-description-black);
+  color: $wiki-description-black;
   word-wrap: break-word;
   width: 66.67%; /* 8/12 */
   max-width: 66.67%;
-  border-bottom: 1px solid var(--wiki-border-gray);
+  border-bottom: 1px solid $wiki-border-gray;
 }
 </style>

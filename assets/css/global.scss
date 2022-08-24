@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import "@/assets/css/variables.scss";
+
 /* From: ant-design-vue/lib/style/index.css */
 
 html,
@@ -15,7 +18,7 @@ input::-ms-reveal {
 *::before,
 *::after {
   box-sizing: border-box;
-  border: 0 solid var(--wiki-border-gray);
+  border: 0 solid $wiki-border-gray;
 }
 html {
   font-family: sans-serif;
@@ -50,7 +53,7 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-variant: tabular-nums;
   line-height: 1.5;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   font-feature-settings: "tnum";
 }
 [tabindex="-1"]:focus {
@@ -141,7 +144,7 @@ sup {
   top: -0.5em;
 }
 a {
-  color: var(--wiki-link-blue);
+  color: $wiki-link-blue;
   text-decoration: none;
   background-color: transparent;
   outline: none;
@@ -150,10 +153,10 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 a:hover {
-  color: var(--wiki-link-light-blue);
+  color: $wiki-link-light-blue;
 }
 a:active {
-  color: var(--wiki-link-deep-blue);
+  color: $wiki-link-deep-blue;
 }
 a:active,
 a:hover {
@@ -309,13 +312,13 @@ template {
 }
 mark {
   padding: 0.2em;
-  background-color: var(--wiki-mark-yellow);
+  background-color: $wiki-mark-yellow;
 }
 ::-moz-selection {
-  color: var(--wiki-common-white);
-  background: var(--wiki-link-blue);
+  color: $wiki-common-white;
+  background: $wiki-link-blue;
 }
 ::selection {
-  color: var(--wiki-common-white);
-  background: var(--wiki-link-light-blue);
+  color: $wiki-common-white;
+  background: $wiki-link-light-blue;
 }

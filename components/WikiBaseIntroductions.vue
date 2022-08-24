@@ -32,13 +32,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-introductions {
   display: flex;
   flex-direction: column;
   margin: 1rem;
   font-weight: 400;
   font-size: 1rem;
-  color: var(--wiki-description-black);
+  color: $wiki-description-black;
 }
 </style>

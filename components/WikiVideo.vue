@@ -74,7 +74,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-video {
   text-align: center;
   margin: 0.5rem 0;
@@ -88,7 +90,7 @@ export default {
   .wiki-video__box {
     width: auto;
     height: auto;
-    min-width: calc(var(--wiki-min-width) * 0.69);
+    min-width: calc($wiki-min-width * 0.69);
     min-height: 350px;
     padding: 0.5rem;
   }
@@ -97,7 +99,7 @@ export default {
 .wiki-video__description {
   display: flex;
   flex-direction: column;
-  color: var(--wiki-description-gray);
+  color: $wiki-description-gray;
   font-size: 0.8rem;
 }
 

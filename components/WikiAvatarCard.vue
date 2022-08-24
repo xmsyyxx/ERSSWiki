@@ -21,7 +21,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-avatar {
   display: flex;
   justify-content: flex-start;
@@ -36,11 +38,11 @@ export default {
   width: 350px;
   height: 80px;
   text-decoration: none;
-  color: var(--wiki-description-black);
+  color: $wiki-description-black;
   font-weight: 500;
   padding: 12px;
   border-radius: 12px;
-  background-color: var(--wiki-card-gray);
+  background-color: $wiki-card-gray;
   box-sizing: border-box;
 }
 

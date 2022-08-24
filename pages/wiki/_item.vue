@@ -131,7 +131,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-item__article {
   display: flex;
   flex-direction: column;
@@ -141,7 +143,7 @@ export default {
 .wiki-item__fill {
   width: 100%;
   height: 0.7rem;
-  background-color: var(--wiki-footer-light-gray);
+  background-color: $wiki-footer-light-gray;
   border: 0;
 }
 </style>

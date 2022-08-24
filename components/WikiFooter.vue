@@ -84,12 +84,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--wiki-footer-gray);
+  background-color: $wiki-footer-gray;
   font-weight: 400;
   z-index: -100;
   padding: 0 50px;
@@ -104,11 +106,11 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   padding: 20px 0;
   width: 100%;
-  max-width: var(--wiki-max-width);
-  min-width: var(--wiki-min-width);
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
   margin: auto;
 }
 
@@ -129,8 +131,8 @@ export default {
   .wiki-footer {
     padding: 0 1rem;
     /* font-size: 10px; */
-    background: var(--wiki-common-white);
-    border-top: 0.7rem solid var(--wiki-footer-light-gray);
+    background: $wiki-common-white;
+    border-top: 0.7rem solid $wiki-footer-light-gray;
     text-align: center;
   }
 

@@ -125,12 +125,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-search {
   font-size: 1.5rem;
   width: 16.67%; /* 2/12 */
   text-align: center;
-  color: var(--wiki-search-black);
+  color: $wiki-search-black;
   z-index: 100;
 }
 .wiki-search__container {
@@ -140,7 +142,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   min-height: 100vh;
 }
 
@@ -148,7 +150,7 @@ export default {
   margin-left: 1rem;
   margin-right: 1rem;
   height: 2.5rem;
-  background: var(--wiki-common-white);
+  background: $wiki-common-white;
   margin-top: 1rem;
 }
 
@@ -157,7 +159,7 @@ export default {
   box-sizing: border-box;
   height: 2.2rem;
   font-size: 1rem;
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   outline: 0;
   margin-bottom: 1rem;
   margin-top: 0;
@@ -166,7 +168,7 @@ export default {
   padding-top: 0;
   transform: translateY(-0.5rem);
   border-radius: 15px;
-  border: 1px solid var(--wiki-search-border-gray);
+  border: 1px solid $wiki-search-border-gray;
 }
 
 .wiki-search__suggest {
@@ -178,35 +180,35 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid var(--wiki-search-border-gray);
+  border-bottom: 1px solid $wiki-search-border-gray;
 }
 
 .wiki-search__item {
   position: relative;
   display: flex;
   font-size: 1rem;
-  border-bottom: 1px solid var(--wiki-suggest-border-gray);
+  border-bottom: 1px solid $wiki-suggest-border-gray;
 }
 
 .wiki-search__item {
-  color: var(--wiki-search-black);
+  color: $wiki-search-black;
 }
 
 .wiki-search__go-icon {
   position: absolute;
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   right: 0;
 }
 
 .wiki-search__return {
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   font-size: 1rem;
 }
 
 .wiki-search__item--tips {
   position: relative;
   font-size: 1rem;
-  border-bottom: 1px solid var(--wiki-suggest-border-gray);
+  border-bottom: 1px solid $wiki-suggest-border-gray;
 }
 
 .wiki-search__link {

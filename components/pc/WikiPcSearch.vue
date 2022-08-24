@@ -126,12 +126,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-search {
   font-size: 1.5rem;
   width: 33.33%; /* 8/24 */
   text-align: center;
-  color: var(--wiki-search-black);
+  color: $wiki-search-black;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -156,7 +158,7 @@ export default {
 }
 
 .wiki-search__link:hover {
-  background-color: var(--wiki-search-light-gray);
+  background-color: $wiki-search-light-gray;
 }
 
 .wiki-search__input > input {
@@ -164,7 +166,7 @@ export default {
   box-sizing: border-box;
   height: 2rem;
   font-size: 0.8rem;
-  color: var(--wiki-search-black);
+  color: $wiki-search-black;
   outline: 0;
   margin-bottom: 0;
   padding-left: 0.8rem;
@@ -172,8 +174,8 @@ export default {
   padding-top: 0;
   transform: translateY(-0.5rem);
   border-radius: 4px;
-  background-color: var(--wiki-search-mirror-gray);
-  border: 1px var(--wiki-header-gray) solid;
+  background-color: $wiki-search-mirror-gray;
+  border: 1px $wiki-header-gray solid;
 
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.15s;
@@ -181,8 +183,8 @@ export default {
 
 .wiki-search__input > input:focus,
 .wiki-search__input > input:hover {
-  background-color: var(--wiki-common-white);
-  border: 1px var(--wiki-search-gray) solid;
+  background-color: $wiki-common-white;
+  border: 1px $wiki-search-gray solid;
 }
 
 .wiki-search__input-icon {
@@ -196,13 +198,13 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   padding: 1rem;
   padding-top: 0;
   overflow-y: auto;
   max-height: 250px;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
-  border-bottom: 1px solid var(--wiki-search-border-gray);
+  border-bottom: 1px solid $wiki-search-border-gray;
 }
 
 .wiki-search__item {
@@ -210,22 +212,22 @@ export default {
   display: flex;
   justify-content: flex-start;
   font-size: 1rem;
-  border-bottom: 1px solid var(--wiki-suggest-border-gray);
+  border-bottom: 1px solid $wiki-suggest-border-gray;
 }
 
 .wiki-search__item {
-  color: var(--wiki-search-black);
+  color: $wiki-search-black;
 }
 
 .wiki-search__go--icon {
   position: absolute;
-  color: var(--wiki-content-black);
+  color: $wiki-content-black;
   right: 0;
 }
 
 .wiki-search__item-tips {
   position: relative;
   font-size: 1rem;
-  border-bottom: 1px solid var(--wiki-suggest-border-gray);
+  border-bottom: 1px solid $wiki-suggest-border-gray;
 }
 </style>

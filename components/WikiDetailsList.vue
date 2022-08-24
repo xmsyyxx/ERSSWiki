@@ -34,7 +34,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-details {
   display: flex;
   flex-direction: column;
@@ -65,7 +67,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   float: left;
-  color: var(--wiki-subtitle-black);
+  color: $wiki-subtitle-black;
   word-wrap: break-word;
   width: 33.33%; /* 4/12 */
   max-width: 33.33%;
@@ -73,7 +75,7 @@ export default {
 
 .wiki-details__text {
   margin-left: 0;
-  color: var(--wiki-description-black);
+  color: $wiki-description-black;
   word-wrap: break-word;
   width: 66.67%; /* 8/12 */
   max-width: 66.67%;

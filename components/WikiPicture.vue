@@ -80,7 +80,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-picture {
   display: flex;
   flex-direction: column;
@@ -106,7 +108,7 @@ export default {
 .wiki-picture__description {
   display: flex;
   flex-direction: column;
-  color: var(--wiki-description-gray);
+  color: $wiki-description-gray;
   font-size: 0.8rem;
 }
 

@@ -21,7 +21,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-information {
   display: flex;
   flex-direction: column;
@@ -29,13 +31,13 @@ export default {
 }
 
 .wiki-information__title {
-  color: var(--wiki-title-black);
+  color: $wiki-title-black;
   font-size: 1.7rem;
   font-weight: 700;
 }
 
 .wiki-information__description {
-  color: var(--wiki-description-black);
+  color: $wiki-description-black;
   font-size: 0.8rem;
   font-weight: 400;
 }

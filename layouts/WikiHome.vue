@@ -16,9 +16,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-body {
   text-align: left;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
 }
 </style>

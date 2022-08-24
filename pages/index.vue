@@ -48,10 +48,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-app {
   text-align: left;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   text-align: center;
   margin: auto;
 }
@@ -62,8 +64,8 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 70vh;
-  max-width: var(--wiki-max-width);
-  min-width: var(--wiki-min-width);
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
   margin: auto;
 }
 
@@ -85,8 +87,8 @@ export default {
   text-align: center;
   margin-top: -120px;
   margin-bottom: 40px;
-  max-width: var(--wiki-max-width);
-  min-width: var(--wiki-min-width);
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
 }
 
 .wiki-app__logo {
@@ -126,7 +128,9 @@ export default {
 }
 </style>
 
-<style>
+<style lang="scss">
+@import "@/assets/css/variables.scss";
+
 /**
  * 首页 搜索框 样式
  * TODO: 优化代码
@@ -134,10 +138,10 @@ export default {
 .wiki-app__search > .wiki-search > .wiki-search__input > input {
   height: 3rem !important;
   font-size: 1.1rem !important;
-  color: var(--wiki-content-black) !important;
-  /* border: 1px solid var(--wiki-description-gray) !important; */
-  background-color: var(--wiki-search-mirror-gray) !important;
-  border: 1px solid var(--wiki-header-gray) !important;
+  color: $wiki-content-black !important;
+  /* border: 1px solid $wiki-description-gray !important; */
+  background-color: $wiki-search-mirror-gray !important;
+  border: 1px solid $wiki-header-gray !important;
 }
 
 .wiki-app__search > .wiki-search > .wiki-search__input > input:focus,
@@ -146,14 +150,14 @@ export default {
   > .wiki-search
   > .wiki-search__input
   > input.wiki-search__input--query {
-  color: var(--wiki-content-black) !important;
-  border: 1px solid var(--wiki-description-gray) !important;
-  background-color: var(--wiki-common-white) !important;
+  color: $wiki-content-black !important;
+  border: 1px solid $wiki-description-gray !important;
+  background-color: $wiki-common-white !important;
 }
 .wiki-app__search > .wiki-search > .wiki-search__input > .wiki-search__list {
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
-  border-bottom: 1px solid var(--wiki-suggest-border-gray) !important;
-  background-color: var(--wiki-common-white) !important;
+  border-bottom: 1px solid $wiki-suggest-border-gray !important;
+  background-color: $wiki-common-white !important;
   z-index: 100;
 }
 
@@ -198,7 +202,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   z-index: 1;
 }
 
@@ -215,6 +219,6 @@ export default {
 }
 
 .wiki-app > .wiki-footer {
-  color: var(--wiki-description-gray);
+  color: $wiki-description-gray;
 }
 </style>

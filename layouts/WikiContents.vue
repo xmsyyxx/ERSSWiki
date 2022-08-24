@@ -28,11 +28,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-contents__body {
   text-align: left;
   padding-top: 44px;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   word-break: break-word;
 }
 

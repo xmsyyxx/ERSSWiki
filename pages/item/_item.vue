@@ -151,12 +151,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-item {
   display: flex;
   flex-direction: column;
-  max-width: var(--wiki-max-width);
-  min-width: var(--wiki-min-width);
+  max-width: $wiki-max-width;
+  min-width: $wiki-min-width;
   height: 100%;
   margin: 0 auto;
 }

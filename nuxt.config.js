@@ -89,10 +89,9 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     "normalize.css",
-    "./assets/css/global.css",
-    "./assets/css/variables.css",
+    "./assets/css/global.scss",
     // "github-markdown-css/github-markdown.css",
-    "./assets/css/custom.css",
+    "./assets/css/custom.scss",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

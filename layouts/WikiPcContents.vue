@@ -28,7 +28,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/assets/css/variables.scss";
+
 .wiki-contents__body {
   text-align: left;
   padding-top: 60px;
