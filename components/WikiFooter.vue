@@ -2,7 +2,7 @@
   <div
     class="wiki-footer"
     :class="{
-      'wiki-footer__bottom': !isScroll,
+      'wiki-footer__scroll': isScroll,
       'wiki-footer__home': isHome,
     }"
   >
@@ -86,6 +86,9 @@ export default {
 
 <style scoped>
 .wiki-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: var(--wiki-footer-gray);
   font-weight: 400;
   z-index: -100;
@@ -93,10 +96,8 @@ export default {
   font-size: 0.8rem;
 }
 
-.wiki-footer.wiki-footer__bottom {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.wiki-footer.wiki-footer__scroll {
+  position: relative;
 }
 
 .wiki-footer__box {
@@ -104,7 +105,7 @@ export default {
   justify-content: space-between;
   flex-direction: row;
   color: var(--wiki-content-black);
-  padding: 30px 0;
+  padding: 20px 0;
   width: 100%;
   max-width: var(--wiki-max-width);
   min-width: var(--wiki-min-width);
