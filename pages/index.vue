@@ -183,6 +183,15 @@ export default {
   display: none;
 }
 
+.wiki-app__search
+  > .wiki-search
+  > .wiki-search__input
+  > .wiki-search__list
+  > a
+  > .wiki-search__link {
+  line-height: 1.5 !important;
+}
+
 .wiki-app > .wiki-footer {
   position: absolute;
   width: 100%;
@@ -207,9 +216,5 @@ export default {
 
 .wiki-app > .wiki-footer {
   color: var(--wiki-description-gray);
-}
-
-.wiki-search__link {
-  line-height: 1.5 !important;
 }
 </style>
