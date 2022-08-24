@@ -187,7 +187,8 @@ export default {
 }
 
 .wiki-search__input > input:focus,
-.wiki-search__input > input:hover {
+.wiki-search__input > input:hover,
+.wiki-search__input > input.wiki-search__input--query {
   background-color: $wiki-common-white;
   border: 1px $wiki-search-gray solid;
 }
