@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html {{ HTML_ATTRS }}>
+  <head {{ HEAD_ATTRS }}>
+    {{ HEAD }}
+  </head>
+  <body {{ BODY_ATTRS }}>
+    {{ APP }}
+    <script>
+      const onresize = () => {
+        const pathname = window.location.pathname;
+        const search = window.location.search;
+        const isPcMode = window.outerWidth > 500;
+        const path =
+          pathname.split("/").pop() ||
+          pathname.split("/")[pathname.split("/").length - 2];
+        const pagename = pathname.match(/\/(item|wiki)\//)[0];
+        const isPreFetchBot =
+          window.URLSearchParams &&
+          !!(new window.URLSearchParams(search).get("bot") === "1");
+        if (!isPreFetchBot) {
+          if (pagename === "/item/" && !isPcMode) {
+            window.location.replace("/wiki/" + path + search);
+          } else if (pagename === "/wiki/" && isPcMode) {
+            window.location.replace("/item/" + path + search);
+          }
+        }
+      };
+      onresize();
+      window.addEventListener("resize", onresize);
+    </script>
+  </body>
+</html>

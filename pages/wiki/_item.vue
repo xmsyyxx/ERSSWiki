@@ -100,32 +100,10 @@ export default {
     };
   },
   beforeMount() {
-    /**
-     * 电脑端调整
-     */
-    const onresize = () => {
-      // const path = window.location.pathname.split("/").pop();
-      const path =
-        window.location.pathname.split("/").pop() ||
-        window.location.pathname.split("/")[
-          window.location.pathname.split("/").length - 2
-        ];
-      const isPreFetchBot =
-        window.URLSearchParams &&
-        !!(
-          new window.URLSearchParams(window.location.search).get("bot") === "1"
-        );
-      if (!isPreFetchBot && path && window.outerWidth > 500) {
-        return window.location.replace(`/item/${path}`);
-      }
-    };
     const onhashchange = () => {
       document.documentElement.scrollTop =
         document.documentElement.scrollTop - 44;
     };
-    onresize();
-    // onhashchange();
-    window.addEventListener("resize", onresize);
     window.addEventListener("hashchange", onhashchange);
   },
 };
