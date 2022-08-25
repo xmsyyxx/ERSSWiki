@@ -4,7 +4,13 @@
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-details__item">
           <div class="wiki-details__title">
-            <span class="wiki-details__title--item">{{ key }}</span>
+            <span
+              v-for="item of key"
+              :key="item"
+              class="wiki-details__title--item"
+            >
+              {{ item }}
+            </span>
           </div>
           <div class="wiki-details__text">{{ data[key] }}</div>
         </li>
@@ -65,12 +71,12 @@ export default {
 .wiki-details__title {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   float: left;
   color: $wiki-subtitle-black;
   word-wrap: break-word;
-  width: 33.33%; /* 4/12 */
-  max-width: 33.33%;
+  max-width: 33.33%; /* 4/12 */
+  min-width: 4em;
 }
 
 .wiki-details__text {
