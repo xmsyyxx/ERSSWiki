@@ -13,7 +13,10 @@
         const path =
           pathname.split("/").pop() ||
           pathname.split("/")[pathname.split("/").length - 2];
-        const pagename = pathname.match(/\/(item|wiki)\//)[0];
+        const pagename =
+          pathname.match(/\/(item|wiki)\//) &&
+          pathname.match(/\/(item|wiki)\//)[0];
+        if (!pagename) return;
         const isPreFetchBot =
           window.URLSearchParams &&
           !!(new window.URLSearchParams(search).get("bot") === "1");
