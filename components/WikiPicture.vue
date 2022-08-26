@@ -9,6 +9,7 @@
           :src="src + normalSuffix"
           :alt="title"
           :title="title"
+          :class="{ 'wiki-picture__clickable': clickable }"
           @load="onNormalLoad"
           @click="onClickPicture"
         />
@@ -54,6 +55,10 @@ export default {
       type: String,
       default: "",
     },
+    clickable: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -69,6 +74,7 @@ export default {
       this.isLoad = true;
     },
     onClickPicture() {
+      if (!this.clickable) return;
       const url =
         this.src + (isSupportWebp() ? this.webpSuffix : this.normalSuffix);
       this.$nuxt.$emit("WikiFancyImage", {
@@ -102,6 +108,9 @@ export default {
 .wiki-picture__img > img {
   max-width: 100%;
   width: auto;
+}
+
+.wiki-picture__clickable {
   cursor: pointer;
 }
 
