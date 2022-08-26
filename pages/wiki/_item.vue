@@ -60,12 +60,12 @@ export default {
       link: [
         {
           rel: "canonical",
-          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
+          href: `https://www.erssbk.com/item/${this.slug}`,
         },
         {
           rel: "alternate",
           media: "only screen and (min-width: 500px)",
-          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
+          href: `https://www.erssbk.com/item/${this.slug}`,
         },
       ],
       meta: [
