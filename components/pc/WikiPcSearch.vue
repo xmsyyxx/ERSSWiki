@@ -82,7 +82,7 @@ export default {
       this.$nuxt.$loading.finish();
       query = query.toLocaleLowerCase();
       search = search.filter((content) => {
-        if (content.title.toString().toLocaleLowerCase().includes(query)) {
+        if (String(content.title).toLocaleLowerCase().includes(query)) {
           // console.log("匹配");
           return content;
         }
@@ -141,56 +141,48 @@ export default {
   justify-content: center;
 }
 
-.wiki-search__container {
-  display: block;
-  position: relative;
-  background-color: transparent;
-}
-
 .wiki-search__input {
   height: 40px;
   margin: auto;
   width: 100%;
+
+  & > input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 2rem;
+    font-size: 0.8rem;
+    color: $wiki-search-black;
+    outline: 0;
+    margin-bottom: 0;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0;
+    transform: translateY(-0.5rem);
+    border-radius: 4px;
+    background-color: $wiki-search-mirror-gray;
+    border: 1px $wiki-header-gray solid;
+
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+
+    @include wiki-input-icon($wiki-search-mirror-gray);
+
+    &:focus,
+    &:hover,
+    &.wiki-search__input--query {
+      background-color: $wiki-common-white;
+      border: 1px $wiki-search-gray solid;
+    }
+  }
 }
 
 .wiki-search__link {
   width: 100%;
   line-height: 44px;
-}
 
-.wiki-search__link:hover {
-  background-color: $wiki-search-light-gray;
-}
-
-.wiki-search__input > input {
-  width: 100%;
-  box-sizing: border-box;
-  height: 2rem;
-  font-size: 0.8rem;
-  color: $wiki-search-black;
-  outline: 0;
-  margin-bottom: 0;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  padding-top: 0;
-  transform: translateY(-0.5rem);
-  border-radius: 4px;
-  background-color: $wiki-search-mirror-gray;
-  border: 1px $wiki-header-gray solid;
-
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.15s;
-}
-
-.wiki-search__input > input {
-  @include wiki-input-icon($wiki-search-mirror-gray);
-}
-
-.wiki-search__input > input:focus,
-.wiki-search__input > input:hover,
-.wiki-search__input > input.wiki-search__input--query {
-  background-color: $wiki-common-white;
-  border: 1px $wiki-search-gray solid;
+  &:hover {
+    background-color: $wiki-search-light-gray;
+  }
 }
 
 .wiki-search__list {
@@ -212,9 +204,6 @@ export default {
   justify-content: flex-start;
   font-size: 1rem;
   border-bottom: 1px solid $wiki-suggest-border-gray;
-}
-
-.wiki-search__item {
   color: $wiki-search-black;
 }
 

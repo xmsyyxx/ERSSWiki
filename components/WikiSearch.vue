@@ -93,7 +93,7 @@ export default {
       this.$nuxt.$loading.finish();
       query = query.toLocaleLowerCase();
       search = search.filter((content) => {
-        if (content.title.toString().toLocaleLowerCase().includes(query)) {
+        if (String(content.title).toLocaleLowerCase().includes(query)) {
           // console.log("匹配");
           return content;
         }
@@ -136,6 +136,7 @@ export default {
   color: $wiki-search-black;
   z-index: 100;
 }
+
 .wiki-search__container {
   display: block;
   position: absolute;
