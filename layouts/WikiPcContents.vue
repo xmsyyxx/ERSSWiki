@@ -4,6 +4,7 @@
     <div class="wiki-contents__body">
       <Nuxt />
     </div>
+    <WikiDetailPopups />
     <div class="wiki-contents__fill"></div>
     <WikiFooter />
     <WikiFancyImage />
@@ -16,6 +17,7 @@ import WikiPcHeader from "../components/pc/WikiPcHeader.vue";
 import WikiCommon from "../components/WikiCommon.vue";
 import WikiFooter from "../components/WikiFooter.vue";
 import WikiFancyImage from "../components/WikiFancyImage.vue";
+import WikiDetailPopups from "../components/WikiDetailPopups.vue";
 
 export default {
   name: "WikiPcContents",
@@ -24,6 +26,7 @@ export default {
     WikiFooter,
     WikiCommon,
     WikiFancyImage,
+    WikiDetailPopups,
   },
 };
 </script>
