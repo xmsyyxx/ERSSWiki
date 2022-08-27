@@ -3,7 +3,10 @@
     <div class="wiki-picture__fill"></div>
 
     <div class="wiki-picture__box">
-      <picture class="wiki-picture__img wiki--click--WikiPicture">
+      <picture
+        class="wiki-picture__img"
+        :class="{ 'wiki--click--WikiPicture': clickable }"
+      >
         <source type="image/webp" :srcset="src + webpSuffix" />
         <img
           :src="src + normalSuffix"
