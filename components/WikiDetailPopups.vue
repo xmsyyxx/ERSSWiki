@@ -12,7 +12,10 @@
     @mouseenter="isMouseEnterModule = true"
     @mouseleave="onLeaveModule"
   >
-    <div class="wiki-popups__arrow"></div>
+    <div
+      class="wiki-popups__arrow"
+      :class="'wiki-arrow__' + arrowPosition"
+    ></div>
     <div class="wiki-popups__module">
       <div class="wiki-popups__text">
         <p>
@@ -27,7 +30,6 @@
 </template>
 
 <script>
-import debounce from "lodash/debounce";
 import WikiPicture from "./WikiPicture.vue";
 
 export default {
@@ -43,14 +45,24 @@ export default {
       isFadeIn: false,
       isFadeOut: false,
       isMouseEnterModule: false,
-
+      arrowPosition: "top", // TODO: 弹窗可根据位置选择上下展示
       targetText: "",
       wikiName: "",
       wikiDescription: "",
       wikiImg: "",
+
+      timerWaitOpen: null,
+      timerWaitClose: null,
     };
   },
   watch: {
+    isMouseEnterModule() {
+      if (this.isMouseEnterModule) {
+        clearTimeout(this.timerWaitClose);
+      } else {
+        clearTimeout(this.timerWaitOpen);
+      }
+    },
     async isShow() {
       if (!this.isShow) return;
       const name = this.targetText;
@@ -71,14 +83,11 @@ export default {
             .replace(/<WikiVideo(.*?)><\/WikiVideo>/g, "") // 去除视频
             .replace(/\[(.*?)\]\((.*?)\)/g, "$1") // 去除链接
             .replace(/<(.*?)>/g, "") // 去除html标签
-            .replace(/ ?TODO ?/g, "")
-        : ""; // 去除TODO
+            .replace(/ ?TODO ?/g, "") // 去除TODO
+        : "";
 
       let description =
-        WikiData.introduction ||
-        rawWikiText ||
-        WikiData.description ||
-        "百科信息获取失败";
+        WikiData.introduction || rawWikiText || "百科信息获取失败";
 
       if (description.length > 100) {
         description = description.substring(0, 100) + "...";
@@ -96,46 +105,76 @@ export default {
   },
   mounted() {
     Array.from(document.querySelectorAll("p > a")).forEach((element) => {
-      element.onmouseenter = debounce(this.openPopups, 50);
-      element.onmouseleave = debounce(this.closePopups, 50);
+      // 绑定点击事件，
+      // 执行开启和关闭都延时，
+      // 时间过后若鼠标仍在上面才显示弹窗。
+      element.onmouseenter = (e) => {
+        this.isMouseEnterModule = true;
+        this.timerWaitOpen = setTimeout(() => {
+          if (this.isMouseEnterModule) {
+            this.openPopups(e);
+          }
+        }, 350);
+      };
+      element.onmouseleave = (e) => {
+        this.isMouseEnterModule = false;
+        this.timerWaitClose = setTimeout(() => {
+          if (!this.isMouseEnterModule) {
+            this.closePopups(e);
+          }
+        }, 350);
+      };
     });
   },
   methods: {
-    openPopups(e) {
-      e.preventDefault();
-      if (this.isShow) return;
-
-      const linkElement = e.path[0];
-      const left = linkElement.offsetLeft;
-      const top = linkElement.offsetTop;
-
-      this.targetText = linkElement.innerText;
-      this.left = left;
-      this.top = top + 30;
-      this.wikiName = "";
-      this.wikiDescription = "";
-      this.wikiImg = "";
-      this.isShow = true;
-
-      this.isFadeIn = true;
-      setTimeout(() => {
-        this.isFadeIn = false;
-      }, 300);
-    },
-    closePopups(e) {
+    async openPopups(e) {
       e && e.preventDefault();
-      if (!this.isShow || this.isMouseEnterModule) return;
+      if (this.isShow) {
+        await this.closePopups();
+      }
 
-      this.isFadeOut = true;
-      setTimeout(() => {
-        this.isShow = false;
-        this.isFadeOut = false;
-      }, 200);
+      return new Promise((resolve) => {
+        const linkElement = e.path[0];
+        const left = linkElement.offsetLeft;
+        const top = linkElement.offsetTop;
+
+        this.targetText = linkElement.innerText;
+        this.left = left;
+        this.top = top + 30;
+        this.wikiName = "";
+        this.wikiDescription = "";
+        this.wikiImg = "";
+        this.isShow = true;
+
+        this.isFadeIn = true;
+        setTimeout(() => {
+          this.isFadeIn = false;
+          resolve();
+        }, 300);
+
+        this.$umami.trackEvent("WikiPopups", "show");
+      });
+    },
+    closePopups() {
+      return new Promise((resolve) => {
+        if (!this.isShow || this.isMouseEnterModule) return;
+
+        this.isFadeOut = true;
+        setTimeout(() => {
+          this.isShow = false;
+          this.isFadeOut = false;
+          resolve();
+        }, 200);
+      });
     },
     onLeaveModule() {
       if (this.isShow) {
         this.isMouseEnterModule = false;
-        setTimeout(this.closePopups, 50);
+        this.timerWaitClose = setTimeout(() => {
+          if (!this.isMouseEnterModule) {
+            this.closePopups();
+          }
+        }, 350);
       }
     },
   },
@@ -149,7 +188,7 @@ export default {
   display: none;
   position: absolute;
   background: $wiki-common-white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 20px;
   min-width: 300px;
   color: $wiki-description-black;
@@ -198,11 +237,19 @@ export default {
   $arrow-margin-left: 10px;
   border: $arrow-height solid transparent;
   border-radius: 0;
-  border-bottom-color: #fff;
   width: 0;
   position: absolute;
   left: $arrow-margin-left;
-  top: calc($arrow-height * -2);
+
+  &.wiki-arrow__top {
+    border-bottom-color: #fff;
+    top: calc($arrow-height * -2);
+  }
+
+  &.wiki-arrow__bottom {
+    border-top-color: #fff;
+    bottom: calc($arrow-height * -2);
+  }
 }
 
 .wiki-popups__module {
@@ -228,7 +275,8 @@ export default {
 .wiki-popups__img {
   display: flex;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
   margin-bottom: 10px;
+  margin-top: -10px;
 }
 </style>
