@@ -8,7 +8,7 @@
       'wiki-popups__fadein': isFadeIn,
       'wiki-popups__fadeout': isFadeOut,
     }"
-    :style="{ left: left + 'px', top: top + 'px' }"
+    :style="{ left: left, top: top, bottom: bottom }"
     @mouseenter="isMouseEnterModule = true"
     @mouseleave="onLeaveModule"
   >
@@ -39,8 +39,9 @@ export default {
   },
   data() {
     return {
-      left: 0,
-      top: 0,
+      left: "",
+      top: "",
+      bottom: "",
       isShow: false,
       isFadeIn: false,
       isFadeOut: false,
@@ -110,17 +111,22 @@ export default {
       // 时间过后若鼠标仍在上面才显示弹窗。
       element.onmouseenter = (e) => {
         this.isMouseEnterModule = true;
-        this.timerWaitOpen = setTimeout(() => {
-          if (this.isMouseEnterModule) {
+        this.timerWaitOpen = setTimeout(async () => {
+          const nowElementTargetText = e.path[0].textContent;
+          // 防止在等待时鼠标移动到别的链接去
+          if (this.targetText && this.targetText !== nowElementTargetText) {
+            await this.closePopups(true); // 强制关闭当前弹窗
             this.openPopups(e);
+          } else if (this.isMouseEnterModule) {
+            return this.openPopups(e);
           }
         }, 350);
       };
-      element.onmouseleave = (e) => {
+      element.onmouseleave = () => {
         this.isMouseEnterModule = false;
         this.timerWaitClose = setTimeout(() => {
           if (!this.isMouseEnterModule) {
-            this.closePopups(e);
+            return this.closePopups();
           }
         }, 350);
       };
@@ -138,9 +144,24 @@ export default {
         const left = linkElement.offsetLeft;
         const top = linkElement.offsetTop;
 
+        // 计算弹窗位置
+        const scroll = window.scrollY;
+        const targetPosition = top - scroll;
+        const windowHeight = window.innerHeight;
+        // 过了一半多的屏幕则改变弹窗位置
+        this.arrowPosition =
+          targetPosition > windowHeight / 1.5 ? "bottom" : "top";
+
+        this.left = left + "px";
+        if (this.arrowPosition === "top") {
+          this.top = top + 30 + "px";
+          this.bottom = "auto";
+        } else if (this.arrowPosition === "bottom") {
+          this.top = "auto";
+          this.bottom = window.innerHeight - targetPosition + 5 + "px";
+        }
+
         this.targetText = linkElement.innerText;
-        this.left = left;
-        this.top = top + 30;
         this.wikiName = "";
         this.wikiDescription = "";
         this.wikiImg = "";
@@ -155,16 +176,20 @@ export default {
         this.$umami.trackEvent("WikiPopups", "show");
       });
     },
-    closePopups() {
+    closePopups(isForce = false) {
       return new Promise((resolve) => {
-        if (!this.isShow || this.isMouseEnterModule) return;
+        if (!isForce && (!this.isShow || this.isMouseEnterModule)) return;
 
         this.isFadeOut = true;
-        setTimeout(() => {
-          this.isShow = false;
-          this.isFadeOut = false;
-          resolve();
-        }, 200);
+        this.targetText = "";
+        setTimeout(
+          () => {
+            this.isShow = false;
+            this.isFadeOut = false;
+            resolve();
+          },
+          isForce ? 0 : 200
+        );
       });
     },
     onLeaveModule() {
