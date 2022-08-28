@@ -42,8 +42,7 @@ export default {
   padding: 0;
   margin-left: 1rem;
   margin-right: 1rem;
-  margin-bottom: 1rem;
-  user-select: none;
+  margin-bottom: 0;
 }
 
 .wiki-tags__item {
@@ -66,10 +65,6 @@ export default {
 @media only screen and (min-width: 500px) {
   .wiki-tags {
     width: 69%;
-  }
-
-  .wiki-tags__list {
-    margin-bottom: 0;
   }
 }
 </style>
