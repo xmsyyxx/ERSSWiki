@@ -46,7 +46,7 @@ export default {
 .wiki-details {
   display: flex;
   flex-direction: column;
-  margin-top: -2rem;
+  margin-top: -1rem;
 }
 
 .wiki-details__list {

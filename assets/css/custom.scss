@@ -43,6 +43,10 @@ p {
   text-indent: 2em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .nuxt-content h2 {
@@ -84,9 +88,12 @@ p {
   .nuxt-content h3 {
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-top: 3.5rem;
+  }
+
+  .nuxt-content h2 {
     border-bottom: 2px solid $wiki-border-gray;
     padding-bottom: 1rem;
+    margin-top: 3.5rem;
   }
 
   .nuxt-content p {
