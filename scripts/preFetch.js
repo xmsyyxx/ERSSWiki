@@ -4,7 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const log = console.log;
 
-const ENDPOINT = "https://ersswiki.xhemj.work";
+const ENDPOINT = "http://local.xhemj.work:5500";
+// const ENDPOINT = "https://ersswiki.xhemj.work";
 const TARGET_PATH = path.resolve(__dirname, "../dist");
 const TARGET_FOLDER_INFO = {
   item: {
