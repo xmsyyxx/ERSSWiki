@@ -30,6 +30,10 @@ export default ({ app }, inject) => {
   } = window;
   const { hostname, pathname, search } = location;
 
+  const isPreFetchBot =
+    window.URLSearchParams &&
+    !!(new window.URLSearchParams(search).get("bot") === "1");
+
   const website = "8f7c6463-9ca3-48a1-b82b-55bef7bd0cc9";
   const hostUrl = "https://a.xhemj.work";
   const autoTrack = true;
@@ -99,6 +103,7 @@ export default ({ app }, inject) => {
     referrer = currentRef,
     uuid = website
   ) => {
+    if (isPreFetchBot) return;
     collect(
       "pageview",
       assign(getPayload(), {
@@ -115,6 +120,7 @@ export default ({ app }, inject) => {
     url = currentUrl,
     uuid = website
   ) => {
+    if (isPreFetchBot) return;
     collect(
       "event",
       assign(getPayload(), {
