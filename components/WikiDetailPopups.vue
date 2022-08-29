@@ -46,7 +46,7 @@ export default {
       isFadeIn: false,
       isFadeOut: false,
       isMouseEnterModule: false,
-      arrowPosition: "top", // TODO: 弹窗可根据位置选择上下展示
+      arrowPosition: "top",
       targetText: "",
       wikiName: "",
       wikiDescription: "",
@@ -144,22 +144,25 @@ export default {
         const left = linkElement.offsetLeft;
         const top = linkElement.offsetTop;
 
-        // 计算弹窗位置
-        const scroll = window.scrollY;
-        const targetPosition = top - scroll;
-        const windowHeight = window.innerHeight;
+        // TODO:
         // 过了一半多的屏幕则改变弹窗位置
-        this.arrowPosition =
-          targetPosition > windowHeight / 1.5 ? "bottom" : "top";
+        // 计算弹窗位置
+        // const scroll = window.scrollY;
+        // const targetPosition = top - scroll;
+        // const windowHeight = window.innerHeight;
+        // this.arrowPosition =
+        //   targetPosition > windowHeight / 1.5 ? "bottom" : "top";
+        this.arrowPosition = "top";
 
         this.left = left + "px";
-        if (this.arrowPosition === "top") {
-          this.top = top + 30 + "px";
-          this.bottom = "auto";
-        } else if (this.arrowPosition === "bottom") {
-          this.top = "auto";
-          this.bottom = window.innerHeight - targetPosition + 5 + "px";
-        }
+        // if (this.arrowPosition === "top") {
+        this.top = top + 30 + "px";
+        this.bottom = "auto";
+        // } else if (this.arrowPosition === "bottom") {
+        //   this.top = "auto";
+        //   这一段暂时还有问题，所以暂时留着：
+        //   this.bottom = window.innerHeight - targetPosition + 5 + "px";
+        // }
 
         this.targetText = linkElement.innerText;
         this.wikiName = "";

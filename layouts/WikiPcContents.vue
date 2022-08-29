@@ -3,8 +3,8 @@
     <WikiPcHeader />
     <div class="wiki-contents__body">
       <Nuxt />
+      <WikiDetailPopups />
     </div>
-    <WikiDetailPopups />
     <div class="wiki-contents__fill"></div>
     <WikiFooter />
     <WikiFancyImage />
