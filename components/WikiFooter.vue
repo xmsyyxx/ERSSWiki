@@ -11,6 +11,7 @@
         <span>耳斯百科 v{{ version }}</span>
         <span>构建时间：{{ buildTime }}</span>
         <span>{{ copyright }}</span>
+        <strong>开发中页面，不代表最终品质</strong>
         <hr v-if="!isHome" />
         <span v-if="!isHome"
           >此网站为 厦门市音乐学校 <strong>非官方</strong>百科网，
