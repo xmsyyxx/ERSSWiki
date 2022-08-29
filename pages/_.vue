@@ -17,7 +17,7 @@ export default {
     WikiLogo,
   },
   layout: "WikiHome",
-  async asyncData({ $content, redirect, query }) {
+  async asyncData({ $content, query }) {
     const WikiData = await $content("wiki").only(["slug", "alias"]).fetch();
     const title = "/" + query.name;
 
@@ -27,7 +27,8 @@ export default {
         if (!alias) continue;
         for (const aliasItem of alias) {
           if (aliasItem === title) {
-            return redirect("/item/" + slug);
+            const path = window.outerWidth < 500 ? "/wiki/" : "/item/";
+            return window.location.replace(path + slug);
           }
         }
       }
