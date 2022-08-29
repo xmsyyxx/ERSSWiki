@@ -47,6 +47,11 @@ p {
   &:last-child {
     margin-bottom: 0;
   }
+
+  a {
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+  }
 }
 
 .nuxt-content h2 {
