@@ -40,9 +40,8 @@ export default {
   flex-direction: row;
   list-style: none;
   padding: 0;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 0;
+  margin: 1rem;
+  margin-top: 0;
 }
 
 .wiki-tags__item {
@@ -65,6 +64,10 @@ export default {
 @media only screen and (min-width: 500px) {
   .wiki-tags {
     width: 69%;
+  }
+
+  .wiki-tags__list {
+    margin-bottom: 0;
   }
 }
 </style>
