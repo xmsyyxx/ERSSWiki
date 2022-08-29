@@ -20,9 +20,6 @@
           <div class="wiki-search__link" @click="isStartSearch = false">
             <li class="wiki-search__item">
               <span>{{ article.title }}</span>
-              <div class="wiki-search__go--icon">
-                <IconEnter />
-              </div>
             </li>
           </div>
         </NuxtLink>
@@ -41,13 +38,8 @@
 </template>
 
 <script>
-import IconEnter from "../icons/IconEnter.vue";
-
 export default {
   name: "WikiPcSearch",
-  components: {
-    IconEnter,
-  },
   data() {
     return {
       path: "/item/",
@@ -205,12 +197,6 @@ export default {
   font-size: 1rem;
   border-bottom: 1px solid $wiki-suggest-border-gray;
   color: $wiki-search-black;
-}
-
-.wiki-search__go--icon {
-  position: absolute;
-  color: $wiki-content-black;
-  right: 0;
 }
 
 .wiki-search__item-tips {
