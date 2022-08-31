@@ -184,7 +184,7 @@ export default {
   },
 
   sitemap: {
-    hostname: "https://www.erssbk.com",
+    hostname: "https://baike.xmsyyxx.com",
     routes: createSitemapRoutes,
   },
 };
