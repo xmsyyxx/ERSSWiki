@@ -79,12 +79,12 @@ export default {
       link: [
         {
           rel: "canonical",
-          href: `https://www.erssbk.com/item/${this.slug}`,
+          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
         },
         {
           rel: "alternate",
           media: "only screen and (max-width: 500px)",
-          href: `https://www.erssbk.com/wiki/${this.slug}`,
+          href: `https://baike.xmsyyxx.com/wiki/${this.slug}`,
         },
       ],
       meta: [
