@@ -9,10 +9,12 @@ const ENDPOINT = "http://local.xhemj.work:5500";
 const TARGET_PATH = path.resolve(__dirname, "../dist");
 const TARGET_FOLDER_INFO = {
   item: {
-    width: 700,
+    width: 1200,
+    height: 900,
   },
   wiki: {
-    width: 400,
+    width: 390,
+    height: 844,
   },
 };
 
@@ -25,13 +27,14 @@ const TARGET_FOLDER_INFO = {
   console.time("preFetch");
   for (let pathname in TARGET_FOLDER_INFO) {
     const browserWidth = TARGET_FOLDER_INFO[pathname].width;
-    const browserHeight = browserWidth * 1.5;
+    const browserHeight = TARGET_FOLDER_INFO[pathname].height;
     const files = fs.readdirSync(path.resolve(TARGET_PATH, pathname));
     const browser = await puppeteer.launch({
       headless: false,
       args: [`--window-size=${browserWidth},${browserHeight}`],
     });
     const page = await browser.newPage();
+    page.setViewport({ width: browserWidth, height: browserHeight });
 
     const fileLength = files.length;
     for (let i in files) {
@@ -44,6 +47,8 @@ const TARGET_FOLDER_INFO = {
       await page.waitForSelector(".wiki-item");
       // 等待 Javascript 已经添加 CSS 完毕
       await page.waitForSelector("body > link[rel='stylesheet']");
+      // 等待 WikiFooter 渲染完
+      await page.waitForSelector(".wiki-footer__mounted");
 
       const contentBody = await page.evaluate(() => {
         return document.querySelector("#__nuxt").innerHTML;

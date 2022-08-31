@@ -17,7 +17,7 @@
           @click="onClickPicture"
         />
       </picture>
-      <label v-if="title && isLoad" class="wiki-picture__description">
+      <label v-if="title" class="wiki-picture__description">
         <span class="wiki-picture__tips">
           <span class="wiki-picture__tips--icon"><IconUp /></span>
           {{ title }}
@@ -67,14 +67,22 @@ export default {
     return {
       normalSuffix: "/thumb.jpg",
       webpSuffix: "/thumb.webp",
-      isLoad: false,
     };
+  },
+  computed: {
+    isPreFetchBot() {
+      const search = window.location.search;
+      const URLSearchParams = window.URLSearchParams;
+      return (
+        URLSearchParams && !!(new URLSearchParams(search).get("bot") === "1")
+      );
+    },
   },
   methods: {
     onNormalLoad() {
+      if (this.isPreFetchBot) return;
       this.normalSuffix = "/normal.jpg";
       this.webpSuffix = "/normal.webp";
-      this.isLoad = true;
     },
     onClickPicture() {
       if (!this.clickable) return;

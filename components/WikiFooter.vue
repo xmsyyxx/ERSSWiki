@@ -4,6 +4,7 @@
     :class="{
       'wiki-footer__scroll': isScroll,
       'wiki-footer__home': isHome,
+      'wiki-footer__mounted': isMounted,
     }"
   >
     <div class="wiki-footer__box">
@@ -53,6 +54,7 @@ export default {
   data() {
     return {
       isScroll: false,
+      isMounted: false, // 预渲染时检测到此表示已经渲染完组件
       version: require("~/package.json").version,
       buildTime: require("~/assets/build.json").time,
       copyright: `Copyright © 2021-${new Date().getFullYear()} Xhemj & 耳斯工作室`,
@@ -80,6 +82,7 @@ export default {
       ) {
         this.isScroll = true;
       }
+      this.isMounted = true;
     },
   },
 };
