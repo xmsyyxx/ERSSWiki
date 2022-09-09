@@ -188,6 +188,7 @@ export default {
   max-height: 250px;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
   border-bottom: 1px solid $wiki-search-border-gray;
+  transform: translateY(-0.5rem);
 }
 
 .wiki-search__item {
