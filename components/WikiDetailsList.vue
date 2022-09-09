@@ -52,14 +52,14 @@ export default {
 .wiki-details__list {
   font-size: 1.1rem;
   font-weight: 400;
-}
 
-.wiki-details__list ul {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-  padding: 0;
-  list-style: none;
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 0;
+    list-style: none;
+  }
 }
 
 .wiki-details__item {

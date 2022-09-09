@@ -67,15 +67,15 @@ export default {
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 1rem;
-}
 
-.wiki-details__list ul {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-  padding: 0;
-  list-style: none;
-  width: 100%;
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
 }
 
 .wiki-details__item {

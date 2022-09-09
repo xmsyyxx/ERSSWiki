@@ -47,12 +47,14 @@ export default {
 };
 </script>
 
-<style>
-.cool-lightbox-caption h6 {
-  color: #fff !important;
-}
+<style lang="scss">
+.cool-lightbox-caption {
+  h6 {
+    color: #fff !important;
+  }
 
-.cool-lightbox-caption p {
-  font-size: 10px !important;
+  p {
+    font-size: 10px !important;
+  }
 }
 </style>

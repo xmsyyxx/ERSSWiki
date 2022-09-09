@@ -157,11 +157,13 @@ export default {
 }
 </style>
 
-<style>
+<style lang="scss">
 @media only screen and (min-width: 500px) {
-  .wiki-footer__logo > .wiki-logo > .wiki-logo__box > .wiki-logo__text,
-  .wiki-footer__logo > .wiki-logo > .wiki-logo__box > .wiki-logo__tips {
-    display: none;
+  .wiki-footer__logo {
+    .wiki-logo__text,
+    .wiki-logo__tips {
+      display: none;
+    }
   }
 }
 </style>

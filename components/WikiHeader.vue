@@ -44,7 +44,6 @@ export default {
   user-select: none;
   z-index: 1000;
   width: 100vw;
-  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid $wiki-border-gray;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);

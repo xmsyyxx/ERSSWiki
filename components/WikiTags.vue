@@ -51,14 +51,14 @@ export default {
   background-color: $wiki-card-gray;
   padding: 0 5px;
   font-weight: 500;
-}
 
-.wiki-tags__item::before {
-  content: "# ";
-}
+  &::before {
+    content: "# ";
+  }
 
-.wiki-tags__item:not(:first-child) {
-  margin-left: 1rem;
+  &:not(:first-child) {
+    margin-left: 1rem;
+  }
 }
 
 @media only screen and (min-width: 500px) {
