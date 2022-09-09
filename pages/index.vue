@@ -69,7 +69,7 @@ export default {
   margin: auto;
 }
 
-.wiki-app__search > .wiki-search {
+.wiki-app__search .wiki-search {
   display: block;
   margin-top: 0;
   margin-left: auto;
@@ -107,7 +107,7 @@ export default {
     margin-bottom: 30px;
   }
 
-  .wiki-app__search > .wiki-search {
+  .wiki-app__search .wiki-search {
     width: 100%;
     max-width: none;
     min-width: 0;
@@ -131,94 +131,73 @@ export default {
 <style lang="scss">
 @import "@/assets/css/variables.scss";
 
-/**
- * 首页 搜索框 样式
- * TODO: 优化代码
- */
-.wiki-app__search > .wiki-search > .wiki-search__input > input {
-  height: 3rem !important;
-  font-size: 1.1rem !important;
-  color: $wiki-content-black !important;
-  /* border: 1px solid $wiki-description-gray !important; */
-  background-color: $wiki-search-mirror-gray !important;
-  border: 1px solid $wiki-header-gray !important;
+.wiki-app__search .wiki-search {
+  .wiki-search__input {
+    input {
+      height: 3rem !important;
+      font-size: 1.1rem !important;
+      color: $wiki-content-black !important;
+      /* border: 1px solid $wiki-description-gray !important; */
+      background-color: $wiki-search-mirror-gray !important;
+      border: 1px solid $wiki-header-gray !important;
+
+      &:focus,
+      &:hover,
+      &.wiki-search__input--query {
+        color: $wiki-content-black !important;
+        border: 1px solid $wiki-description-gray !important;
+        background-color: $wiki-common-white !important;
+      }
+    }
+
+    .wiki-search__list {
+      box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
+      border-bottom: 1px solid $wiki-suggest-border-gray !important;
+      background-color: $wiki-common-white !important;
+      z-index: 100;
+    }
+
+    .wiki-search__item,
+    .wiki-search__item-tips {
+      border-bottom: none !important;
+      justify-content: flex-start !important;
+      padding: 0.25rem 0 !important;
+      margin: 0.5rem 1rem !important;
+      font-size: 1.1rem !important;
+    }
+
+    .wiki-search__link {
+      line-height: 1.5 !important;
+    }
+
+    .wiki-search__go--icon {
+      display: none !important;
+    }
+  }
 }
 
-.wiki-app__search > .wiki-search > .wiki-search__input > input:focus,
-.wiki-app__search > .wiki-search > .wiki-search__input > input:hover,
-.wiki-app__search
-  > .wiki-search
-  > .wiki-search__input
-  > input.wiki-search__input--query {
-  color: $wiki-content-black !important;
-  border: 1px solid $wiki-description-gray !important;
-  background-color: $wiki-common-white !important;
-}
-.wiki-app__search > .wiki-search > .wiki-search__input > .wiki-search__list {
-  box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
-  border-bottom: 1px solid $wiki-suggest-border-gray !important;
-  background-color: $wiki-common-white !important;
-  z-index: 100;
-}
+.wiki-app {
+  .wiki-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $wiki-common-white;
+    z-index: 1;
+    color: $wiki-description-gray;
 
-.wiki-app__search
-  > .wiki-search
-  > .wiki-search__input
-  > ul
-  > a
-  > .wiki-search__link
-  > .wiki-search__item,
-.wiki-app__search > .wiki-search > .wiki-search__input > ul > li {
-  border-bottom: none !important;
-  justify-content: flex-start !important;
-  padding: 0.25rem 0 !important;
-  margin: 0.5rem 1rem !important;
-  font-size: 1.1rem !important;
-}
+    .wiki-footer__box {
+      display: block;
+      position: relative;
+      padding: 20px 0;
+      text-align: center;
+    }
 
-.wiki-app__search
-  > .wiki-search
-  > .wiki-search__input
-  > ul
-  > a
-  > .wiki-search__link
-  > .wiki-search__item
-  > .wiki-search__go--icon {
-  display: none;
-}
-
-.wiki-app__search
-  > .wiki-search
-  > .wiki-search__input
-  > .wiki-search__list
-  > a
-  > .wiki-search__link {
-  line-height: 1.5 !important;
-}
-
-.wiki-app > .wiki-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: $wiki-common-white;
-  z-index: 1;
-}
-
-.wiki-app > .wiki-footer > .wiki-footer__box {
-  display: block;
-  position: relative;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.wiki-app > .wiki-footer > .wiki-footer__box > .wiki-footer__fill,
-.wiki-app > .wiki-footer > .wiki-footer__box > .wiki-footer__tips {
-  display: none;
-}
-
-.wiki-app > .wiki-footer {
-  color: $wiki-description-gray;
+    .wiki-footer__fill,
+    .wiki-footer__tips {
+      display: none;
+    }
+  }
 }
 </style>
