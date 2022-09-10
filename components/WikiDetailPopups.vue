@@ -75,14 +75,8 @@ export default {
         WikiData = {};
       }
 
-      let description = getWikiDescription(WikiData) || "百科信息获取失败";
+      const description = getWikiDescription(WikiData) || "百科信息获取失败";
 
-      if (String(description).startsWith(name)) {
-        description = description.replace(
-          new RegExp(`(${name}|${WikiData.title})，?`),
-          ""
-        );
-      }
       this.wikiName = WikiData.title;
       this.wikiDescription = description;
       this.wikiImg = WikiData.img || "";

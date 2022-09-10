@@ -1,11 +1,11 @@
 import getWikiDescription from "./getWikiDescription";
 
-const description = getWikiDescription(self.WikiData);
 const baseUrl = "https://baike.xmsyyxx.com";
 const cardPlaceHolderImage =
   "https://wikioss.xhemj.work/static/ersswiki-no-image-card.png/normal.webp";
 
 export default function wikiCommonHead(self) {
+  const description = getWikiDescription(self.WikiData);
   const metaTitle = self.WikiData.title + " - 耳斯百科";
   return {
     title: metaTitle,

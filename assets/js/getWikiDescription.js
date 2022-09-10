@@ -19,7 +19,13 @@ export default function getWikiDescription(WikiData = {}) {
   const originDescription = WikiData.introduction
     ? String(WikiData.introduction).replace(/\n/g, "").replace(/ /g, "")
     : "";
-  const description = originDescription || rawWikiText || "";
+  let description = originDescription + rawWikiText || "c";
+  if (String(description).startsWith(WikiData.title)) {
+    description = description.replace(
+      new RegExp(`(${name}|${WikiData.title})，?`),
+      ""
+    );
+  }
   return description.length > 100
     ? description.substring(0, 100) + "..."
     : description;
