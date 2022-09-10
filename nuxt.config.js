@@ -1,3 +1,4 @@
+import { defaultLocale, locales, locals, translateSring } from "./i18n";
 import rename from "./scripts/rename";
 import writeInfo from "./scripts/writeInfo";
 
@@ -48,11 +49,6 @@ export default {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { "http-equiv": "X-UA-Compatible", content: "IE=edge,chrome=1" },
-      { name: "description", content: "耳斯百科 - 厦门市音乐学校非官方百科网" },
-      {
-        name: "keywords",
-        content: "耳斯百科,厦门市音乐学校,耳斯名言,音乐学校",
-      },
       { name: "theme-color", content: "#5676dc" },
     ],
     link: [
@@ -107,7 +103,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "@nuxtjs/markdownit", "@nuxtjs/sitemap"],
+  modules: [
+    "@nuxt/content",
+    "@nuxtjs/markdownit",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/i18n",
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -150,6 +151,15 @@ export default {
         }
       });
       return routes;
+    },
+  },
+
+  i18n: {
+    locales: locales,
+    defaultLocale: defaultLocale,
+    vueI18n: {
+      fallbackLocale: defaultLocale,
+      messages: translateSring,
     },
   },
 
