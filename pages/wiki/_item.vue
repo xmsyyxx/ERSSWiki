@@ -28,6 +28,7 @@ import WikiBaseIntroductions from "../../components/WikiBaseIntroductions";
 import WikiItemInformation from "../../components/WikiItemInformation";
 import WikiPicture from "../../components/WikiPicture.vue";
 import WikiTags from "../../components/WikiTags.vue";
+import wikiCommonHead from "../../assets/js/wikiCommonHead";
 
 export default {
   name: "WikiItem",
@@ -41,13 +42,12 @@ export default {
   layout: "WikiContents",
   async asyncData({ $content, params, redirect }) {
     try {
-      const WikiData = await $content("wiki", params.item).fetch();
+      const WikiData = await $content("wiki", params.item, {
+        text: true,
+      }).fetch();
       // console.log(WikiData);
-      const { title } = WikiData;
-      const metaTitle = title + " - 耳斯百科";
       return {
         WikiData,
-        metaTitle,
         slug: params.item,
       };
     } catch {
@@ -55,49 +55,7 @@ export default {
     }
   },
   head() {
-    return {
-      title: this.metaTitle || "",
-      link: [
-        {
-          rel: "canonical",
-          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
-        },
-        {
-          rel: "alternate",
-          media: "only screen and (min-width: 500px)",
-          href: `https://baike.xmsyyxx.com/item/${this.slug}`,
-        },
-      ],
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content: (this.WikiData && this.WikiData.description) || "",
-        },
-        // Open Graph
-        {
-          hid: "og:title",
-          property: "og:title",
-          content: (this.WikiData && this.WikiData.title) || "",
-        },
-        {
-          hid: "og:description",
-          property: "og:description",
-          content: (this.WikiData && this.WikiData.description) || "",
-        },
-        // Twitter Card
-        {
-          hid: "twitter:title",
-          name: "twitter:title",
-          content: (this.WikiData && this.WikiData.title) || "",
-        },
-        {
-          hid: "twitter:description",
-          name: "twitter:description",
-          content: (this.WikiData && this.WikiData.description) || "",
-        },
-      ],
-    };
+    return wikiCommonHead(this);
   },
   beforeMount() {
     const onhashchange = () => {

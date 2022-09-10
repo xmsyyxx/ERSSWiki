@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import getWikiDescription from "../assets/js/getWikiDescription";
 import WikiPicture from "./WikiPicture.vue";
 
 export default {
@@ -74,25 +75,8 @@ export default {
         WikiData = {};
       }
 
-      const rawWikiText = WikiData.text
-        ? String(WikiData.text)
-            .replace(/[#]{1,6} ?(.*?)(\n|\r)/g, "") // 去除标题
-            .replace(/\[\^\d+?\]/g, "") // 去除上标脚注
-            .replace(/---/g, "") // 去除分隔线
-            .replace(/\n/g, "") // 去除换行符
-            .replace(/<WImg(.*?)><\/WImg>/g, "") // 去除图片
-            .replace(/<WikiVideo(.*?)><\/WikiVideo>/g, "") // 去除视频
-            .replace(/\[(.*?)\]\((.*?)\)/g, "$1") // 去除链接
-            .replace(/<(.*?)>/g, "") // 去除html标签
-            .replace(/ ?TODO ?/g, "") // 去除TODO
-        : "";
+      let description = getWikiDescription(WikiData) || "百科信息获取失败";
 
-      let description =
-        WikiData.introduction || rawWikiText || "百科信息获取失败";
-
-      if (description.length > 100) {
-        description = description.substring(0, 100) + "...";
-      }
       if (String(description).startsWith(name)) {
         description = description.replace(
           new RegExp(`(${name}|${WikiData.title})，?`),
@@ -105,34 +89,43 @@ export default {
     },
   },
   mounted() {
-    Array.from(document.querySelectorAll("p > a")).forEach((element) => {
-      // 绑定点击事件，
-      // 执行开启和关闭都延时，
-      // 时间过后若鼠标仍在上面才显示弹窗。
-      element.onmouseenter = (e) => {
-        this.isMouseEnterModule = true;
-        this.timerWaitOpen = setTimeout(async () => {
-          const nowElementTargetText = e.path[0].textContent;
-          // 防止在等待时鼠标移动到别的链接去
-          if (this.targetText && this.targetText !== nowElementTargetText) {
-            await this.closePopups(true); // 强制关闭当前弹窗
-            this.openPopups(e);
-          } else if (this.isMouseEnterModule) {
-            return this.openPopups(e);
-          }
-        }, 350);
-      };
-      element.onmouseleave = () => {
-        this.isMouseEnterModule = false;
-        this.timerWaitClose = setTimeout(() => {
-          if (!this.isMouseEnterModule) {
-            return this.closePopups();
-          }
-        }, 350);
-      };
+    this.onMounted();
+    const observer = new MutationObserver(this.onMounted);
+    observer.observe(document.querySelector(".wiki-contents__body"), {
+      attributes: true,
+      childList: true,
+      subtree: true,
     });
   },
   methods: {
+    onMounted() {
+      Array.from(document.querySelectorAll("p > a")).forEach((element) => {
+        // 绑定点击事件，
+        // 执行开启和关闭都延时，
+        // 时间过后若鼠标仍在上面才显示弹窗。
+        element.onmouseenter = (e) => {
+          this.isMouseEnterModule = true;
+          this.timerWaitOpen = setTimeout(async () => {
+            const nowElementTargetText = e.path[0].textContent;
+            // 防止在等待时鼠标移动到别的链接去
+            if (this.targetText && this.targetText !== nowElementTargetText) {
+              await this.closePopups(true); // 强制关闭当前弹窗
+              this.openPopups(e);
+            } else if (this.isMouseEnterModule) {
+              return this.openPopups(e);
+            }
+          }, 350);
+        };
+        element.onmouseleave = () => {
+          this.isMouseEnterModule = false;
+          this.timerWaitClose = setTimeout(() => {
+            if (!this.isMouseEnterModule) {
+              return this.closePopups();
+            }
+          }, 350);
+        };
+      });
+    },
     async openPopups(e) {
       e && e.preventDefault();
       if (this.isShow) {
