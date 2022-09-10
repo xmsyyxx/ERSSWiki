@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html {{ HTML_ATTRS }}>
   <head {{ HEAD_ATTRS }}>
-    {{ HEAD }}
-  </head>
-  <body {{ BODY_ATTRS }}>
-    {{ APP }}
     <script>
       const onresize = () => {
         const pathname = window.location.pathname;
@@ -31,5 +27,15 @@
       onresize();
       window.addEventListener("resize", onresize);
     </script>
+    <link rel="dns-prefetch" href="https://wikioss.xhemj.work" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://wikioss.xhemj.work" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    {{ HEAD }}
+  </head>
+  <body {{ BODY_ATTRS }}>
+    {{ APP }}
   </body>
 </html>
