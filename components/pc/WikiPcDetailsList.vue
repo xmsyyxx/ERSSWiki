@@ -1,6 +1,6 @@
 <template>
   <div v-if="data" class="wiki-details">
-    <div class="wiki-details__tips">基本信息</div>
+    <div class="wiki-details__tips">{{ $t("MAIN_BASIC_INFORMATION") }}</div>
     <div v-if="infoKeys" class="wiki-details__list">
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-details__item">

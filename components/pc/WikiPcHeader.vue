@@ -13,11 +13,25 @@
             <img src="https://wikioss.xhemj.work/static/logo/v3/512x512.png" />
           </picture>
         </div>
-        <NuxtLink to="/"> 耳斯百科 </NuxtLink>
+        <NuxtLink to="/"> {{ $t("MAIN_ERSSWIKI") }} </NuxtLink>
       </div>
       <WikiPcSearch />
       <div class="wiki-header__tips">
-        <div class="wiki-header__tips-item">开发版 v{{ version }}</div>
+        <div class="wiki-header__tips-item">
+          {{ $t("MAIN_DEVELOPMENT") }} v{{ version }}
+        </div>
+        <!-- <span class="wiki-header__language">
+          <span @click="lang = 'en'">
+            <nuxt-link v-if="lang === 'zh'" :to="switchLocalePath('en')">
+              English
+            </nuxt-link>
+          </span>
+          <span @click="lang = 'zh'">
+            <nuxt-link v-if="lang === 'en'" :to="switchLocalePath('zh')">
+              中文
+            </nuxt-link>
+          </span>
+        </span> -->
       </div>
     </div>
   </div>
@@ -25,7 +39,6 @@
 
 <script>
 import WikiPcSearch from "./WikiPcSearch.vue";
-
 export default {
   name: "WikiPcHeader",
   components: {
@@ -34,6 +47,7 @@ export default {
   data() {
     return {
       version: require("~/package.json").version,
+      lang: this.$i18n.locale,
     };
   },
 };
@@ -109,5 +123,9 @@ export default {
 .wiki-header__tips-item {
   font-weight: 500;
   font-size: 0.8rem;
+}
+
+.wiki-header__language {
+  margin-left: 1rem;
 }
 </style>

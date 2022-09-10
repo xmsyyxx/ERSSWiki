@@ -1,14 +1,18 @@
 <template>
   <div class="wiki-status">
-    <div class="wiki-status__tips">词条统计</div>
+    <div class="wiki-status__tips">{{ $t("MAIN_BASIC_STATISTICS") }}</div>
     <div class="wiki-status__list">
       <ul>
         <li v-if="created" class="wiki-status__item">
-          <div class="wiki-status__title">创建时间</div>
+          <div class="wiki-status__title">
+            {{ $t("MAIN_STATISTICS_CREATE") }}
+          </div>
           <div class="wiki-status__text">{{ formatTime(created) }}</div>
         </li>
         <li v-if="updated" class="wiki-status__item">
-          <div class="wiki-status__title">更新时间</div>
+          <div class="wiki-status__title">
+            {{ $t("MAIN_STATISTICS_UPDATE") }}
+          </div>
           <div class="wiki-status__text">{{ formatTime(updated) }}</div>
         </li>
       </ul>

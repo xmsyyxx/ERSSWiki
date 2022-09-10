@@ -22,7 +22,9 @@
           <span class="wiki-picture__tips--icon"><IconUp /></span>
           {{ title }}
         </span>
-        <div class="wiki-picture__tips--item">（点击可查看大图）</div>
+        <div class="wiki-picture__tips--item">
+          {{ $t("MAIN_LARGER_IMAGE_TIPS") }}
+        </div>
       </label>
     </div>
   </div>

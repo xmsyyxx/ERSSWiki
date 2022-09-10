@@ -8,7 +8,9 @@
         <IconHome />
       </NuxtLink>
       <div class="wiki-header__logo--text">
-        <NuxtLink to="/"> 耳斯百科 &middot; 开发版 </NuxtLink>
+        <NuxtLink to="/">
+          {{ $t("MAIN_ERSSWIKI") }} &middot; {{ $t("MAIN_DEVELOPMENT") }}
+        </NuxtLink>
       </div>
       <WikiSearch />
     </div>
