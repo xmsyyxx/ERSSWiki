@@ -51,7 +51,7 @@ const TARGET_FOLDER_INFO = {
       await page.waitForSelector(".wiki-footer__mounted");
 
       const contentBody = await page.evaluate(() => {
-        return document.querySelector("#__nuxt").innerHTML;
+        return document.querySelector("html").innerHTML;
       });
       // 获取页面额外添加得 CSS 地址
       let loadCssUrls = await page.evaluate(() => {
@@ -69,7 +69,7 @@ const TARGET_FOLDER_INFO = {
         "utf8"
       );
       const $ = cheerio.load(originHtmlRaw);
-      $("#__nuxt").html(contentBody);
+      $("html").html(contentBody);
       // 将异步加载的 CSS 添加到页面中
       for (let html of loadCssUrls) {
         $(html).appendTo("head");
