@@ -30,11 +30,7 @@ export default {
   },
   computed: {
     infoKeys() {
-      const o = [];
-      for (const key in this.data) {
-        o.push(key);
-      }
-      return o;
+      return Object.keys(this.data);
     },
   },
 };
