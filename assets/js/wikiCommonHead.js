@@ -6,7 +6,7 @@ const cardPlaceHolderImage =
   "https://wikioss.xhemj.work/static/ersswiki-no-image-card.png/normal.webp";
 
 export default function wikiCommonHead(self) {
-  const metaTitle = self.title + " - 耳斯百科";
+  const metaTitle = self.WikiData.title + " - 耳斯百科";
   return {
     title: metaTitle,
     link: [

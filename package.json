@@ -1,6 +1,6 @@
 {
   "name": "ersswiki",
-  "version": "0.1.8-dev.3",
+  "version": "0.1.9",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^1.15.1",
+    "@nuxtjs/i18n": "^7.3.0",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "autoprefixer": "^10.4.8",
