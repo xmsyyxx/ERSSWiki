@@ -2,35 +2,73 @@
   <div v-if="data" class="wiki-details">
     <div v-if="infoKeys" class="wiki-details__list">
       <ul>
-        <li v-for="key of infoKeys" :key="key" class="wiki-details__item">
+        <li v-for="key of renderedList" :key="key" class="wiki-details__item">
           <div class="wiki-details__title">
-            <span
-              v-for="item of key"
-              :key="item"
-              class="wiki-details__title--item"
-            >
+            <span v-for="item of key" :key="item">
               {{ item }}
             </span>
           </div>
           <div class="wiki-details__text">{{ data[key] }}</div>
         </li>
       </ul>
+      <div
+        v-if="isNeedShowMore"
+        class="wiki-details__more"
+        @click="toggleShowMore"
+      >
+        <IconArrowDown v-if="!isShowMore" />
+        <IconArrowUp v-else />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import IconArrowDown from "./icons/IconArrowDown.vue";
+import IconArrowUp from "./icons/IconArrowUp.vue";
+
 export default {
   name: "WikiDetailsList",
+  components: {
+    IconArrowDown,
+    IconArrowUp,
+  },
   props: {
     data: {
       type: Object,
       default: () => ({}),
     },
   },
+  data() {
+    return {
+      isNeedShowMore: true,
+      isShowMore: false,
+      renderMaxItem: 5,
+    };
+  },
   computed: {
     infoKeys() {
       return Object.keys(this.data);
+    },
+    renderedList() {
+      return this.infoKeys.slice(0, this.renderMaxItem);
+    },
+  },
+  mounted() {
+    if (this.infoKeys.length < this.renderMaxItem) {
+      this.isShowMore = true;
+      this.isNeedShowMore = false;
+    }
+  },
+  methods: {
+    toggleShowMore() {
+      this.isShowMore = !this.isShowMore;
+      if (this.isShowMore) {
+        this.renderMaxItem = this.infoKeys.length;
+        this.$umami.trackEvent("WikiMoreDetails", "show");
+      } else {
+        this.renderMaxItem = 5;
+      }
     },
   },
 };
@@ -42,6 +80,7 @@ export default {
 .wiki-details {
   display: flex;
   flex-direction: column;
+  margin: 0 1rem;
   margin-top: -1rem;
 }
 
@@ -52,7 +91,7 @@ export default {
   ul {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
+    margin: 1rem 0;
     padding: 0;
     list-style: none;
   }
@@ -81,5 +120,15 @@ export default {
   word-wrap: break-word;
   width: 66.67%; /* 8/12 */
   max-width: 66.67%;
+}
+
+.wiki-details__more {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 </style>

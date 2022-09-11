@@ -5,12 +5,7 @@
       <ul>
         <li v-for="key of infoKeys" :key="key" class="wiki-details__item">
           <div class="wiki-details__title">
-            <span
-              v-for="item of key"
-              :key="item"
-              class="wiki-details__title--item"
-              >{{ item }}</span
-            >
+            <span v-for="item of key" :key="item">{{ item }}</span>
           </div>
           <div class="wiki-details__text">{{ data[key] }}</div>
         </li>
