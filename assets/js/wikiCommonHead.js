@@ -1,8 +1,7 @@
 import getWikiDescription from "./getWikiDescription";
+import getWikiPicture from "./getWikiPicture";
 
 const baseUrl = "https://baike.xmsyyxx.com";
-const cardPlaceHolderImage =
-  "https://wikioss.xhemj.work/static/ersswiki-no-image-card.png/normal.webp";
 
 export default function wikiCommonHead(self) {
   const description = getWikiDescription(self.WikiData);
@@ -55,9 +54,7 @@ export default function wikiCommonHead(self) {
       {
         hid: "og:image",
         property: "og:image",
-        content: self.WikiData.img
-          ? String(self.WikiData.img) + "/twitter_card.webp"
-          : cardPlaceHolderImage,
+        content: getWikiPicture(self.WikiData),
       },
       {
         hid: "og:image:alt",
@@ -88,9 +85,7 @@ export default function wikiCommonHead(self) {
       {
         hid: "twitter:image:src",
         name: "twitter:image:src",
-        content: self.WikiData.img
-          ? String(self.WikiData.img) + "/twitter_card.webp"
-          : cardPlaceHolderImage,
+        content: getWikiPicture(self.WikiData),
       },
       {
         hid: "twitter:image:alt",
