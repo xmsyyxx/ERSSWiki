@@ -10,7 +10,7 @@
     <div class="wiki-footer__box">
       <div class="wiki-footer__copyright">
         <span>耳斯百科 v{{ version }}</span>
-        <span>构建时间：{{ buildTime }}</span>
+        <span>最后更新：{{ buildTime }}</span>
         <span>{{ copyright }}</span>
         <strong>开发中页面，不代表最终品质，且不保证访问质量</strong>
         <hr v-if="!isHome" />
@@ -97,7 +97,7 @@ export default {
   width: 100%;
   background-color: $wiki-footer-gray;
   font-weight: 400;
-  z-index: -100;
+  z-index: 10;
   padding: 0 50px;
   font-size: 0.8rem;
 }
