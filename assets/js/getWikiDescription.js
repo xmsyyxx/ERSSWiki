@@ -26,7 +26,9 @@ export default function getWikiDescription(WikiData = {}) {
       ""
     );
   }
-  return description.length > 100
-    ? description.substring(0, 100) + "..."
-    : description;
+  description =
+    description.length > 100
+      ? description.substring(0, 100) + "..."
+      : description;
+  return description.replace(/\n/g, "").replace(/ /g, "");
 }

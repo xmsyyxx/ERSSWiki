@@ -7,7 +7,9 @@
         autocomplete="off"
         :placeholder="placeholder"
         class="wiki--click--WikiSearchInput"
-        :class="{ 'wiki-search__input--query': searchQuery }"
+        :class="{
+          'wiki-search__input--query': searchQuery,
+        }"
         @blur="onInputBlur"
         @click="onClicnSearchInput"
       />
@@ -131,6 +133,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 200;
 }
 
 .wiki-search__input {
@@ -138,7 +141,7 @@ export default {
   margin: auto;
   width: 100%;
 
-  & > input {
+  input {
     width: 100%;
     box-sizing: border-box;
     height: 2rem;
