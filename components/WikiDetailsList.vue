@@ -14,23 +14,21 @@
       <div
         v-if="isNeedShowMore"
         class="wiki-details__more"
+        :class="{ 'arrow-down': !isShowMore }"
         @click="toggleShowMore"
       >
-        <IconArrowDown v-if="!isShowMore" />
-        <IconArrowUp v-else />
+        <IconArrowUp />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import IconArrowDown from "./icons/IconArrowDown.vue";
 import IconArrowUp from "./icons/IconArrowUp.vue";
 
 export default {
   name: "WikiDetailsList",
   components: {
-    IconArrowDown,
     IconArrowUp,
   },
   props: {
@@ -55,7 +53,7 @@ export default {
     },
   },
   mounted() {
-    if (this.infoKeys.length < this.renderMaxItem) {
+    if (this.infoKeys.length <= this.renderMaxItem) {
       this.isShowMore = true;
       this.isNeedShowMore = false;
     }
@@ -130,5 +128,9 @@ export default {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
   width: 100%;
+
+  &.arrow-down {
+    transform: rotate(180deg);
+  }
 }
 </style>
