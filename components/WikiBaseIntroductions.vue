@@ -4,9 +4,8 @@
       v-for="text of introductions"
       :key="text"
       class="wiki-introductions__text"
-    >
-      {{ text }}
-    </p>
+      v-html="renderHtml(text)"
+    ></p>
   </div>
 </template>
 
@@ -29,6 +28,11 @@ export default {
       );
     },
   },
+  methods: {
+    renderHtml(markdown) {
+      return this.$md.render(markdown);
+    },
+  },
 };
 </script>
 
@@ -42,5 +46,11 @@ export default {
   font-weight: 400;
   font-size: 1rem;
   color: $wiki-description-black;
+}
+
+@media screen and (min-width: 500px) {
+  .wiki-introductions {
+    margin-bottom: 5rem;
+  }
 }
 </style>

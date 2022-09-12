@@ -7,7 +7,7 @@
     <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
     <div class="wiki-main">
       <div class="wiki-main__left">
-        <WikiPcBaseIntroductions
+        <WikiBaseIntroductions
           v-if="WikiData.introduction"
           :data="WikiData.introduction"
         />
@@ -38,15 +38,15 @@ import WikiPicture from "../../components/WikiPicture.vue";
 import WikiTags from "../../components/WikiTags.vue";
 import WikiPcItemInformation from "../../components/pc/WikiPcItemInformation.vue";
 import WikiPcDetailsList from "../../components/pc/WikiPcDetailsList.vue";
-import WikiPcBaseIntroductions from "../../components/pc/WikiPcBaseIntroductions.vue";
 import WikiPcStatus from "../../components/pc/WikiPcStatus.vue";
 import wikiCommonHead from "../../assets/js/wikiCommonHead";
+import WikiBaseIntroductions from "../../components/WikiBaseIntroductions.vue";
 
 export default {
   name: "WikiPcItem",
   components: {
     WikiPcDetailsList,
-    WikiPcBaseIntroductions,
+    WikiBaseIntroductions,
     WikiPcItemInformation,
     WikiPicture,
     WikiTags,

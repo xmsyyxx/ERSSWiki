@@ -67,7 +67,8 @@ export default {
     },
     async isShow() {
       if (!this.isShow) return;
-      const name = this.targetText;
+      let name = this.targetText;
+      name = String(name).replace(/ /g, "");
       let WikiData = {};
       try {
         WikiData = await this.$content("wiki", name, { text: true }).fetch();
@@ -86,6 +87,11 @@ export default {
     this.onMounted();
     const observer = new MutationObserver(this.onMounted);
     observer.observe(document.querySelector(".wiki-contents__body"), {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+    observer.observe(document.querySelector(".wiki-introductions"), {
       attributes: true,
       childList: true,
       subtree: true,
