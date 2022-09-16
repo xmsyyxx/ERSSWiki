@@ -151,6 +151,7 @@ export default {
     }
 
     .wiki-search__list {
+	  padding-top: 0.5rem;
       box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
       border-bottom: 1px solid $wiki-suggest-border-gray !important;
       background-color: $wiki-common-white !important;

@@ -15,6 +15,25 @@ export default {
           }
         });
     }
+
+    function isSupportWebp() {
+      try {
+        return (
+          document
+            .createElement("canvas")
+            .toDataURL("image/webp", 0.5)
+            .indexOf("data:image/webp") === 0
+        );
+      } catch {
+        return !1;
+      }
+    }
+    const body = document.querySelector(".wiki-contents");
+    if (body) {
+      isSupportWebp()
+        ? body.classList.add("webp")
+        : body.classList.add("no-webp");
+    }
   },
 };
 </script>

@@ -1,0 +1,15 @@
+[data-item="解恪布"] {
+  .wiki-contents__body {
+    background-color: transparent !important;
+    background-repeat: repeat;
+    background-position: 50%;
+    background-size: contain;
+    background-image: url("https://wikioss.xhemj.work/krzfs/jiekebu/9e053abc699a921eb1b004121a3b6b3a.png/normal.webp");
+  }
+
+  &.no-webp {
+    .wiki-contents__body {
+      background-image: url("https://wikioss.xhemj.work/krzfs/jiekebu/9e053abc699a921eb1b004121a3b6b3a.png") !important;
+    }
+  }
+}

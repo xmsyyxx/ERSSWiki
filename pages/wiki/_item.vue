@@ -57,12 +57,18 @@ export default {
   head() {
     return wikiCommonHead(this);
   },
-  beforeMount() {
+  mounted() {
     const onhashchange = () => {
       document.documentElement.scrollTop =
         document.documentElement.scrollTop - 44;
     };
     window.addEventListener("hashchange", onhashchange);
+    if (this.WikiData.css) {
+      document.querySelector(".wiki-contents") &&
+        document
+          .querySelector(".wiki-contents")
+          .setAttribute("data-item", this.WikiData.title);
+    }
   },
 };
 </script>
