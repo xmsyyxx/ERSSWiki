@@ -37,7 +37,7 @@ export default {
 .wiki-contents__body {
   text-align: left;
   padding-top: 60px;
-  background-color: var(--wiki-common-white);
+  background-color: $wiki-common-white;
   word-break: break-word;
 
   display: flex;
