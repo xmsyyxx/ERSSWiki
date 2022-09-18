@@ -30,7 +30,13 @@ export default {
   },
   methods: {
     renderHtml(markdown) {
-      return this.$md.render(markdown);
+      const element = document.createElement("div");
+      element.style.display = "none";
+      element.innerHTML = this.$md.render(markdown);
+      const p = element.querySelector("p");
+      const html = p ? p.innerHTML : element.innerHTML;
+      element.remove();
+      return html;
     },
   },
 };
