@@ -58,30 +58,87 @@ p {
   }
 }
 
-.nuxt-content h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+.nuxt-content {
+  p,
+  ul {
+    font-weight: 400;
+    font-size: 1rem;
+    color: $wiki-content-black;
+  }
+
+  p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    margin-right: 1rem;
+  }
+
+  h2,
+  h3 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  h2 a::before,
+  h3 a::before {
+    content: "# ";
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  img {
+    width: 100%;
+  }
 }
 
-.nuxt-content h3 {
-  margin-top: 1rem;
-  font-size: 1.3rem;
+.footnote-ref {
   font-weight: 500;
+
+  &::before {
+    content: "[";
+  }
+
+  &::after {
+    content: "]";
+  }
 }
 
-.nuxt-content p,
-.nuxt-content ul {
-  font-weight: 400;
-  font-size: 1rem;
-  color: $wiki-content-black;
+.footnotes {
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  hr {
+    display: none;
+  }
+
+  ol {
+    padding-left: 1rem;
+  }
+
+  ol li::marker {
+    font-weight: 700;
+  }
 }
 
-.nuxt-content > h2 > a ::before {
-  content: "# ";
-}
+.footnote-backref {
+  display: none;
 
-.nuxt-content > h3 > a ::before {
-  content: "# ";
+  &::before {
+    content: " ";
+  }
 }
 
 @media only screen and (min-width: 500px) {
@@ -93,136 +150,32 @@ p {
     width: 30%;
   }
 
-  .nuxt-content h2,
-  .nuxt-content h3 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
+  .nuxt-content {
+    h2 {
+      border-bottom: 2px solid $wiki-border-gray;
+      padding-bottom: 1rem;
+      margin-top: 3.5rem;
+    }
 
-  .nuxt-content h2 {
-    border-bottom: 2px solid $wiki-border-gray;
-    padding-bottom: 1rem;
-    margin-top: 3.5rem;
-  }
+    & > .wiki-picture {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
 
-  .nuxt-content p {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .nuxt-content img {
-    width: 100%;
-  }
-
-  .nuxt-content > .wiki-picture {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .nuxt-content hr {
-    display: none;
-  }
-
-  .footnotes {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .footnote-ref {
-    font-weight: 500;
-  }
-
-  .footnote-ref::before {
-    content: "[";
-  }
-
-  .footnote-ref::after {
-    content: "]";
-  }
-
-  .footnotes > hr {
-    display: none;
-  }
-
-  .footnotes > ol {
-    padding-left: 1rem;
-  }
-
-  .footnotes > ol > li::marker {
-    font-weight: 700;
-  }
-
-  .footnote-backref::before {
-    content: " ";
-  }
-
-  .footnote-backref {
-    display: none;
+    hr {
+      display: none;
+    }
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .nuxt-content h2,
-  .nuxt-content h3 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .nuxt-content p {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .nuxt-content img {
-    width: 100%;
-  }
-
-  .nuxt-content hr {
-    width: 100%;
-    height: 0.7rem;
-    background-color: $wiki-footer-light-gray;
-    border: 0;
-  }
-
-  .footnotes {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .footnote-ref {
-    font-weight: 500;
-  }
-
-  .footnote-ref::before {
-    content: "[";
-  }
-
-  .footnote-ref::after {
-    content: "]";
-  }
-
-  .footnotes > hr {
-    display: none;
-  }
-
-  .footnotes > ol {
-    padding-left: 1rem;
-  }
-
-  .footnotes > ol > li::marker {
-    font-weight: 700;
-  }
-
-  .footnote-backref::before {
-    content: " ";
-  }
-
-  .footnote-backref {
-    display: none;
+  .nuxt-content {
+    hr {
+      width: 100%;
+      height: 0.7rem;
+      background-color: $wiki-footer-light-gray;
+      border: 0;
+    }
   }
 }
 
