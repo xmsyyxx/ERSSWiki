@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isShow"
+    v-show="isShow"
     ref="popups"
     class="wiki-popups"
     :class="{
@@ -22,7 +22,10 @@
           <span v-if="wikiImg" class="wiki-popups__img">
             <WikiPicture :clickable="false" :src="wikiImg" />
           </span>
-          <strong v-if="wikiName">{{ wikiName }}：</strong>{{ wikiDescription }}
+          <span class="wiki-popups__description">
+            <strong v-if="wikiName">{{ wikiName }}：</strong>
+            {{ wikiDescription }}
+          </span>
         </p>
       </div>
     </div>
@@ -86,16 +89,20 @@ export default {
   mounted() {
     this.onMounted();
     const observer = new MutationObserver(this.onMounted);
-    observer.observe(document.querySelector(".wiki-contents__body"), {
+    const ContentsBody = document.querySelector(".wiki-contents__body");
+    const WikiIntroductions = document.querySelector(".wiki-introductions");
+    observer.observe(ContentsBody, {
       attributes: true,
       childList: true,
       subtree: true,
     });
-    observer.observe(document.querySelector(".wiki-introductions"), {
-      attributes: true,
-      childList: true,
-      subtree: true,
-    });
+    if (WikiIntroductions) {
+      observer.observe(WikiIntroductions, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+    }
   },
   methods: {
     onMounted() {
@@ -209,7 +216,6 @@ export default {
   display: none;
   position: absolute;
   background: $wiki-common-white;
-  font-size: 0.9rem;
   line-height: 20px;
   min-width: 300px;
   color: $wiki-description-black;
@@ -281,15 +287,39 @@ export default {
 }
 
 .wiki-popups__text {
-  padding-top: 7px;
+  font-size: 14px;
+  padding-top: 0.5rem;
   overflow: hidden;
   padding-bottom: 0;
-  margin: 16px;
+  margin: 1rem;
   width: 300px;
 
   p {
     text-indent: 0;
     margin-bottom: 10px;
+
+    .wiki-popups__description {
+      min-height: 84px;
+      max-height: 126px;
+      overflow: hidden;
+      display: block;
+    }
+  }
+
+  &::after {
+    content: "";
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      #ffffff 50%
+    );
+    position: absolute;
+    bottom: 26px;
+    right: 0;
+    width: 25%;
+    height: 20px;
+    background-color: transparent;
+    pointer-events: none;
   }
 }
 
@@ -297,7 +327,7 @@ export default {
   display: flex;
   width: 100%;
   margin: auto;
-  margin-bottom: 10px;
-  margin-top: -10px;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
 }
 </style>
