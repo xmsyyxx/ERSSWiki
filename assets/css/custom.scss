@@ -58,6 +58,12 @@ p {
   }
 }
 
+p a:hover,
+.footnotes a:hover {
+  background-color: #dde2eb;
+  border-radius: 2px;
+}
+
 .nuxt-content {
   p,
   ul {

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="isShow"
+    v-if="isShow"
     ref="popups"
     class="wiki-popups"
     :class="{
@@ -156,7 +156,7 @@ export default {
 
         this.left = left + "px";
         // if (this.arrowPosition === "top") {
-        this.top = top + 30 + "px";
+        this.top = top + 35 + "px";
         this.bottom = "auto";
         // } else if (this.arrowPosition === "bottom") {
         //   this.top = "auto";
@@ -299,7 +299,7 @@ export default {
     margin-bottom: 10px;
 
     .wiki-popups__description {
-      min-height: 84px;
+      min-height: 64px;
       max-height: 126px;
       overflow: hidden;
       display: block;
