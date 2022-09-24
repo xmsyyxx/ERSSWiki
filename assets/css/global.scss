@@ -314,11 +314,7 @@ mark {
   padding: 0.2em;
   background-color: $wiki-mark-yellow;
 }
-::-moz-selection {
-  color: $wiki-common-white;
-  background: $wiki-link-blue;
-}
 ::selection {
-  color: $wiki-common-white;
-  background: $wiki-link-light-blue;
+  color: $wiki-title-black;
+  background: $wiki-link-select-blue;
 }

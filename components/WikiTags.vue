@@ -63,7 +63,7 @@ export default {
 
 @media only screen and (min-width: 500px) {
   .wiki-tags {
-    width: 69%;
+    width: $wiki-left-space;
   }
 
   .wiki-tags__list {

@@ -1,6 +1,6 @@
 <template>
   <div class="wiki-item">
-    <WikiPcItemInformation
+    <WikiItemInformation
       :title="WikiData.title"
       :description="WikiData.description"
     />
@@ -36,18 +36,18 @@
 <script>
 import WikiPicture from "../../components/WikiPicture.vue";
 import WikiTags from "../../components/WikiTags.vue";
-import WikiPcItemInformation from "../../components/pc/WikiPcItemInformation.vue";
 import WikiPcDetailsList from "../../components/pc/WikiPcDetailsList.vue";
 import WikiPcStatus from "../../components/pc/WikiPcStatus.vue";
 import wikiCommonHead from "../../assets/js/wikiCommonHead";
 import WikiBaseIntroductions from "../../components/WikiBaseIntroductions.vue";
+import WikiItemInformation from "../../components/WikiItemInformation.vue";
 
 export default {
   name: "WikiPcItem",
   components: {
     WikiPcDetailsList,
     WikiBaseIntroductions,
-    WikiPcItemInformation,
+    WikiItemInformation,
     WikiPicture,
     WikiTags,
     WikiPcStatus,
@@ -118,11 +118,11 @@ export default {
 }
 
 .wiki-main__left {
-  width: 69%;
+  width: $wiki-left-space;
 }
 
 .wiki-main__right {
-  width: 29%;
+  width: $wiki-right-space;
   transform: translateY(-2rem);
 }
 

@@ -59,7 +59,8 @@ p {
 }
 
 p a:hover,
-.footnotes a:hover {
+.footnotes a:hover,
+.wiki-action:hover {
   background-color: #dde2eb;
   border-radius: 2px;
 }
@@ -187,4 +188,26 @@ p a:hover,
 
 .cool-lightbox-caption p {
   text-align: center !important;
+}
+
+.wiki-printing {
+  .wiki-header {
+    background-color: $wiki-common-white !important;
+    box-shadow: none !important;
+    border-image: none !important;
+    backdrop-filter: none !important;
+
+    .wiki-search,
+    .wiki-header__tips {
+      visibility: hidden !important;
+    }
+  }
+
+  .wiki-information__print {
+    visibility: hidden !important;
+  }
+
+  .wiki-footer {
+    display: none !important;
+  }
 }
