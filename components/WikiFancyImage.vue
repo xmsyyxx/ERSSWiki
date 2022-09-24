@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     const self = this;
-    this.$nuxt.$on("WikiFancyImage", function (data) {
+    this.$nuxt.$on("WikiFancyImage:show", function (data) {
       //   console.log("onWikiFancyImage");
       self.src = data.src;
       self.title = data.title;
@@ -42,7 +42,7 @@ export default {
     });
   },
   destroyed() {
-    this.$nuxt.$off("WikiFancyImage");
+    this.$nuxt.$off("WikiFancyImage:show");
   },
 };
 </script>
