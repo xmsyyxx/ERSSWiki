@@ -33,6 +33,8 @@ export default ({ app }, inject) => {
   const isPreFetchBot =
     window.URLSearchParams &&
     !!(new window.URLSearchParams(search).get("bot") === "1");
+  const isDevDomain =
+    hostname === "localhost" || hostname === "local.xhemj.work";
 
   const website = "8f7c6463-9ca3-48a1-b82b-55bef7bd0cc9";
   const hostUrl = "https://a.xhemj.work";
@@ -56,7 +58,7 @@ export default ({ app }, inject) => {
   const screen = `${width}x${height}`;
   const listeners = {};
   let currentUrl = `${pathname}${search}`;
-  let currentRef = window.document.referrer;
+  let currentRef = () => window.document.referrer;
   let cache;
 
   /* Collect metrics */
@@ -100,10 +102,10 @@ export default ({ app }, inject) => {
 
   const trackView = (
     url = currentUrl,
-    referrer = currentRef,
+    referrer = currentRef(),
     uuid = website
   ) => {
-    if (isPreFetchBot) return;
+    if (isPreFetchBot || isDevDomain) return;
     collect(
       "pageview",
       assign(getPayload(), {
@@ -120,7 +122,7 @@ export default ({ app }, inject) => {
     url = currentUrl,
     uuid = website
   ) => {
-    if (isPreFetchBot) return;
+    if (isPreFetchBot || isDevDomain) return;
     collect(
       "event",
       assign(getPayload(), {
@@ -174,7 +176,7 @@ export default ({ app }, inject) => {
   const handlePush = (state, title, url) => {
     if (!url) return;
 
-    currentRef = currentUrl;
+    let ref = currentUrl;
     const newUrl = url.toString();
 
     if (newUrl.substring(0, 4) === "http") {
@@ -183,7 +185,7 @@ export default ({ app }, inject) => {
       currentUrl = newUrl;
     }
 
-    if (currentUrl !== currentRef) {
+    if (currentUrl !== ref) {
       trackView();
     }
   };

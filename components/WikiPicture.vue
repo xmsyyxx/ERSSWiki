@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { imageSuffix } from "../assets/js/init";
 import IconUp from "./icons/IconUp.vue";
 
 function isSupportWebp() {
@@ -67,8 +68,8 @@ export default {
   },
   data() {
     return {
-      normalSuffix: "/thumb.jpg",
-      webpSuffix: "/thumb.webp",
+      normalSuffix: imageSuffix.thumb_jpg,
+      webpSuffix: imageSuffix.thumb_webp,
     };
   },
   computed: {
@@ -83,14 +84,14 @@ export default {
   methods: {
     onNormalLoad() {
       if (this.isPreFetchBot) return;
-      this.normalSuffix = "/normal.jpg";
-      this.webpSuffix = "/normal.webp";
+      this.normalSuffix = imageSuffix.normal_jpg;
+      this.webpSuffix = imageSuffix.normal_webp;
     },
     onClickPicture() {
       if (!this.clickable) return;
       const url =
         this.src + (isSupportWebp() ? this.webpSuffix : this.normalSuffix);
-      this.$nuxt.$emit("WikiFancyImage", {
+      this.$nuxt.$emit("WikiFancyImage:show", {
         src: url,
         title: this.title,
       });

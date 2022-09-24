@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tags !== []" class="wiki-tags">
+  <div v-if="Array.isArray(tags) && tags.length" class="wiki-tags">
     <ul class="wiki-tags__list">
       <li v-for="tag of tags" :key="tag" class="wiki-tags__item">
         <!-- <span class="wiki-tag-icon"><IconTag /></span> -->

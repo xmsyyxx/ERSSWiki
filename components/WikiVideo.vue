@@ -11,30 +11,8 @@
 </template>
 
 <script>
+import { loadJs } from "../assets/js/init";
 import IconUp from "./icons/IconUp.vue";
-
-function loadJs(src, opt) {
-  return new Promise(function (resolve) {
-    const script = document.createElement("script");
-    const head = document.getElementsByTagName("head")[0];
-    script.type = "text/javascript";
-    script.src = src;
-    if (opt) {
-      for (const key in opt) {
-        script[key] = opt[key];
-      }
-    }
-    if (script.addEventListener) {
-      script.addEventListener("load", resolve, false);
-    } else if (script.attachEvent) {
-      script.attachEvent("onreadystatechange", () => {
-        const target = window.event.srcElement;
-        if (target.readyState === "loaded") resolve();
-      });
-    }
-    head.appendChild(script);
-  });
-}
 
 export default {
   name: "WikiVideo",
