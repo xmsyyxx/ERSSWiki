@@ -41,3 +41,18 @@ export function loadJs(src, opt) {
     head.appendChild(script);
   });
 }
+
+/**
+ * 加载 CSS
+ */
+export const loadCss = (src) => {
+  return new Promise(function (resolve) {
+    const link = document.createElement("link");
+    const head = document.getElementsByTagName("head")[0];
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = src;
+    link.onload = resolve;
+    head.appendChild(link);
+  });
+};
