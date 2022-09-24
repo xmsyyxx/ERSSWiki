@@ -6,14 +6,15 @@ export const imageSuffix = {
   normal_jpg: "/normal.jpg",
   thumb_webp: "/thumb.webp",
   thumb_jpg: "/thumb.jpg",
-  twitter_card: "/twitter_card.webp",
+  twitter_card_webp: "/twitter_card.webp",
+  twitter_card_jpg: "/twitter_card.jpg",
 };
 
 /**
  * Twitter Card 占位图片
  */
 export const cardPlaceHolderImage =
-  "https://wikioss.xhemj.work/static/ersswiki-no-image-card.png/normal.webp";
+  "https://wikioss.xhemj.work/static/ersswiki-no-image-card.png";
 
 /**
  * 加载 Javascript

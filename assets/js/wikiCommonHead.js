@@ -1,7 +1,11 @@
 import getWikiDescription from "./getWikiDescription";
 import getWikiPicture from "./getWikiPicture";
+import { cardPlaceHolderImage, imageSuffix } from "./init";
 
 const baseUrl = "https://baike.xmsyyxx.com";
+const cardImage = (self) =>
+  (getWikiPicture(self.WikiData) || cardPlaceHolderImage) +
+  imageSuffix.twitter_card_webp;
 
 export default function wikiCommonHead(self) {
   const description = getWikiDescription(self.WikiData);
@@ -54,7 +58,7 @@ export default function wikiCommonHead(self) {
       {
         hid: "og:image",
         property: "og:image",
-        content: getWikiPicture(self.WikiData),
+        content: cardImage(self),
       },
       {
         hid: "og:image:alt",
@@ -85,7 +89,7 @@ export default function wikiCommonHead(self) {
       {
         hid: "twitter:image:src",
         name: "twitter:image:src",
-        content: getWikiPicture(self.WikiData),
+        content: cardImage(self),
       },
       {
         hid: "twitter:image:alt",

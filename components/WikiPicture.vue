@@ -9,7 +9,7 @@
       >
         <source type="image/webp" :srcset="src + webpSuffix" />
         <img
-          :src="src + normalSuffix"
+          :src="src + suffix"
           :alt="title"
           :title="title"
           :class="{ 'wiki-picture__clickable': clickable }"
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { imageSuffix } from "../assets/js/init";
 import IconUp from "./icons/IconUp.vue";
 
 function isSupportWebp() {
@@ -65,11 +64,19 @@ export default {
       type: Boolean,
       default: true,
     },
+    thumbSuffix: {
+      type: String,
+      default: "/thumb",
+    },
+    normalSuffix: {
+      type: String,
+      default: "/normal",
+    },
   },
   data() {
     return {
-      normalSuffix: imageSuffix.thumb_jpg,
-      webpSuffix: imageSuffix.thumb_webp,
+      suffix: this.thumbSuffix + ".jpg",
+      webpSuffix: this.thumbSuffix + ".webp",
     };
   },
   computed: {
@@ -84,13 +91,12 @@ export default {
   methods: {
     onNormalLoad() {
       if (this.isPreFetchBot) return;
-      this.normalSuffix = imageSuffix.normal_jpg;
-      this.webpSuffix = imageSuffix.normal_webp;
+      this.suffix = this.normalSuffix + ".jpg";
+      this.webpSuffix = this.normalSuffix + ".webp";
     },
     onClickPicture() {
       if (!this.clickable) return;
-      const url =
-        this.src + (isSupportWebp() ? this.webpSuffix : this.normalSuffix);
+      const url = this.src + (isSupportWebp() ? this.webpSuffix : this.suffix);
       this.$nuxt.$emit("WikiFancyImage:show", {
         src: url,
         title: this.title,

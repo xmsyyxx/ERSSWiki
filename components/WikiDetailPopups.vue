@@ -20,7 +20,11 @@
       <div class="wiki-popups__text">
         <p>
           <span v-if="wikiImg" class="wiki-popups__img">
-            <WikiPicture :clickable="false" :src="wikiImg" />
+            <WikiPicture
+              :clickable="false"
+              normalSuffix="/twitter_card"
+              :src="wikiImg"
+            />
           </span>
           <span class="wiki-popups__description">
             <strong v-if="wikiName">{{ wikiName }}：</strong>
@@ -34,6 +38,7 @@
 
 <script>
 import getWikiDescription from "../assets/js/getWikiDescription";
+import getWikiPicture from "../assets/js/getWikiPicture";
 import WikiPicture from "./WikiPicture.vue";
 
 export default {
@@ -83,7 +88,7 @@ export default {
 
       this.wikiName = WikiData.title;
       this.wikiDescription = description;
-      this.wikiImg = WikiData.img || "";
+      this.wikiImg = getWikiPicture(WikiData);
     },
   },
   mounted() {
