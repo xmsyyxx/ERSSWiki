@@ -12,10 +12,8 @@
     @mouseenter="isMouseEnterModule = true"
     @mouseleave="onLeaveModule"
   >
-    <div
-      class="wiki-popups__arrow"
-      :class="'wiki-arrow__' + arrowPosition"
-    ></div>
+    <div class="wiki-popups__arrow wiki-arrow__shadow"></div>
+    <div class="wiki-popups__arrow wiki-arrow__top"></div>
     <div class="wiki-popups__module">
       <div class="wiki-popups__text">
         <p>
@@ -218,6 +216,7 @@ export default {
 @import "@/assets/css/variables.scss";
 
 $wiki-popups-width: 300px;
+$wiki-popups-border-color: rgba(204, 204, 204, 0.3);
 
 .wiki-popups {
   display: none;
@@ -277,13 +276,19 @@ $wiki-popups-width: 300px;
 
   &.wiki-arrow__top {
     border-bottom-color: #fff;
-    top: calc($arrow-height * -2);
+    // top: calc($arrow-height * -2);
+    top: -18px;
   }
 
-  &.wiki-arrow__bottom {
-    border-top-color: #fff;
-    bottom: calc($arrow-height * -2);
+  &.wiki-arrow__shadow {
+    border-bottom-color: $wiki-popups-border-color;
+    top: -20px;
   }
+
+  // &.wiki-arrow__bottom {
+  //   border-top-color: #fff;
+  //   bottom: calc($arrow-height * -2);
+  // }
 }
 
 .wiki-popups__module {
@@ -291,6 +296,8 @@ $wiki-popups-width: 300px;
   background: #fff;
   flex-direction: column;
   align-content: flex-start;
+  box-shadow: 0px 2px 7px rgb(0 0 0 / 12%);
+  border: 1px solid $wiki-popups-border-color;
 }
 
 .wiki-popups__text {
@@ -327,6 +334,7 @@ $wiki-popups-width: 300px;
     height: 20px;
     background-color: transparent;
     pointer-events: none;
+    border-right: 1px solid $wiki-popups-border-color;
   }
 }
 
