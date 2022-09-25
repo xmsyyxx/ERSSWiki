@@ -84,6 +84,10 @@ p a:hover,
     margin-right: 1rem;
   }
 
+  li {
+    margin-left: 2em;
+  }
+
   h2,
   h3 {
     margin-left: 1rem;
@@ -192,6 +196,7 @@ p a:hover,
 
 .wiki-printing {
   .wiki-header {
+    position: relative !important;
     background-color: $wiki-common-white !important;
     box-shadow: none !important;
     border-image: none !important;
@@ -203,11 +208,28 @@ p a:hover,
     }
   }
 
+  .wiki-contents__body {
+    padding-top: 0 !important;
+  }
+
   .wiki-information__print {
     visibility: hidden !important;
   }
 
   .wiki-footer {
+    background-color: #fff !important;
+    border-top: 1px solid #e6e6e6 !important;
+    position: relative !important;
+    margin-top: 2rem !important;
+
+    .wiki-footer__copyright,
+    .wiki-logo__box {
+      margin-top: 0 !important;
+    }
+  }
+
+  .wiki-video,
+  .wiki-audio {
     display: none !important;
   }
 }
