@@ -19,16 +19,15 @@
     <div class="wiki-popups__module">
       <div class="wiki-popups__text">
         <p>
-          <span v-if="wikiImg" class="wiki-popups__img">
-            <WikiPicture
-              :clickable="false"
-              normalSuffix="/twitter_card"
-              :src="wikiImg"
-            />
+          <span
+            v-if="wikiImg"
+            class="wiki-popups__img"
+            :style="{ 'background-image': 'url(' + wikiImg + ')' }"
+          >
           </span>
           <span class="wiki-popups__description">
-            <strong v-if="wikiName">{{ wikiName }}：</strong>
-            {{ wikiDescription }}
+            <strong v-if="wikiName">{{ wikiName }}：</strong
+            >{{ wikiDescription }}
           </span>
         </p>
       </div>
@@ -39,13 +38,10 @@
 <script>
 import getWikiDescription from "../assets/js/getWikiDescription";
 import getWikiPicture from "../assets/js/getWikiPicture";
-import WikiPicture from "./WikiPicture.vue";
+import { isSupportWebp } from "../assets/js/init";
 
 export default {
   name: "WikiDetailPopups",
-  components: {
-    WikiPicture,
-  },
   data() {
     return {
       left: "",
@@ -88,7 +84,11 @@ export default {
 
       this.wikiName = WikiData.title;
       this.wikiDescription = description;
-      this.wikiImg = getWikiPicture(WikiData);
+      const wikiImgSuffix =
+        "/twitter_card" + (isSupportWebp() ? ".webp" : ".jpg");
+      this.wikiImg = getWikiPicture(WikiData)
+        ? getWikiPicture(WikiData) + wikiImgSuffix
+        : "";
     },
   },
   mounted() {
@@ -217,12 +217,14 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/css/variables.scss";
 
+$wiki-popups-width: 300px;
+
 .wiki-popups {
   display: none;
   position: absolute;
   background: $wiki-common-white;
   line-height: 20px;
-  min-width: 300px;
+  min-width: $wiki-popups-width;
   color: $wiki-description-black;
   border-radius: 2px;
   box-shadow: 0 30px 90px -20px rgb(0 0 0 / 30%), 0 0 1px 1px rgb(0 0 0 / 5%);
@@ -297,7 +299,7 @@ export default {
   overflow: hidden;
   padding-bottom: 0;
   margin: 1rem;
-  width: 300px;
+  width: $wiki-popups-width;
 
   p {
     text-indent: 0;
@@ -329,10 +331,17 @@ export default {
 }
 
 .wiki-popups__img {
+  $origin-img-width: 1024px;
+  $origin-img-height: 576px;
+
   display: flex;
-  width: 100%;
   margin: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   margin-top: -1rem;
+  width: $wiki-popups-width;
+  height: calc($origin-img-height * ($wiki-popups-width / $origin-img-width));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>
