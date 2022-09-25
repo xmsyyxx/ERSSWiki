@@ -4,8 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const log = console.log;
 
-const ENDPOINT = "http://local.xhemj.work:5500";
-// const ENDPOINT = "https://ersswiki.xhemj.work";
+// const ENDPOINT = "http://local.xhemj.work:5500";
+const ENDPOINT = "https://ersswiki.xhemj.work";
+const siteUrl = "https://baike.xmsyyxx.com";
 const TARGET_PATH = path.resolve(__dirname, "../dist");
 const TARGET_FOLDER_INFO = {
   item: {
@@ -40,7 +41,7 @@ const TARGET_FOLDER_INFO = {
     for (let i in files) {
       let item = files[i];
       item = item.split(".")[0];
-      const url = `${ENDPOINT}/${pathname}/${item}?bot=1`;
+      const url = `${ENDPOINT}/${pathname}/${item}?bot=1&t=${Date.now()}`;
 
       await page.goto(url);
       // 等待渲染出正文
@@ -53,6 +54,41 @@ const TARGET_FOLDER_INFO = {
       const contentBody = await page.evaluate(() => {
         return document.querySelector("html").innerHTML;
       });
+
+      const isRedirectPage = await page.evaluate(() => {
+        return document.querySelector(".wiki-contents__redirect") !== null;
+      });
+      if (isRedirectPage) {
+        const redirectTarget = await page.evaluate(() => {
+          return document
+            .querySelector(".wiki-contents__redirect")
+            .getAttribute("data-redirect");
+        });
+        log(`跳转 ${item} -> ${redirectTarget}`);
+        const redirectTemplete = `<!DOCTYPE html>
+<html>
+  <head>
+    <title>${item} - 耳斯百科</title>
+    <link rel="canonical" href="${siteUrl}">
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url=${redirectTarget}">
+  </head>
+  <script>window.opener = null;window.location.replace("${redirectTarget}")</script>
+</html>`;
+        fs.writeFileSync(
+          path.resolve(TARGET_PATH, pathname, item + ".html"),
+          redirectTemplete,
+          "utf8"
+        );
+        fs.copyFileSync(
+          path.resolve(TARGET_PATH, pathname, item + ".html"),
+          path.resolve(TARGET_PATH, item + ".html")
+        );
+        log(`(${Number(i) + 1}/${fileLength}) ${item} 替换成功`);
+        continue;
+      }
+
       // 获取页面额外添加得 CSS 地址
       let loadCssUrls = await page.evaluate(() => {
         return Array.from(

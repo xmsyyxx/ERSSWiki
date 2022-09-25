@@ -1,3 +1,4 @@
+import { siteUrl } from "./assets/js/init";
 import { defaultLocale, locales, locals, translateSring } from "./i18n";
 import rename from "./scripts/rename";
 import writeInfo from "./scripts/writeInfo";
@@ -116,7 +117,6 @@ export default {
     // analyze: true,
     extractCSS: true,
     // profile: true,
-    transpile: ["umami"],
     plugins: [
       new webpack.BannerPlugin(
         [
@@ -194,7 +194,7 @@ export default {
   },
 
   sitemap: {
-    hostname: "https://baike.xmsyyxx.com",
+    hostname: siteUrl,
     routes: createSitemapRoutes,
   },
 };

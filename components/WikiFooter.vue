@@ -57,7 +57,7 @@ export default {
       isMounted: false, // 预渲染时检测到此表示已经渲染完组件
       version: require("~/package.json").version,
       buildTime: require("~/assets/build.json").time,
-      copyright: `Copyright © 2021-${new Date().getFullYear()} Xhemj & 耳斯工作室`,
+      copyright: `Copyright © 2021-${new Date().getFullYear()} IYAMAYA 耳斯工作室`,
     };
   },
   mounted() {
