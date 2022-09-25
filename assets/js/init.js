@@ -1,4 +1,9 @@
 /**
+ * 网站域名
+ */
+export const siteUrl = "https://baike.xmsyyxx.com";
+
+/**
  * 图片处理后缀
  */
 export const imageSuffix = {
@@ -56,3 +61,19 @@ export const loadCss = (src) => {
     head.appendChild(link);
   });
 };
+
+/**
+ * 是否支持 Webp
+ */
+export function isSupportWebp() {
+  try {
+    return (
+      document
+        .createElement("canvas")
+        .toDataURL("image/webp", 0.5)
+        .indexOf("data:image/webp") === 0
+    );
+  } catch {
+    return false;
+  }
+}

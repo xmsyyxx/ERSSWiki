@@ -1,8 +1,8 @@
 import getWikiDescription from "./getWikiDescription";
 import getWikiPicture from "./getWikiPicture";
-import { cardPlaceHolderImage, imageSuffix } from "./init";
+import { cardPlaceHolderImage, imageSuffix, siteUrl } from "./init";
 
-const baseUrl = "https://baike.xmsyyxx.com";
+const baseUrl = siteUrl;
 const cardImage = (self) =>
   (getWikiPicture(self.WikiData) || cardPlaceHolderImage) +
   imageSuffix.twitter_card_webp;

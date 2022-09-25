@@ -17,10 +17,9 @@ export default {
     WikiLogo,
   },
   layout: "WikiHome",
-  async asyncData({ $content, query }) {
+  async asyncData({ $content, query, params }) {
     const WikiData = await $content("wiki").only(["slug", "alias"]).fetch();
-    const title = "/" + query.name;
-
+    const title = "/" + (query.name || params.pathMatch);
     if (title) {
       for (const item of WikiData) {
         const { slug, alias } = item;
@@ -28,7 +27,14 @@ export default {
         for (const aliasItem of alias) {
           if (aliasItem === title) {
             const path = window.outerWidth < 500 ? "/wiki/" : "/item/";
-            return window.location.replace(path + slug);
+            // return window.location.replace(path + slug);
+            const body = document.querySelector("body");
+            // 配合 preFetch 检测到页面已加载
+            body.classList.add("wiki-item");
+            body.classList.add("wiki-contents__redirect");
+            body.classList.add("wiki-footer__mounted");
+            body.setAttribute("data-redirect", path + slug);
+            // body.innerHTML = "";
           }
         }
       }
