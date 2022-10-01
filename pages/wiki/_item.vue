@@ -6,9 +6,10 @@
     />
     <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
     <WikiPicture
-      v-if="WikiData.img"
-      :src="WikiData.img"
-      :title="WikiData.title"
+      :src="wikiImg.url"
+      :title="wikiImg.title || WikiData.title"
+      normalSuffix="/twitter_card"
+      thumbSuffix="/twitter_card_thumb"
     />
     <WikiBaseIntroductions
       v-if="WikiData.introduction"
@@ -56,6 +57,21 @@ export default {
   },
   head() {
     return wikiCommonHead(this);
+  },
+  computed: {
+    wikiImg() {
+      if (typeof this.WikiData.img === "string") {
+        return {
+          url: this.WikiData.img,
+          title: null,
+        };
+      } else {
+        return {
+          url: this.WikiData.img?.url,
+          title: this.WikiData.img?.title,
+        };
+      }
+    },
   },
   mounted() {
     const onhashchange = () => {

@@ -27,7 +27,7 @@ export default function getWikiDescription(WikiData = {}) {
   if (String(description).startsWith(WikiData.title)) {
     description = description.replace(new RegExp(`(${WikiData.title})，?`), "");
   }
-  return description.length > 200
-    ? description.substring(0, 200) + "..."
+  return description.length > 150
+    ? description.substring(0, 150) + "..."
     : description;
 }

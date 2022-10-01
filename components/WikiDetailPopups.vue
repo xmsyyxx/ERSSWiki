@@ -1,7 +1,6 @@
 <template>
   <div
     v-if="isShow"
-    ref="popups"
     class="wiki-popups"
     :class="{
       'wiki-popups__show': isShow,
@@ -78,7 +77,8 @@ export default {
         WikiData = {};
       }
 
-      const description = getWikiDescription(WikiData) || "百科信息获取失败";
+      const description =
+        getWikiDescription(WikiData) || "百科预览信息获取失败";
 
       this.wikiName = WikiData.title;
       this.wikiDescription = description;
@@ -226,7 +226,6 @@ $wiki-popups-border-color: rgba(204, 204, 204, 0.3);
   min-width: $wiki-popups-width;
   color: $wiki-description-black;
   border-radius: 2px;
-  box-shadow: 0 30px 90px -20px rgb(0 0 0 / 30%), 0 0 1px 1px rgb(0 0 0 / 5%);
   z-index: 50;
 }
 
@@ -296,7 +295,7 @@ $wiki-popups-border-color: rgba(204, 204, 204, 0.3);
   background: #fff;
   flex-direction: column;
   align-content: flex-start;
-  box-shadow: 0px 2px 7px rgb(0 0 0 / 12%);
+  box-shadow: 0px 2px 5px rgb(0 0 0 / 12%);
   border: 1px solid $wiki-popups-border-color;
 }
 
@@ -339,15 +338,12 @@ $wiki-popups-border-color: rgba(204, 204, 204, 0.3);
 }
 
 .wiki-popups__img {
-  $origin-img-width: 1024px;
-  $origin-img-height: 576px;
-
   display: flex;
   margin: auto;
   margin-bottom: 0.5rem;
   margin-top: -1rem;
   width: $wiki-popups-width;
-  height: calc($origin-img-height * ($wiki-popups-width / $origin-img-width));
+  height: calc($card-img-height * ($wiki-popups-width / $card-img-width));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -17,8 +17,13 @@
         </div>
       </div>
       <div v-if="WikiData.img || WikiData.info" class="wiki-main__right">
-        <div v-if="WikiData.img" class="wiki-main__picture">
-          <WikiPicture :src="WikiData.img" :title="WikiData.title" />
+        <div v-if="wikiImg.url" class="wiki-main__picture">
+          <WikiPicture
+            :src="wikiImg.url"
+            :title="wikiImg.title || WikiData.title"
+            normalSuffix="/twitter_card"
+            thumbSuffix="/twitter_card_thumb"
+          />
         </div>
         <div class="wiki-main__sticky">
           <WikiPcDetailsList v-if="WikiData.info" :data="WikiData.info" />
@@ -75,6 +80,21 @@ export default {
   },
   head() {
     return wikiCommonHead(this);
+  },
+  computed: {
+    wikiImg() {
+      if (typeof this.WikiData.img === "string") {
+        return {
+          url: this.WikiData.img,
+          title: null,
+        };
+      } else {
+        return {
+          url: this.WikiData.img?.url,
+          title: this.WikiData.img?.title,
+        };
+      }
+    },
   },
   mounted() {
     const onhashchange = () => {

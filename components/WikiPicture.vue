@@ -84,7 +84,8 @@ export default {
     },
     onClickPicture() {
       if (!this.clickable) return;
-      const url = this.src + (isSupportWebp() ? this.webpSuffix : this.suffix);
+      const suffix = isSupportWebp() ? this.webpSuffix : this.suffix;
+      const url = this.src + suffix;
       this.$nuxt.$emit("WikiFancyImage:show", {
         src: url,
         title: this.title,
