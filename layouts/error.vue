@@ -50,7 +50,6 @@ export default {
   align-items: center;
   min-height: 75vh;
   flex-direction: column;
-  user-select: none;
 }
 
 .wiki-error__tips {

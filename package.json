@@ -1,6 +1,6 @@
 {
   "name": "ersswiki",
-  "version": "0.1.11-dev.2",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "nuxt",

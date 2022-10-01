@@ -5,7 +5,9 @@
       <Nuxt />
     </div>
     <div class="wiki-contents__fill"></div>
-    <div class="wiki-contents__footer"><WikiFooter /></div>
+    <div class="wiki-contents__footer">
+      <WikiFooter />
+    </div>
     <WikiFancyImage />
     <WikiCommon />
   </div>

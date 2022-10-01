@@ -10,9 +10,21 @@
     <div class="wiki-footer__box">
       <div class="wiki-footer__copyright">
         <span>耳斯百科 v{{ version }}</span>
-        <span>最后更新：{{ buildTime }}</span>
+        <!-- <span>最后更新：{{ buildTime }}</span> -->
         <span>{{ copyright }}</span>
-        <strong>开发中页面，不代表最终品质，且不保证访问质量</strong>
+        <span>
+          <strong>开发中页面，不代表最终品质，且不保证访问质量</strong>
+        </span>
+        <span>
+          <a
+            href="https://beian.miit.gov.cn"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #333"
+          >
+            闽ICP备2022010207号
+          </a>
+        </span>
         <hr v-if="!isHome" />
         <span v-if="!isHome"
           >此网站为 厦门市音乐学校 <strong>非官方</strong>百科网，

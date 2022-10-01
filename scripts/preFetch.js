@@ -6,7 +6,7 @@ const log = console.log;
 
 // const ENDPOINT = "http://local.xhemj.work:5500";
 const ENDPOINT = "https://ersswiki.xhemj.work";
-const siteUrl = "https://baike.xmsyyxx.com";
+const SITEURL = "https://baike.xmsyyxx.com";
 const TARGET_PATH = path.resolve(__dirname, "../dist");
 const TARGET_FOLDER_INFO = {
   item: {
@@ -68,13 +68,14 @@ const TARGET_FOLDER_INFO = {
         const redirectTemplete = `<!DOCTYPE html>
 <html>
   <head>
-    <title>${item} - 耳斯百科</title>
-    <link rel="canonical" href="${siteUrl}">
+    <link rel="canonical" href="${SITEURL}">
     <meta name="robots" content="noindex">
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=${redirectTarget}">
+    <noscript><meta http-equiv="refresh" content="0; url=${redirectTarget}"></noscript>
   </head>
-  <script>window.opener = null;window.location.replace("${redirectTarget}")</script>
+  <script>window.opener = null;var u="${redirectTarget
+    .split("/")
+    .pop()}";window.outerWidth>500?location.replace("/item/"+u):location.replace("/wiki/"+u)</script>
 </html>`;
         fs.writeFileSync(
           path.resolve(TARGET_PATH, pathname, item + ".html"),

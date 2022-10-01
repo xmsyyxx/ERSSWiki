@@ -3,7 +3,7 @@
     <ul class="wiki-tags__list">
       <li v-for="tag of tags" :key="tag" class="wiki-tags__item">
         <!-- <span class="wiki-tag-icon"><IconTag /></span> -->
-        <span class="wiki-tags__item--text">{{ tag }}</span>
+        <span class="wiki-tags__item--text"># {{ tag }}</span>
       </li>
     </ul>
   </div>
@@ -52,9 +52,9 @@ export default {
   padding: 0 5px;
   font-weight: 500;
 
-  &::before {
-    content: "# ";
-  }
+  // &::before {
+  //   content: "# ";
+  // }
 
   &:not(:first-child) {
     margin-left: 1rem;
