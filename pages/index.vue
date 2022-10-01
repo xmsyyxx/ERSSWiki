@@ -5,6 +5,8 @@
         <WikiLogo />
       </div>
       <WikiPcSearch />
+      <WikiSuggestion :data="WikiData" />
+      <WikiDetailPopups target=".wiki-suggestion" />
     </div>
     <WikiFooter :is-home="true" />
   </div>
@@ -12,8 +14,10 @@
 
 <script>
 import WikiPcSearch from "../components/pc/WikiPcSearch.vue";
+import WikiDetailPopups from "../components/WikiDetailPopups.vue";
 import WikiFooter from "../components/WikiFooter.vue";
 import WikiLogo from "../components/WikiLogo.vue";
+import WikiSuggestion from "../components/WikiSuggestion.vue";
 
 export default {
   name: "WikiHome",
@@ -21,6 +25,8 @@ export default {
     WikiPcSearch,
     WikiLogo,
     WikiFooter,
+    WikiSuggestion,
+    WikiDetailPopups,
   },
   layout: "WikiHome",
   hooks: {
@@ -89,6 +95,7 @@ export default {
   margin-bottom: 40px;
   max-width: $wiki-max-width;
   min-width: $wiki-min-width;
+  z-index: 10;
 }
 
 .wiki-app__logo {
@@ -151,7 +158,7 @@ export default {
     }
 
     .wiki-search__list {
-	  padding-top: 0.5rem;
+      padding-top: 0.5rem;
       box-shadow: 0 2px 3px rgb(0 0 0 / 10%) !important;
       border-bottom: 1px solid $wiki-suggest-border-gray !important;
       background-color: $wiki-common-white !important;

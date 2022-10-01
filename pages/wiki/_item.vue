@@ -6,6 +6,7 @@
     />
     <WikiTags v-if="WikiData.tags" :tags="WikiData.tags" />
     <WikiPicture
+      v-if="wikiImg.url"
       :src="wikiImg.url"
       :title="wikiImg.title || WikiData.title"
       normalSuffix="/twitter_card"

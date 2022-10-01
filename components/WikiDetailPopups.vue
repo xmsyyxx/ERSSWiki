@@ -39,6 +39,12 @@ import { isSupportWebp } from "../assets/js/init";
 
 export default {
   name: "WikiDetailPopups",
+  props: {
+    target: {
+      type: String,
+      default: ".wiki-contents__body",
+    },
+  },
   data() {
     return {
       left: "",
@@ -92,7 +98,7 @@ export default {
   mounted() {
     this.onMounted();
     const observer = new MutationObserver(this.onMounted);
-    const ContentsBody = document.querySelector(".wiki-contents__body");
+    const ContentsBody = document.querySelector(this.target);
     const WikiIntroductions = document.querySelector(".wiki-introductions");
     observer.observe(ContentsBody, {
       attributes: true,
@@ -109,7 +115,9 @@ export default {
   },
   methods: {
     onMounted() {
-      Array.from(document.querySelectorAll("p > a")).forEach((element) => {
+      Array.from(
+        document.querySelectorAll("a:not(.footnote-ref):not(.footnotes a)")
+      ).forEach((element) => {
         // 绑定点击事件，
         // 执行开启和关闭都延时，
         // 时间过后若鼠标仍在上面才显示弹窗。

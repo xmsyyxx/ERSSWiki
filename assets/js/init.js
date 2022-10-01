@@ -77,3 +77,17 @@ export function isSupportWebp() {
     return false;
   }
 }
+
+/**
+ * 随机数
+ */
+export function randomNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+/**
+ * 判断设备是否宽度小于500
+ */
+export function isMobile() {
+  return window.innerWidth < 500;
+}
