@@ -12,10 +12,10 @@
           >|</span
         >
       </li>
+      <li class="wiki-suggestion__reload" @click="handleSuggestion">
+        <IconReload />
+      </li>
     </ul>
-    <div class="wiki-suggestion__reload" @click="handleSuggestion">
-      <IconReload />
-    </div>
   </div>
 </template>
 
@@ -43,27 +43,29 @@ export default {
   },
   mounted() {
     const onresize = () => {
+      const oldLimit = this.limit;
       this.path = window.outerWidth < 500 ? "/wiki/" : "/item/";
       if (isMobile()) {
         this.limit = 3;
       } else {
         this.limit = 5;
       }
-      this.handleSuggestion();
+      if (oldLimit !== this.limit) this.handleSuggestion();
     };
     onresize();
+    this.handleSuggestion();
     window.addEventListener("resize", onresize);
   },
   methods: {
     handleSuggestion() {
-      const list = [];
-      for (let i = 0; list.length < this.limit; i++) {
+      const list = new Set();
+      for (let i = 0; Array.from(list).length < this.limit; i++) {
         const n = randomNum(0, this.data.length - 1);
         if (this.data[n]?.title) {
-          list.push(this.data[n].title);
+          list.add(this.data[n].title);
         }
       }
-      this.suggestionList = list;
+      this.suggestionList = Array.from(list);
     },
   },
 };
@@ -110,9 +112,9 @@ export default {
 
   .wiki-suggestion__list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
-    margin-top: 0.5rem;
+    flex-wrap: nowrap;
 
     li {
       list-style: none;
@@ -122,11 +124,19 @@ export default {
       padding: 0.1rem 0.7rem;
       /* margin-right: auto; */
       width: fit-content;
-      margin: 0.25rem auto;
-    }
+      margin: 0.25rem;
 
-    li:not(:first-child) {
-      margin-left: auto;
+      &:not(:first-child) {
+        margin-left: auto;
+      }
+
+      a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
 
