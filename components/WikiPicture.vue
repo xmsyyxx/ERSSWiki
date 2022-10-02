@@ -7,9 +7,9 @@
         class="wiki-picture__img"
         :class="{ 'wiki--click--WikiPicture': clickable }"
       >
-        <source type="image/webp" :srcset="src + webpSuffix" />
+        <source v-if="!isGif" type="image/webp" :srcset="src + webpSuffix" />
         <img
-          :src="src + suffix"
+          :src="src + (!isGif ? suffix : '')"
           :alt="title"
           :title="title"
           :class="{ 'wiki-picture__clickable': clickable }"
@@ -75,6 +75,9 @@ export default {
         URLSearchParams && !!(new URLSearchParams(search).get("bot") === "1")
       );
     },
+    isGif() {
+      return String(this.src).endsWith(".gif");
+    },
   },
   methods: {
     onNormalLoad() {
@@ -85,7 +88,7 @@ export default {
     onClickPicture() {
       if (!this.clickable) return;
       const suffix = isSupportWebp() ? this.webpSuffix : this.suffix;
-      const url = this.src + suffix;
+      const url = this.src + (this.isGif ? "" : suffix);
       this.$nuxt.$emit("WikiFancyImage:show", {
         src: url,
         title: this.title,
