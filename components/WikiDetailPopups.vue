@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isShow"
+    v-show="isShow"
     class="wiki-popups"
     :class="{
       'wiki-popups__show': isShow,
@@ -75,7 +75,9 @@ export default {
     async isShow() {
       if (!this.isShow) return;
       let name = this.targetText;
-      name = String(name).replace(/(^\s*)|(\s*$)/g, ""); // 去除开头结尾空格
+      name = String(name)
+        .replace(/(^\s*)|(\s*$)/g, "") // 去除开头结尾空格
+        .replace(/([A-Za-z].*) ([\u4E00-\u9FA5].*)/gi, "$1$2"); // 去除英文后空格
       let WikiData = {};
       try {
         WikiData = await this.$content("wiki", name, { text: true }).fetch();
@@ -116,34 +118,43 @@ export default {
   },
   methods: {
     onMounted() {
-      Array.from(document.querySelectorAll(`${this.target} a`)).forEach(
-        (element) => {
-          // 绑定点击事件，
-          // 执行开启和关闭都延时，
-          // 时间过后若鼠标仍在上面才显示弹窗。
-          element.onmouseenter = (e) => {
-            this.isMouseEnterModule = true;
-            this.timerWaitOpen = setTimeout(async () => {
-              const nowElementTargetText = e.path[0].textContent;
-              // 防止在等待时鼠标移动到别的链接去
-              if (this.targetText && this.targetText !== nowElementTargetText) {
-                await this.closePopups(true); // 强制关闭当前弹窗
-                this.openPopups(e);
-              } else if (this.isMouseEnterModule) {
-                return this.openPopups(e);
-              }
-            }, 350);
-          };
-          element.onmouseleave = () => {
-            this.isMouseEnterModule = false;
-            this.timerWaitClose = setTimeout(() => {
-              if (!this.isMouseEnterModule) {
-                return this.closePopups();
-              }
-            }, 350);
-          };
-        }
-      );
+      const disableElements = [
+        ":not(.footnote-ref)",
+        ":not(.footnotes a)",
+        ":not(.footnote-backref)",
+        ":not(h2 a)",
+        ":not(h3 a)",
+        ":not(.wiki-search__list a)",
+        ":not(.wiki-no-preview a)",
+      ].join("");
+      Array.from(
+        document.querySelectorAll(`${this.target} a${disableElements}`)
+      ).forEach((element) => {
+        // 绑定点击事件，
+        // 执行开启和关闭都延时，
+        // 时间过后若鼠标仍在上面才显示弹窗。
+        element.onmouseenter = (e) => {
+          this.isMouseEnterModule = true;
+          this.timerWaitOpen = setTimeout(async () => {
+            const nowElementTargetText = e.path[0].textContent;
+            // 防止在等待时鼠标移动到别的链接去
+            if (this.targetText && this.targetText !== nowElementTargetText) {
+              await this.closePopups(true); // 强制关闭当前弹窗
+              this.openPopups(e);
+            } else if (this.isMouseEnterModule) {
+              return this.openPopups(e);
+            }
+          }, 350);
+        };
+        element.onmouseleave = () => {
+          this.isMouseEnterModule = false;
+          this.timerWaitClose = setTimeout(() => {
+            if (!this.isMouseEnterModule) {
+              return this.closePopups();
+            }
+          }, 350);
+        };
+      });
     },
     async openPopups(e) {
       e && e.preventDefault();
