@@ -87,7 +87,7 @@ export default {
     },
     onClickPicture() {
       if (!this.clickable) return;
-      const suffix = isSupportWebp() ? this.webpSuffix : this.suffix;
+      const suffix = "/normal" + (isSupportWebp() ? ".webp" : ".jpg");
       const url = this.src + (this.isGif ? "" : suffix);
       this.$nuxt.$emit("WikiFancyImage:show", {
         src: url,
