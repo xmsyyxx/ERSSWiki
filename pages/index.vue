@@ -126,7 +126,7 @@ export default {
     max-width: none;
     min-width: 0;
     justify-content: flex-start;
-    padding-top: 150px;
+    padding-top: 190px;
     padding-left: 1rem;
     padding-right: 1rem;
     min-height: auto;
@@ -137,6 +137,31 @@ export default {
 
 <style lang="scss">
 @import "@/assets/css/variables.scss";
+
+@media only screen and (max-width: 500px) {
+  .wiki-app__logo {
+    .wiki-logo {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .wiki-logo__box img {
+      width: 5rem;
+    }
+
+    .wiki-logo__text {
+      margin: auto;
+      font-size: 2.5rem;
+    }
+
+    .wiki-logo__tips {
+      margin: auto;
+      transform: translateY(-2em);
+    }
+  }
+}
 
 .wiki-app__search .wiki-search {
   .wiki-search__input {
