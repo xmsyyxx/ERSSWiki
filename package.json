@@ -1,10 +1,13 @@
 {
   "name": "ersswiki",
-  "version": "0.2.2",
+  "version": "0.2.2-dev.3",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
+    "build:preupload": "node scripts\\sync.js",
+    "build:prefetch": "node scripts\\preFetch.js",
+    "build:finalupload": "node scripts\\sync.js",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
@@ -13,7 +16,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
     "test": "jest",
     "postcss": "postcss dist\\css\\*.css --no-map --use autoprefixer -d dist\\css",
-    "publish": "npm run generate && npm run postcss"
+    "publish": "npm run generate && npm run postcss && npm run build:preupload && npm run build:prefetch && npm run build:finalupload"
   },
   "dependencies": {
     "@nuxt/content": "^1.15.1",
@@ -55,6 +58,7 @@
     "eslint-plugin-vue": "^8.2.0",
     "jest": "^28.1.3",
     "js-yaml": "^4.1.0",
+    "mime-types": "^2.1.35",
     "ohmyfetch": "^0.4.18",
     "postcss-css-variables": "^0.18.0",
     "postcss-hexrgba": "^2.1.0",

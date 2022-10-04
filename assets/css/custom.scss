@@ -54,11 +54,6 @@ p {
   &:last-child {
     margin-bottom: 0;
   }
-
-  a {
-    margin-left: 0.1em;
-    margin-right: 0.1em;
-  }
 }
 
 p a:hover,
@@ -70,10 +65,16 @@ p a:hover,
 
 .nuxt-content {
   p,
-  ul {
+  ul,
+  ol {
     font-weight: 400;
     font-size: 1rem;
     color: $wiki-content-black;
+
+    a {
+      margin-left: 0.1em;
+      margin-right: 0.1em;
+    }
   }
 
   p {
@@ -83,8 +84,13 @@ p a:hover,
     margin-bottom: 0.5rem;
   }
 
-  ul {
+  ul,
+  ol {
     margin-right: 1rem;
+  }
+
+  ol li::marker {
+    font-weight: 500;
   }
 
   h2,
@@ -197,7 +203,7 @@ p a:hover,
   text-align: center !important;
 }
 
-.wiki-printing {
+@media print {
   .wiki-header {
     position: relative !important;
     background-color: $wiki-common-white !important;
@@ -234,5 +240,17 @@ p a:hover,
   .wiki-video,
   .wiki-audio {
     display: none !important;
+  }
+}
+
+.wiki-intro {
+  .wiki-picture {
+    .wiki-picture__fill {
+      display: none;
+    }
+    .wiki-picture__box {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
   }
 }

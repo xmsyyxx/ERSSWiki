@@ -101,7 +101,6 @@ export default {
       document.documentElement.scrollTop =
         document.documentElement.scrollTop - 60;
     };
-    onresize();
     window.addEventListener("hashchange", onhashchange);
     if (this.WikiData.css) {
       document.querySelector(".wiki-contents") &&

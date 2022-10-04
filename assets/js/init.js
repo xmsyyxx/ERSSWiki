@@ -1,7 +1,7 @@
 /**
  * 网站域名
  */
-export const siteUrl = "https://baike.xmsyyxx.com";
+export const siteUrl = "https://www.erssbk.com";
 
 /**
  * 图片处理后缀
@@ -20,6 +20,12 @@ export const imageSuffix = {
  */
 export const cardPlaceHolderImage =
   "https://wikioss.xhemj.work/static/ersswiki-no-image-card.png";
+
+/**
+ * 懒加载占位图片
+ */
+export const lazyPlaceHolderImage =
+  "https://p1.meituan.net/csc/a2b6160e960cb4cb5bd267ba4285508c5305.png";
 
 /**
  * 加载 Javascript
@@ -90,4 +96,36 @@ export function randomNum(min, max) {
  */
 export function isMobile() {
   return window.innerWidth < 500;
+}
+
+/**
+ * 微信分享
+ */
+export function wxShare(config) {
+  window.wx.config({
+    debug: false,
+    appId: "wxa2cf8095609c9146",
+    jsApiList: [
+      "checkJsApi",
+      "updateAppMessageShareData",
+      "updateTimelineShareData",
+    ],
+  });
+  const { title, desc, imgUrl } = config;
+  const shareConfig = {
+    imgUrl,
+    desc,
+    title,
+    link: window.location.href,
+    success: function () {
+      console.log("成功了！");
+    },
+    cancel: function () {
+      console.log("取消");
+    },
+  };
+  window.wx.ready(function () {
+    window.wx.updateAppMessageShareData(shareConfig);
+    window.wx.updateTimelineShareData(shareConfig);
+  });
 }

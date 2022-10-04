@@ -1,7 +1,7 @@
 import { siteUrl } from "./assets/js/init";
 import { defaultLocale, locales, locals, translateSring } from "./i18n";
-import rename from "./scripts/rename";
-import writeInfo from "./scripts/writeInfo";
+import rename from "./scripts/libs/rename";
+import writeInfo from "./scripts/libs/writeInfo";
 
 const webpack = require("webpack");
 const version = require("./package.json").version;
@@ -73,6 +73,9 @@ export default {
       //   "data-cache": "true",
       //   "data-host-url": "https://a.xhemj.work",
       // },
+      {
+        src: "https://res.wx.qq.com/open/js/jweixin-1.6.0.js",
+      },
     ],
   },
 
