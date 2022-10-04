@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const targetPath = path.resolve(__dirname, "../dist");
+const targetPath = path.resolve(__dirname, "../../dist");
 const targetFolder = ["item", "wiki"];
 
 /**

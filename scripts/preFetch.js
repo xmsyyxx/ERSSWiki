@@ -5,8 +5,8 @@ const path = require("path");
 const log = console.log;
 
 // const ENDPOINT = "http://local.xhemj.work:5500";
-const ENDPOINT = "https://ersswiki.xhemj.work";
-const SITEURL = "https://baike.xmsyyxx.com";
+const ENDPOINT = "https://www.erssbk.com";
+const SITEURL = "https://www.erssbk.com";
 const TARGET_PATH = path.resolve(__dirname, "../dist");
 const TARGET_FOLDER_INFO = {
   item: {
