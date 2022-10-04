@@ -4,7 +4,9 @@
     <ul class="wiki-suggestion__list">
       <li v-for="(item, index) of suggestionList" :key="index + item">
         <NuxtLink :to="path + item">
-          <span class="wiki-suggestion__item">{{ item }}</span>
+          <span class="wiki-suggestion__item wiki--click--WikiSuggestion">
+            {{ item }}
+          </span>
         </NuxtLink>
         <span
           v-show="index !== suggestionList.length - 1"
@@ -12,7 +14,7 @@
           >|</span
         >
       </li>
-      <li class="wiki-suggestion__reload" @click="handleSuggestion">
+      <li class="wiki-suggestion__reload" @click="clickReload">
         <IconReload />
       </li>
     </ul>
@@ -66,6 +68,10 @@ export default {
         }
       }
       this.suggestionList = Array.from(list);
+    },
+    clickReload() {
+      this.handleSuggestion();
+      this.$umami.trackEvent("WikiSuggestionReload", "click");
     },
   },
 };
