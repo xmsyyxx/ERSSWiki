@@ -166,8 +166,6 @@ export default {
 .wiki-app__search .wiki-search {
   .wiki-search__input {
     input {
-      height: 3rem !important;
-      font-size: 1.1rem !important;
       color: $wiki-content-black !important;
       /* border: 1px solid $wiki-description-gray !important; */
       background-color: $wiki-search-mirror-gray !important;
@@ -196,7 +194,7 @@ export default {
       justify-content: flex-start !important;
       padding: 0.25rem 0 !important;
       margin: 0.5rem 1rem !important;
-      font-size: 1.1rem !important;
+      font-size: 1rem !important;
     }
 
     .wiki-search__link {
@@ -205,6 +203,24 @@ export default {
 
     .wiki-search__go--icon {
       display: none !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .wiki-app__search .wiki-search .wiki-search__input {
+    input {
+      height: 2.6rem !important;
+      font-size: 0.9rem !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .wiki-app__search .wiki-search .wiki-search__input {
+    input {
+      height: 3rem !important;
+      font-size: 1rem !important;
     }
   }
 }

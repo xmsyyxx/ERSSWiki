@@ -330,6 +330,7 @@ $wiki-popups-border-color: rgba(204, 204, 204, 0.3);
   p {
     text-indent: 0;
     margin-bottom: 10px;
+    line-height: 1.5;
 
     .wiki-popups__description {
       min-height: 64px;

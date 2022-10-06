@@ -96,13 +96,14 @@ export default {
 .wiki-item__article {
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .wiki-item__fill {
   width: 100%;
-  height: 0.7rem;
+  height: 0.4rem;
   background-color: $wiki-footer-light-gray;
   border: 0;
+  margin-top: 0.5rem;
 }
 </style>

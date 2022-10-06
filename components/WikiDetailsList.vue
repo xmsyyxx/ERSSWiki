@@ -83,7 +83,7 @@ export default {
 }
 
 .wiki-details__list {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
 
   ul {
@@ -118,6 +118,7 @@ export default {
   word-wrap: break-word;
   width: 66.67%; /* 8/12 */
   max-width: 66.67%;
+  padding-left: 1rem;
 }
 
 .wiki-details__more {
