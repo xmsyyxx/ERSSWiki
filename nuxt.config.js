@@ -57,10 +57,10 @@ export default {
         rel: "apple-touch-icon",
         href: "https://wikioss.xhemj.work/static/logo/v3/512x512.png",
       },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap",
-      },
+      // {
+      //   rel: "stylesheet",
+      //   href: "https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap",
+      // },
       // {
       //   rel: "stylesheet",
       //   href: "https://wikioss.xhemj.work/css/wikifonts.css",

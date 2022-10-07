@@ -9,7 +9,8 @@
       </NuxtLink>
       <div class="wiki-header__logo--text">
         <NuxtLink to="/">
-          {{ $t("MAIN_ERSSWIKI") }} &middot; {{ $t("MAIN_DEVELOPMENT") }}
+          {{ $t("MAIN_ERSSWIKI") }}
+          <!-- &middot; {{ $t("MAIN_DEVELOPMENT") }} -->
         </NuxtLink>
       </div>
       <WikiSearch />

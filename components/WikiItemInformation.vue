@@ -34,10 +34,10 @@ export default {
     },
   },
   methods: {
-    async print() {
+    print() {
       const body = document.body;
       body.classList.add("wiki-printing");
-      await window.print();
+      window.print();
       body.classList.remove("wiki-printing");
     },
   },
