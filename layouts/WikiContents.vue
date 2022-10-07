@@ -9,6 +9,7 @@
       <WikiFooter />
     </div>
     <WikiFancyImage />
+    <WikiBackTop />
     <WikiCommon />
   </div>
 </template>
@@ -18,6 +19,7 @@ import WikiHeader from "../components/WikiHeader.vue";
 import WikiFooter from "../components/WikiFooter.vue";
 import WikiCommon from "../components/WikiCommon.vue";
 import WikiFancyImage from "../components/WikiFancyImage.vue";
+import WikiBackTop from "../components/WikiBackTop.vue";
 
 export default {
   name: "WikiContents",
@@ -26,12 +28,18 @@ export default {
     WikiFooter,
     WikiCommon,
     WikiFancyImage,
+    WikiBackTop,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/css/variables.scss";
+
+.wiki-contents {
+  min-height: 100vh;
+  background-color: #eaecf0;
+}
 
 .wiki-contents__body {
   text-align: left;
