@@ -9,14 +9,13 @@
   >
     <div class="wiki-footer__box">
       <div class="wiki-footer__copyright">
-        <span>耳斯百科 v{{ version }}</span>
-        <!-- <span>最后更新：{{ buildTime }}</span> -->
-        <span>{{ copyright }}</span>
-        <span>
-          <strong>开发中页面，不代表最终品质，且不保证访问质量</strong>
+        <span id="name" class="wiki-footer__homehide">
+          <span id="ersswiki">耳斯百科</span>
+          <span id="version">开发版 {{ version }}</span>
         </span>
-        <span>
-          <a
+        <!-- <span>最后更新：{{ buildTime }}</span> -->
+        <span id="beian">
+          互联网ICP备案：<a
             href="https://beian.miit.gov.cn"
             target="_blank"
             rel="noopener noreferrer"
@@ -25,11 +24,12 @@
             闽ICP备2022010207号
           </a>
         </span>
-        <hr v-if="!isHome" />
-        <span v-if="!isHome"
+        <span id="copyright">{{ copyright }}</span>
+        <hr class="wiki-footer__pcshow wiki-footer__homehide" />
+        <span class="wiki-footer__pcshow wiki-footer__homehide"
           >此网站为 厦门市音乐学校 <strong>非官方</strong>百科网，
         </span>
-        <span v-if="!isHome"
+        <span class="wiki-footer__pcshow wiki-footer__homehide"
           >如需了解更多学校详情，请点此
           <a
             href="https://xmyyxx.xmedu.cn/"
@@ -38,9 +38,12 @@
             >进入学校官网</a
           >。</span
         >
+        <span>
+          <strong>开发中页面，不代表最终品质，且不保证访问质量</strong>
+        </span>
       </div>
-      <div v-if="!isHome" class="wiki-footer__fill"></div>
-      <div v-if="!isHome" class="wiki-footer__tips">
+      <div class="wiki-footer__fill wiki-footer__homehide"></div>
+      <div class="wiki-footer__tips wiki-footer__homehide">
         <span class="wiki-footer__logo">
           <WikiLogo />
         </span>
@@ -128,6 +131,30 @@ export default {
   max-width: $wiki-max-width;
   min-width: $wiki-min-width;
   margin: auto;
+  font-size: 0.75rem;
+
+  span {
+    line-height: 1.5;
+    font-weight: 400;
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.wiki-footer__copyright {
+  #name {
+    border-bottom: solid 1px #c8ccd1;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  #ersswiki {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
 }
 
 .wiki-footer__copyright {
@@ -143,13 +170,26 @@ export default {
   justify-content: center;
 }
 
+.wiki-footer__pcshow {
+  display: block;
+}
+
+.wiki-footer__home {
+  .wiki-footer__homehide {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .wiki-footer {
-    padding: 0 1rem;
+    padding: 0;
     /* font-size: 10px; */
     background: $wiki-common-white;
-    border-top: 0.7rem solid $wiki-footer-light-gray;
-    text-align: center;
+    // border-top: 0.5rem solid $wiki-footer-light-gray;
+    text-align: left;
+    position: relative;
+    border-top: 1px solid #c8ccd1;
+    background-color: #eaecf0;
   }
 
   .wiki-footer.wiki-footer__home {
@@ -158,12 +198,17 @@ export default {
 
   .wiki-footer__box {
     padding: 1rem;
+    padding-bottom: 3rem;
     max-width: 100%;
     min-width: 0;
     flex-direction: column;
   }
 
   .wiki-footer__tips {
+    display: none;
+  }
+
+  .wiki-footer__pcshow {
     display: none;
   }
 }
