@@ -21,16 +21,18 @@
     <div class="wiki-item__article">
       <nuxt-content :document="WikiData" tag="div" />
     </div>
+    <WikiLastModified :lastModified="WikiData.updatedAt" />
   </div>
 </template>
 
 <script>
-import WikiDetailsList from "../../components/WikiDetailsList";
-import WikiBaseIntroductions from "../../components/WikiBaseIntroductions";
-import WikiItemInformation from "../../components/WikiItemInformation";
+import WikiDetailsList from "../../components/WikiDetailsList.vue";
+import WikiBaseIntroductions from "../../components/WikiBaseIntroductions.vue";
+import WikiItemInformation from "../../components/WikiItemInformation.vue";
 import WikiPicture from "../../components/WikiPicture.vue";
 import WikiTags from "../../components/WikiTags.vue";
 import wikiCommonHead from "../../assets/js/wikiCommonHead";
+import WikiLastModified from "../../components/WikiLastModified.vue";
 
 export default {
   name: "WikiItem",
@@ -40,6 +42,7 @@ export default {
     WikiItemInformation,
     WikiPicture,
     WikiTags,
+    WikiLastModified,
   },
   layout: "WikiContents",
   async asyncData({ $content, params, redirect }) {
@@ -96,7 +99,8 @@ export default {
 .wiki-item__article {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  padding-bottom: 3rem;
+  min-height: 45vh;
 }
 
 .wiki-item__fill {
